@@ -22,7 +22,7 @@ addpath(vernierToolPath);
 
 
 % trial duration
-T  = 20 ; % in s
+T  = 5 ; % in s
 dt = 0.01 ; % display refresh lag
 
 % display

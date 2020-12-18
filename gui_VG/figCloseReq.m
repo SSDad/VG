@@ -1,11 +1,22 @@
 function figCloseReq(src, callbackdata)
-% Close all figures
 
 global hFig2
+global dyn
+
+% delete object
+if isvalid(dyn)
+    dyn.delete;
+end
+
+% close fig2
 if ishandle(hFig2)
     delete(hFig2)
 end
+
+% close fig
 delete(src)
+
+
 %    selection = questdlg('Close This Figure?',...
 %       'Close Request Function',...
 %       'Yes','No','Yes'); 
