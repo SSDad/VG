@@ -29,7 +29,7 @@ if tt(end) > 10
     hAx2 = data2.Panel.Bar.Comp.hAxis.Bar;
     hBar = data2.Panel.Bar.Comp.hPlotObj.Bar;
     hgPatch = data2.Panel.Bar.Comp.hPlotObj.gPatch;
-    hrPatch = data2.Panel.Bar.Comp.hPlotObj.rPatch;
+    hrPatch = data2.Panel.Bar.Comp.hPlotObj.gPatch;
 
     hAx2.XLim = [0 1];
     hAx2.YLim = [min(yy) max(yy)];
@@ -41,6 +41,6 @@ if tt(end) > 10
     
     hBar.Position = [x1 yy(end)-range(yy)/20/2 x2-x1 range(yy)/20];
     set(hgPatch, 'XData', [0 0 1 1 ], 'YData', [min(yy) yAvg yAvg min(yy)]);
-    set(hrPatch, 'XData', [0 0 1 1 ], 'YData', [yAvg max(yy)  max(yy) yAvg ]);
+    set(hrPatch, 'XData', [0 0 1 1 ], 'YData', [yAvg max(yy)  yAvg min(yy)]);
     
 end

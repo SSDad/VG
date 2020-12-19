@@ -8,7 +8,7 @@ h_About = 1-h_LoadImage-h_Snake-h_Point-h_Selection;
 h_ContrastBar = 0.05;
 h_View = 1-h_ContrastBar;
 
-h_Menu = 0.05;
+h_Menu = 0.075;
 h_View = 1-h_Menu;
 
 Panel.View.hPanel = uipanel('parent', hFig,...
