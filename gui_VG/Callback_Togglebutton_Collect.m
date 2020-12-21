@@ -1,7 +1,7 @@
 function Callback_Togglebutton_Collect(src, evnt)
 
 global hFig
-global tt yy
+global tt yy tStart
 global dyn
 global baseLine
 
@@ -13,8 +13,8 @@ if strcmp(str, 'Collect')
     src.ForegroundColor = 'r';
     src.BackgroundColor = [1 1 1]*0.2;
     
-    vernierToolPath = fullfile(fileparts(pwd), 'vernier-toolbox-master');
-    addpath(vernierToolPath);
+%     vernierToolPath = fullfile(fileparts(pwd), 'vernier-toolbox-master');
+%     addpath(vernierToolPath);
 
     % create dynamometer object
     dyn = dynamometer;
@@ -51,4 +51,16 @@ else
     src.String = 'Collect';
     src.ForegroundColor = 'g';
     src.BackgroundColor = [1 1 1]*0.25;
+    
+    % save data
+    fd_VG = fullfile(tempdir, 'VG');
+    if ~exist(fd_VG, 'dir')
+    %     [matFile, dataPath] = uigetfile('*.mat');
+        mkdir(fd_VG);
+    end
+    
+    datafn = fullfile(fd_VG, ['data_', datestr(tStart,'YYYYmmDD_HHMMSS'), '-',...
+        datestr(now,'HHMMSS'), '_', num2str(round(range(tt))), 's.mat']);
+    save(datafn, 'tt', 'yy', 'baseLine');
+   
 end

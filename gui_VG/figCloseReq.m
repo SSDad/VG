@@ -4,8 +4,10 @@ global hFig2
 global dyn
 
 % delete object
-if isvalid(dyn)
-    dyn.delete;
+if exist('dyn')
+    if isvalid(dyn)
+        dyn.delete;
+    end
 end
 
 % close fig2

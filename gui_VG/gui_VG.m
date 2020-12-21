@@ -1,4 +1,4 @@
-function MAXIM
+function gui_VG
 
 %% global 
 global hFig hFig2
