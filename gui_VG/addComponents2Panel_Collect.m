@@ -1,39 +1,31 @@
- function Comp = addComponents2Panel_Menu(hPanel)
+ function Comp = addComponents2Panel_Collect(hPanel)
 
- h_Gap = 0.025;
- h_Load = 0.15;
- h_SliceNo = 0.4;
- h_reDraw = 0.15;
- h_Save = 0.15;
- 
- w_Button = 0.9;
- x_Button = (1-w_Button)/2;
+ h_Collect = 0.8;
+ h_Gap = (1-h_Collect)/2;
+
+ w_Button = 0.7;
+ w_Gap = (1-w_Button)/2;
  
 nG = 3;
 
-FS = 11;
+FS = 24;
 BC_PB = [1 1 1]*0.25;
 BC_TB = [1 1 1]*0.5;
 
-gapLeft = 0.025;
-gapTop = 0.1;
-h_Button = 1-gapTop*2;
-w_Button = 0.075;
-
 % Collect
+y0 = 1-h_Gap-h_Collect;
 Comp.Togglebutton.Collect = uicontrol('parent', hPanel, ...
                                 'Style', 'togglebutton',...
-                                'String', 'Collect',...
+                                'String', 'Go',...
                                 'Unit', 'Normalized',...
-                                'Position', [gapLeft gapTop w_Button h_Button], ...
-                                'FontSize', FS, ...
+                                'Position', [w_Gap y0 w_Button h_Collect], ...
+                                'FontSize', 24, ...
                                 'FontWeight', 'bold', ...
                                 'BackgroundColor', BC_TB,...
                                 'ForegroundColor', 'g',...
                                 'Visible', 'on', ...
                                 'Enable', 'on', ...
                                 'Callback', @Callback_Togglebutton_Collect);
-
 
 
 % Comp.Pushbutton.LoadSnake = uicontrol('parent', hPanel, ...

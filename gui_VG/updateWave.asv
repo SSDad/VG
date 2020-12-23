@@ -35,14 +35,6 @@ if tt(end) > 5
         y_WaveRect(2) = (max(yy)+min(yy))/2-baseLine;
         hRect.Position = [x1 y_WaveRect(1) x2-x1 diff(y_WaveRect)];
         hRect.Visible = 'on';
-
-        pos = hRect.Position;
-
-        YLim = hAx.YLim;
-        hgPatch = data.Panel.Bar.Comp.hPlotObj.gPatch;
-        hrPatch = data.Panel.Bar.Comp.hPlotObj.rPatch;
-        set(hgPatch, 'XData', [0 0 1 1 ], 'YData', [pos(2) pos(2)+pos(4) pos(2)+pos(4) pos(2) ]);
-        set(hrPatch, 'XData', [0 0 1 1 ], 'YData', [pos(2)+pos(4) YLim(2) YLim(2) pos(2)+pos(4)]);
     end
     hRect.Position(1) =x1;
     hRect.Position(3) = x2-x1;
@@ -54,11 +46,12 @@ if tt(end) > 5
     hAx2.XLim = [0 1];
     hAx2.YLim = hAx.YLim;
      
+%     x0 = 0;
+%     y0 = mean(yy)-range(yy)/2;
     x1 = 0.1;
     x2 = 1-x1;
     
-    y1B = yy(end) - baseLine;
-    hB = diff(hAx2.YLim)/20;
-    hBar.Position = [x1 y1B x2-x1 hB];
+%     hBar.Position = [x1 yy(end)-range(yy)/20/2 x2-x1 range(yy)/20];
+    hBar.Position = [x1 yy(end)-range(yy)/20/2 x2-x1 range(yy)/20];
     
 end

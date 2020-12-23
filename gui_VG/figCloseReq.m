@@ -5,8 +5,10 @@ global dyn
 
 % delete object
 if exist('dyn')
-    if isvalid(dyn)
-        dyn.delete;
+    if ~isempty(dyn)
+        if isvalid(dyn)
+            dyn.delete;
+        end
     end
 end
 

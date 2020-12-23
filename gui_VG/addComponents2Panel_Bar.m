@@ -1,4 +1,4 @@
-function Comp = addComponents2Panel2_Bar(hPanel)
+function Comp = addComponents2Panel_Bar(hPanel)
 
 FC = [255 255 102]/255;
 FC = [255 255 255]/255;
@@ -14,10 +14,10 @@ Comp.hAxis.Bar = axes('Parent',                   hPanel, ...
 hold(Comp.hAxis.Bar, 'on')
 
 Comp.hPlotObj.Bar = rectangle(Comp.hAxis.Bar, 'Position', [0 0 0 0 ], ...
-    'EdgeColor', 'none', 'FaceColor', 'c', 'LineWidth', 1);
+    'EdgeColor', 'none', 'FaceColor', 'b', 'LineWidth', 1);
 
 Comp.hPlotObj.gPatch = patch(Comp.hAxis.Bar, 'XData', [0 0 0 0 ], 'YData', [0 0 0 0 ], ...
-    'EdgeColor', 'none', 'FaceColor', 'g', 'FaceAlpha', 0.5);
+    'EdgeColor', 'none', 'FaceColor', 'g', 'FaceAlpha', 0.25);
 
 Comp.hPlotObj.rPatch = patch(Comp.hAxis.Bar, 'XData', [0 0 0 0 ], 'YData', [0 0 0 0 ], ...
-    'EdgeColor', 'none', 'FaceColor', 'r', 'FaceAlpha', 0.5);
+    'EdgeColor', 'none', 'FaceColor', 'r', 'FaceAlpha', 0.25);

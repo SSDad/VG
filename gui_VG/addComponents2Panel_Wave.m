@@ -1,4 +1,4 @@
-function Comp = addComponents2Panel_View(hPanel)
+function Comp = addComponents2Panel_Wave(hPanel)
 
 FC = [255 255 102]/255;
 FC = [255 255 255]/255;
@@ -14,13 +14,19 @@ Comp.hAxis.Wave = axes('Parent',                   hPanel, ...
                             'Position',                 [0.1 0.1 0.85 0.85]);
 
 Comp.hAxis.Wave.XLabel.String = 'Time (s)';                        
-Comp.hAxis.Wave.YLabel.String = 'Pressure (kPa)';                        
+Comp.hAxis.Wave.YLabel.String = 'Relative Pressure (kPa)';                        
 % Comp.hAxis.Image.XAxisLocation='top';
 hold(Comp.hAxis.Wave, 'on')
 
 Comp.hPlotObj.Wave = line(Comp.hAxis.Wave, 'XData', [], 'YData', [],...
     'Marker', '.',  'MarkerSize', 24,...
-    'Color', 'g', 'LineStyle', '-', 'LineWidth', 1);
+    'Color', 'b', 'LineStyle', '-', 'LineWidth', 1);
+
+pos = [0 0 0 0];
+Comp.hPlotObj.WaveRect = images.roi.Rectangle(Comp.hAxis.Wave, 'Position', pos, 'Color', 'g',...
+        'LineWidth', 1, 'FaceAlpha', 0.1, 'Tag', 'WaveRect', 'Visible', 'off');
+addlistener(Comp.hPlotObj.WaveRect, 'MovingROI', @Callback_WaveRect);
+
 
 Comp.hPlotObj.AvgLine = line(Comp.hAxis.Wave, 'XData', [], 'YData', [],...
     'Marker', 'none',  'MarkerSize', 24,...

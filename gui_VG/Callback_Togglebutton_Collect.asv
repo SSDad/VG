@@ -4,26 +4,23 @@ global hFig
 global tt yy tStart
 global dyn
 global baseLine
-global bWaveRectInit;
 
 str = src.String;
-data = guidata(hFig);
 
 if strcmp(str, 'Go')
-    
-    bWaveRectInit = 0;
-    data.Panel.Wave.Comp.hPlotObj.WaveRect.Position = [0 0 0 0];
-
     
     src.String = 'Stop';
     src.ForegroundColor = 'r';
     src.BackgroundColor = [1 1 1]*0.2;
+    
+%     vernierToolPath = fullfile(fileparts(pwd), 'vernier-toolbox-master');
+%     addpath(vernierToolPath);
 
     % create dynamometer object
-    if ~isvalid(dyn)
-        dyn = dynamometer;
-    end
+%     dyn = dynamometer;
+%     baseLine = dyn.baseline;
 
+    data = guidata(hFig);
     dt = data.WaveParam.dt;
 
     % start recording
@@ -61,6 +58,7 @@ else
     %     [matFile, dataPath] = uigetfile('*.mat');
         mkdir(fd_VG);
     end
+    
     datafn = fullfile(fd_VG, ['data_', datestr(tStart,'YYYYmmDD_HHMMSS'), '-',...
         datestr(now,'HHMMSS'), '_', num2str(round(range(tt))), 's.mat']);
     save(datafn, 'tt', 'yy', 'baseLine');

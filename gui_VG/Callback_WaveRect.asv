@@ -1,0 +1,22 @@
+function Callback_WaveRect(src, evnt)
+
+global hFig
+global baseLine
+
+pos = src.Position;
+
+data = guidata(hFig);
+hAx2 = data.Panel.Bar.Comp.hAxis.Bar;
+hgPatch = data.Panel.Bar.Comp.hPlotObj.gPatch;
+hrPatch = data.Panel.Bar.Comp.hPlotObj.rPatch;
+set(hgPatch, 'XData', [0 0 1 1 ], 'YData', [min(yy) yAvg yAvg min(yy)]);
+set(hrPatch, 'XData', [0 0 1 1 ], 'YData', [yAvg max(yy)  max(yy) yAvg ]);
+
+
+
+data.Panel.Param.Comp.subPanel.Calib.Text.CalibValue.String = [num2str(baseLine), ' kPa'];
+
+data.Panel.Param.Comp.subPanel.Scale.hPanel.Visible = 'on';
+data.Panel.Param.Comp.subPanel.WaveBar.hPanel.Visible = 'on';
+
+data.Panel.Collect.hPanel.Visible = 'on';
