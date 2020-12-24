@@ -12,11 +12,34 @@ hAx = data.Panel.Wave.Comp.hAxis.Wave;
 hWave = data.Panel.Wave.Comp.hPlotObj.Wave;
 set(hWave, 'XData', tt, 'YData', yy-baseLine);
 
+% hRadioM = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Manual;
+hRadioA = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
+
 T = data.WaveParam.T;
+dt = data.WaveParam.dt;
+nP = round(T/dt);
 if tt(end) > T
     hAx.XLim = [tt(end)-T tt(end)];
+
+    yMax = max(yy(end-nP+4:end));
+    yMin = min(yy(end-nP+4:end));
+    
 else
     hAx.XLim = [0 T];
+    
+    yMax = max(yy);
+    yMin = min(yy);
+end
+
+yMax = yMax-baseLine;
+yMin = yMin-baseLine;
+if hRadioA.Value
+    yB = (yMax-yMin)/10;
+    if yMax>yMin
+        hAx.YLim = [yMin-yB yMax+yB];
+        data.Panel.Param.Comp.subPanel.VLimit.Edit.High.String = num2str(yMax+yB);
+        data.Panel.Param.Comp.subPanel.VLimit.Edit.Low.String = num2str(yMin-yB);
+    end
 end
 
 % hAvgLine = data.Panel.Wave.Comp.hPlotObj.AvgLine;
