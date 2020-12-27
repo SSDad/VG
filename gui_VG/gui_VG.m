@@ -34,7 +34,7 @@ data.FC = [255 255 102]/255;
 data.ActiveAxis.MovePoints = 0;
 
 data.WaveParam.dt = 1/20;
-data.WaveParam.T = 5;
+data.WaveParam.T = 30;
 
 
 guidata(hFig, data);

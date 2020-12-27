@@ -20,15 +20,17 @@ dt = data.WaveParam.dt;
 nP = round(T/dt);
 if tt(end) > T
     hAx.XLim = [tt(end)-T tt(end)];
-
-    yMax = max(yy(end-nP+4:end));
-    yMin = min(yy(end-nP+4:end));
-    
+    if length(yy) > nP
+        yMax = max(yy(end-nP:end));
+        yMin = min(yy(end-nP:end));
+    else
+        yMax = max(yy);
+        yMin = min(yy);
+    end
 else
-    hAx.XLim = [0 T];
-    
-    yMax = max(yy);
-    yMin = min(yy);
+        hAx.XLim = [0 T];
+        yMax = max(yy);
+        yMin = min(yy);
 end
 
 yMax = yMax-baseLine;

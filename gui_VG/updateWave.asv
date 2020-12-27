@@ -19,16 +19,20 @@ T = data.WaveParam.T;
 dt = data.WaveParam.dt;
 nP = round(T/dt);
 if tt(end) > T
-    hAx.XLim = [tt(end)-T tt(end)];
+   
+        hAx.XLim = [tt(end)-T tt(end)];
 
-    yMax = max(yy(end-nP+2:end));
-    yMin = min(yy(end-nP+2:end));
-    
-else
-    hAx.XLim = [0 T];
-    
-    yMax = max(yy);
-    yMin = min(yy);
+        if length(yy) > nP
+
+        yMax = max(yy(end-nP:end));
+        yMin = min(yy(end-nP:end));
+
+    else
+        hAx.XLim = [0 T];
+
+        yMax = max(yy);
+        yMin = min(yy);
+    end
 end
 
 yMax = yMax-baseLine;
@@ -37,8 +41,8 @@ if hRadioA.Value
     yB = (yMax-yMin)/10;
     if yMax>yMin
         hAx.YLim = [yMin-yB yMax+yB];
-        data.Panel.Param.Comp.subPanel.VLimit.Edit.High.String = num2str(yMax+yB);;
-        hEditL =  data.Panel.Param.Comp.subPanel.VLimit.Edit.Low;
+        data.Panel.Param.Comp.subPanel.VLimit.Edit.High.String = num2str(yMax+yB);
+        data.Panel.Param.Comp.subPanel.VLimit.Edit.Low.String = num2str(yMin-yB);
     end
 end
 
