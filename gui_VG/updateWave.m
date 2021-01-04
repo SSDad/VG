@@ -5,6 +5,7 @@ global tt yy
 global baseLine
 global bWaveRectInit;
 global y_WaveRect;
+global TimeRange
 
 %% wave
 data = guidata(hFig);
@@ -15,7 +16,8 @@ set(hWave, 'XData', tt, 'YData', yy-baseLine);
 % hRadioM = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Manual;
 hRadioA = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
 
-T = data.WaveParam.T;
+T = TimeRange;
+% T = data.WaveParam.T;
 dt = data.WaveParam.dt;
 nP = round(T/dt);
 if tt(end) > T
