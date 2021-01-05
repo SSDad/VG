@@ -64,7 +64,7 @@ else
     
     MRN = data.Panel.PtInfo.Comp.Edit.MRN.String;
     Fraction = data.Panel.PtInfo.Comp.Edit.Fraction.String;
-    datafn = fullfile(fd_VG, ['data_MRN', MRN, '_Fraction', Fraction, '_', datestr(tStart,'YYYYmmDD_HHMMSS'), '-',...
+    datafn = fullfile(fd_VG, ['data_MRN', MRN, '_Fraction', Fraction, datestr(tStart,'YYYYmmDD_HHMMSS'), '-',...
         datestr(now,'HHMMSS'), '_', num2str(round(range(tt))), 's.mat']);
     save(datafn, 'tt', 'yy', 'baseLine');
    
