@@ -22,21 +22,3 @@ else
     hEditH.Enable = 'on';
     hEditL.Enable = 'on';
 end
-
-% if data.Panel.Selection.Comp.Radiobutton.Diaphragm.Value
-%     data.Panel.Body.hPanel.Visible = 'off';
-%     data.Panel.Snake.hPanel.Visible = 'on';
-%     data.Panel.Point.hPanel.Visible = 'on';
-% 
-%     data.Panel.View.Comp.hPlotObj.AbRect.Visible = 'off';
-%     data.Panel.View.Comp.hPlotObj.AbRectCLine.Visible = 'off';
-% else
-%     data.Panel.Snake.hPanel.Visible = 'off';
-%     data.Panel.Point.hPanel.Visible = 'off';
-%     data.Panel.Body.hPanel.Visible = 'on';
-%     
-%     if exist(data.FileInfo.ffn_AbsContour, 'file')
-%         data.Panel.Body.Comp.Pushbutton.LoadContour.Enable = 'on';
-%     end
-% 
-% end

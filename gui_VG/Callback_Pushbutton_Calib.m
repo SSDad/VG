@@ -18,10 +18,10 @@ dyn = dynamometer;
 baseLine = dyn.baseline;
 
 data = guidata(hFig);
-data.Panel.Param.Comp.subPanel.Calib.Text.CalibValue.String = [num2str(baseLine), ' kPa'];
+data.Panel.Calib.Comp.Text.CalibValue.String = [num2str(baseLine), ' kPa'];
 
-data.Panel.Param.Comp.subPanel.VLimit.hPanel.Visible = 'on';
-data.Panel.Param.Comp.subPanel.Time.hPanel.Visible = 'on';
-data.Panel.Param.Comp.subPanel.WaveBar.hPanel.Visible = 'on';
+% data.Panel.Param.Comp.subPanel.VLimit.hPanel.Visible = 'on';
+% data.Panel.Param.Comp.subPanel.Time.hPanel.Visible = 'on';
+% data.Panel.Param.Comp.subPanel.WaveBar.hPanel.Visible = 'on';
 
-data.Panel.Collect.hPanel.Visible = 'on';
+% data.Panel.Collect.hPanel.Visible = 'on';
