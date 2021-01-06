@@ -23,8 +23,8 @@ data.Panel.Calib.Comp.Text.CalibValue.String = [num2str(baseLine, '%0.2f'), ' kP
 data.Panel.PtInfo.hPanel.Visible = 'on';
 data.Panel.Collect.hPanel.Visible = 'on';
 data.Panel.WaveBar.hPanel.Visible = 'on';
-data.Panel.BH.hPanel.Visible = 'on';
-data.Panel.BHC.hPanel.Visible = 'on';
+% data.Panel.BH.hPanel.Visible = 'on';
+% data.Panel.BHC.hPanel.Visible = 'on';
 data.Panel.ParamButton.hPanel.Visible = 'on';
 data.Panel.Param.hPanel.Visible = 'on';
 

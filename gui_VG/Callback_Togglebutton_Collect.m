@@ -5,11 +5,20 @@ global tt yy tStart
 global dyn
 global baseLine
 global bWaveRectInit;
+global bBHStart bBHReset tC
 
 str = src.String;
 data = guidata(hFig);
 
+hBHC = data.Panel.BHC.Comp.Edit.Counter;
+hBH = data.Panel.BH.Comp.Togglebutton.BH;
+
 if strcmp(str, 'Go')
+    data.Panel.BH.hPanel.Visible = 'on';
+    data.Panel.BHC.hPanel.Visible = 'on';
+
+    bBHStart = 0;
+    bBHReset = 0;
     
     bWaveRectInit = 0;
     data.Panel.Wave.Comp.hPlotObj.WaveRect.Position = [0 0 0 0];
@@ -50,6 +59,13 @@ else
         dyn.stop;
         dyn.delete;
     end
+    
+    data.Panel.BH.hPanel.Visible = 'off';
+    data.Panel.BHC.hPanel.Visible = 'off';
+    hBH.String = 'Start';
+    hBH.ForegroundColor = 'g';
+    hBH.BackgroundColor = [1 1 1]*0.25;
+    hBHC.String = num2str(tC, '%0.0f');
     
     src.String = 'Go';
     src.ForegroundColor = 'g';

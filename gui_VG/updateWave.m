@@ -6,6 +6,7 @@ global baseLine
 global bWaveRectInit;
 global y_WaveRect;
 global TimeRange
+global bBHStart bBHReset t0 tC tE
 
 %% wave
 data = guidata(hFig);
@@ -17,6 +18,8 @@ set(hWave, 'XData', tt, 'YData', yy-baseLine);
 hRadioA = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
 
 hBoxH =data.Panel.Param.Comp.subPanel.Box.Edit.BoxH;
+hBHC = data.Panel.BHC.Comp.Edit.Counter;
+hBH = data.Panel.BH.Comp.Togglebutton.BH;
 
 T = TimeRange;
 % T = data.WaveParam.T;
@@ -92,4 +95,26 @@ if tt(end) > 5
     hB = diff(hAx2.YLim)/20;
     hBar.Position = [x1 y1B x2-x1 hB];
     
+end
+
+%% update BHC
+if (bBHReset )
+    bBHStart = 0;
+    bBHReset = 0;
+    hBH.String = 'Start';
+    hBH.ForegroundColor = 'g';
+    hBH.BackgroundColor = [1 1 1]*0.25;
+    hBHC.String = num2str(tC, '%0.0f');
+end
+
+if (bBHStart )
+    if(tE < tC)
+        tE = toc(t0);
+        hBHC.String = num2str(abs(tC-tE), '%0.0f');
+    else
+        hBH.String = 'Start';
+        hBH.ForegroundColor = 'g';
+        hBH.BackgroundColor = [1 1 1]*0.25;
+        hBHC.String = num2str(tC, '%0.0f');
+    end
 end
