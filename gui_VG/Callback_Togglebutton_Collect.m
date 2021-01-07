@@ -9,6 +9,7 @@ global bBHStart bBHReset tC
 
 str = src.String;
 data = guidata(hFig);
+global bCollecting
 
 hBHC = data.Panel.BHC.Comp.Edit.Counter;
 hBH = data.Panel.BH.Comp.Togglebutton.BH;
@@ -16,6 +17,9 @@ hBH = data.Panel.BH.Comp.Togglebutton.BH;
 if strcmp(str, 'Go')
     data.Panel.BH.hPanel.Visible = 'on';
     data.Panel.BHC.hPanel.Visible = 'on';
+
+    bCollecting = 1;
+    data.Panel.Calib.hPanel.Visible = 'off'; % disable calib 
 
     bBHStart = 0;
     bBHReset = 0;
@@ -60,6 +64,11 @@ else
         dyn.delete;
     end
     
+    bCollecting = 0;
+    if data.Panel.Param.hPanel.Visible == 'on'
+        data.Panel.Calib.hPanel.Visible = 'on'; % disable calib 
+    end
+   
     data.Panel.BH.hPanel.Visible = 'off';
     data.Panel.BHC.hPanel.Visible = 'off';
     hBH.String = 'Start';
