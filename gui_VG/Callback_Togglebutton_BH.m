@@ -11,7 +11,7 @@ hBHC = data.Panel.BHC.Comp.Edit.Counter;
 if strcmp(str, 'Start')
     bBHStart = 1;
     
-    src.String = 'Reset';
+    src.String = ' X';
     src.ForegroundColor = 'r';
     src.BackgroundColor = [1 1 1]*0.2;
 

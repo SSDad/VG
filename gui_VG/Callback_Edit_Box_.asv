@@ -16,10 +16,10 @@ elseif strcmp(src.Tag, 'BoxHi')
      boxHi = str2double(data.Panel.Param.Comp.subPanel.Box.Edit.BoxHi.String);
      hB.Position(4) = boxHi - hB.Position(2);
 elseif strcmp(src.Tag, 'BoxLo')
-    y0 = hB.Position(2);
+    h = hB.Position
     boxLo = str2double(data.Panel.Param.Comp.subPanel.Box.Edit.BoxLo.String);
     hB.Position(2) = boxLo;
-    hB.Position(4) = y0 - boxLo + hB.Position(4);
+    hB.Position(4) = boxLo;
 elseif strcmp(src.Tag, 'BoxAlpha')
     boxAlpha = str2double(data.Panel.Param.Comp.subPanel.Box.Edit.alpha.String);
     hB.FaceAlpha = boxAlpha;

@@ -78,8 +78,7 @@ if tt(end) > 5
         set(hgPatch, 'XData', [0 0 1 1 ], 'YData', [pos(2) pos(2)+pos(4) pos(2)+pos(4) pos(2) ]);
         set(hrPatch, 'XData', [0 0 1 1 ], 'YData', [pos(2)+pos(4) YLim(2) YLim(2) pos(2)+pos(4)]);
         
-        hBoxLo.String = num2str(pos(2),  '%.2f');
-        hBoxHi.String = num2str(pos(2) + pos(4),  '%.2f');
+        hBoxH.String = num2str(pos(4),  '%.2f');
     end
     hRect.Position(1) =x1;
     hRect.Position(3) = x2-x1;

@@ -3,10 +3,10 @@ function gui_VG
 %% global 
 global hFig
 global TimeRange
-global boxLW boxAlpha
+global waveLW boxAlpha
 
 TimeRange = 30;
-boxLW= 1;
+waveLW= 3;
 boxAlpha = 0.25;
 
 % global stopSlither
@@ -35,6 +35,7 @@ data.Panel.WaveBar.Comp = addComponents2Panel_WaveBar(data.Panel.WaveBar.hPanel)
 data.Panel.BH.Comp = addComponents2Panel_BH(data.Panel.BH.hPanel);
 data.Panel.BHC.Comp = addComponents2Panel_BHC(data.Panel.BHC.hPanel);
 data.Panel.ParamButton.Comp = addComponents2Panel_ParamButton(data.Panel.ParamButton.hPanel);
+data.Panel.Analysis.Comp = addComponents2Panel_Analysis(data.Panel.Analysis.hPanel);
 data.Panel.Calib.Comp = addComponents2Panel_Calib(data.Panel.Calib.hPanel);
 data.Panel.Param.Comp = addComponents2Panel_Param(data.Panel.Param.hPanel);
 

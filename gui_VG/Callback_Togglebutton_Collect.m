@@ -16,7 +16,6 @@ hBH = data.Panel.BH.Comp.Togglebutton.BH;
 
 if strcmp(str, 'Go')
     data.Panel.BH.hPanel.Visible = 'on';
-    data.Panel.BHC.hPanel.Visible = 'on';
 
     bCollecting = 1;
     data.Panel.Calib.hPanel.Visible = 'off'; % disable calib 
@@ -70,7 +69,6 @@ else
     end
    
     data.Panel.BH.hPanel.Visible = 'off';
-    data.Panel.BHC.hPanel.Visible = 'off';
     hBH.String = 'Start';
     hBH.ForegroundColor = 'g';
     hBH.BackgroundColor = [1 1 1]*0.25;

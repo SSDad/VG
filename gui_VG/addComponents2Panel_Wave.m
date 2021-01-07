@@ -1,5 +1,7 @@
 function Comp = addComponents2Panel_Wave(hPanel)
 
+global waveLW
+
 FC = [255 255 102]/255;
 FC = [255 255 255]/255;
 
@@ -20,7 +22,7 @@ hold(Comp.hAxis.Wave, 'on')
 
 Comp.hPlotObj.Wave = line(Comp.hAxis.Wave, 'XData', [], 'YData', [],...
     'Marker', 'none',  'MarkerSize', 24,...
-    'Color', 'y', 'LineStyle', '-', 'LineWidth', 3);
+    'Color', 'y', 'LineStyle', '-', 'LineWidth', waveLW);
 
 pos = [0 0 0 0];
 Comp.hPlotObj.WaveRect = images.roi.Rectangle(Comp.hAxis.Wave, 'Position', pos, 'Color', 'g',...
