@@ -1,0 +1,23 @@
+function Callback_Pushbutton_Zoom_(src, evnt)
+
+global hFig2
+global tB tBH
+global tMax
+
+data2 = guidata(hFig2);
+
+hAx = data2.Panel.Wave.Comp.hAxis.Wave;
+hWaveWin = data2.Panel.AllWave.Comp.hPlotObj.WaveWin;
+if strcmp(src.Tag, '<<')
+    if hAx.XLim(2) < tMax
+        dt = range(hAx.XLim)/10;
+        hAx.XLim = hAx.XLim - dt;
+        hWaveWin.Position(1) = hAx.XLim(1);
+        hWaveWin.Position(3) = range(hAx.XLim);
+    end
+elseif strcmp(src.Tag, '>>')
+elseif strcmp(src.Tag, '< >')
+elseif strcmp(src.Tag, '> <')
+elseif strcmp(src.Tag, '[ ]')
+elseif strcmp(src.Tag, '] [')
+end

@@ -1,7 +1,7 @@
 function gui_VG
 
 %% global 
-global hFig 
+global hFig
 global TimeRange
 global waveLW boxAlpha
 global tC
@@ -10,8 +10,6 @@ TimeRange = 30;
 waveLW= 3;
 boxAlpha = 0.25;
 tC = 20;
-
-global hFig2
 
 %% main window
 hFig = figure('MenuBar',            'none', ...
@@ -48,14 +46,4 @@ data.ActiveAxis.MovePoints = 0;
 data.WaveParam.dt = 1/20;
 data.WaveParam.T = 30;
 
-% save data
-fd_VG = fullfile(tempdir, 'VG');
-if ~exist(fd_VG, 'dir')
-    mkdir(fd_VG);
-end
-data.fd_VG = fd_VG;
-
 guidata(hFig, data);
-
-%% analysis window
-addAnalysisFig;

@@ -78,11 +78,7 @@ else
     src.ForegroundColor = 'g';
     src.BackgroundColor = [1 1 1]*0.25;
     
-    % save data
-    fd_VG = fullfile(tempdir, 'VG');
-    if ~exist(fd_VG, 'dir')
-        mkdir(fd_VG);
-    end
+    fd_VG = data.fd_VG;
     
     MRN = data.Panel.PtInfo.Comp.Edit.MRN.String;
     fd_MRN = fullfile(fd_VG, MRN);
