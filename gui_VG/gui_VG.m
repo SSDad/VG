@@ -4,10 +4,12 @@ function gui_VG
 global hFig
 global TimeRange
 global waveLW boxAlpha
+global tC
 
 TimeRange = 30;
 waveLW= 3;
 boxAlpha = 0.25;
+tC = 20;
 
 % global stopSlither
 % global reContL

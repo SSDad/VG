@@ -8,6 +8,7 @@ hBH = data.Panel.BH.Comp.Togglebutton.BH;
 if strcmp(hBHC.Visible, 'off')
     hBHC.Visible = 'on';
     hBH.Visible = 'on';
+     data.Panel.BHC.Comp.Edit.Counter.Visible = 'on';
 else
     hBHC.Visible = 'off';
     hBH.Visible = 'off';
