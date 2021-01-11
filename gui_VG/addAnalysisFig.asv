@@ -3,6 +3,7 @@ global hFig2
 global TimeRange
 global waveLW boxAlpha
 global tC
+glo
 
 TimeRange = 30;
 waveLW= 3;
@@ -24,10 +25,13 @@ hFig2 = figure('MenuBar',            'none', ...
 % addToolbar(hFig);
                 
 data2.Panel = addPanel2(hFig2);
-% 
 data2.Panel.Menu.Comp = addComponents2Panel2_Menu(data2.Panel.Menu.hPanel);
+data2.Panel.AllWave.Comp = addComponents2Panel2_AllWave(data2.Panel.AllWave.hPanel);
 data2.Panel.Wave.Comp = addComponents2Panel2_Wave(data2.Panel.Wave.hPanel);
 data2.Panel.Zoom.Comp = addComponents2Panel2_Zoom(data2.Panel.Zoom.hPanel);
+data2.Panel.Pick.Comp = addComponents2Panel2_Pick(data2.Panel.Pick.hPanel);
+
+data2.Panel.ViewB.Comp = addComponents2Panel2_ViewB(data2.Panel.ViewB.hPanel);
 
 % data.Panel.Collect.Comp = addComponents2Panel_Collect(data.Panel.Collect.hPanel);
 % data.Panel.WaveBar.Comp = addComponents2Panel_WaveBar(data.Panel.WaveBar.hPanel);

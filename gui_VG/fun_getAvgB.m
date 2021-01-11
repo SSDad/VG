@@ -1,4 +1,5 @@
 function [wg] = fun_getAvgB(tt, yy, ind)
+
 wg = [];
 
 bPlot = 1;

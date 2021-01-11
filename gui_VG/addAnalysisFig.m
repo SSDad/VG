@@ -3,11 +3,13 @@ global hFig2
 global TimeRange
 global waveLW boxAlpha
 global tC
+global yBAll
 
 TimeRange = 30;
 waveLW= 3;
 boxAlpha = 0.25;
 tC = 20;
+yBAll = [];
 
 %% main window
 hFig2 = figure('MenuBar',            'none', ...

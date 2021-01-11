@@ -1,12 +1,13 @@
 function updateAvgB
 
-global tt yy
 global hFig2
+global tt yy
+% global wgB
 
 data2 = guidata(hFig2);
 hAllWaveComp = data2.Panel.AllWave.Comp;
 hAvg = data2.Panel.ViewB.Comp.hPlotObj.Avg;
-hg_wg =    data2.Panel.ViewB.Comp.hPlotObj.hg_wg;
+hg_wgB =    data2.Panel.ViewB.Comp.hPlotObj.hg_wgB;
 
 pos = data2.Panel.Wave.Comp.hPlotObj.WavePickWin.Position;
 
@@ -15,8 +16,21 @@ pos = data2.Panel.Wave.Comp.hPlotObj.WavePickWin.Position;
     
     [~, ind(1)] = min(abs(tt-pos(1)));
     [~, ind(2)] = min(abs(tt-pos(1)-pos(3)));
-    [wg] = fun_getAvgB(tt, yy, ind);
+    [wgB] = fun_getAvgB(tt, yy, ind);
     
-    for i
-    set(hAvg, 'XData', 1:wg.nP, 'YData', mean(wg.yy));
+    wgBAll{length(wgBAll)+1} = wgB;
+    
+    delete(hg_wgBAll.Children(:));
+    x = 1:wgB.nP;
+    yAll = [];
+    for iB = 1:length(wgB)
+        for iW = 1:size(wgB{iB}.yy, 1)
+            y = wgB{iB}.yy(iW, :);
+            line(hg_wgB, 'XData', x, 'YData', y, 'Color', 'g');
+            
+            yAll = [yAll; y];
+        end
+    end
+        
+    set(hAvg, 'XData', x, 'YData', mean(yAll));
 % end

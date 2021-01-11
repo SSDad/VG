@@ -25,7 +25,7 @@ Comp.hPlotObj.Wave = line(Comp.hAxis.Wave, 'XData', [], 'YData', [],...
     'Color', 'y', 'LineStyle', '-', 'LineWidth', 2);
 
 Comp.hPlotObj.WavePickWin = images.roi.Rectangle(Comp.hAxis.Wave, 'Position', [0 0 0 0], 'Color', 'g',...
-        'LineWidth', 1, 'FaceAlpha', 0.2, 'Tag', 'WavePickWin', 'Visible', 'off');
+        'LineWidth', 1, 'FaceAlpha', 0.2, 'Tag', 'WavePickWin', 'Visible', 'off', 'Deletable', false);
 addlistener(Comp.hPlotObj.WavePickWin, 'MovingROI', @Callback_WavePickWin);
 
 
