@@ -30,6 +30,7 @@ data2.Panel.Wave.Comp = addComponents2Panel2_Wave(data2.Panel.Wave.hPanel);
 data2.Panel.Zoom.Comp = addComponents2Panel2_Zoom(data2.Panel.Zoom.hPanel);
 data2.Panel.Pick.Comp = addComponents2Panel2_Pick(data2.Panel.Pick.hPanel);
 
+data2.Panel.ViewB.Comp = addComponents2Panel2_ViewB(data2.Panel.ViewB.hPanel);
 
 % data.Panel.Collect.Comp = addComponents2Panel_Collect(data.Panel.Collect.hPanel);
 % data.Panel.WaveBar.Comp = addComponents2Panel_WaveBar(data.Panel.WaveBar.hPanel);
