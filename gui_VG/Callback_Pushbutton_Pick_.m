@@ -1,7 +1,7 @@
 function Callback_Pushbutton_Pick_(src, evnt)
 
 global hFig2
-global wgB wgBAll yBAll wgColor
+global wgB wgBAll yBAll wgColor hwgB
 
 data2 = guidata(hFig2);
 
@@ -43,8 +43,8 @@ if strcmp(src.Tag, 'B')
         pos = hWavePickWin.Position;
         pos(2) = pos(2)+1;
         pos(4) = pos(4)-2;
-        hWaveComp.PlotObj.BoxB(nBoxB+1) = rectangle(hAxWave, 'Position', pos , 'EdgeColor', wgColor(nBoxB+1, :), 'LineWidth', 2);
-        hAllWaveComp.PlotObj.BoxB(nBoxB+1) = rectangle(hAxAllWave, 'Position', pos , 'EdgeColor', wgColor(nBoxB+1, :), 'LineWidth', 2);
+        hWaveComp.hPlotObj.BoxB(nBoxB+1) = rectangle(hAxWave, 'Position', pos , 'EdgeColor', wgColor(nBoxB+1, :), 'LineWidth', 2);
+        hAllWaveComp.hPlotObj.BoxB(nBoxB+1) = rectangle(hAxAllWave, 'Position', pos , 'EdgeColor', wgColor(nBoxB+1, :), 'LineWidth', 2);
         
         % update wgBAll
 %         if nBoxB > 0
@@ -57,13 +57,14 @@ if strcmp(src.Tag, 'B')
         for iW = 1:size(wgB.yy, 1)
             y = wgB.yy(iW, :);
             line(hg_wgBAll, 'XData', x, 'YData', y, 'Color', wgColor(nBoxB+1, :));
-            
         end
+        hwgB{nBoxB+1} = hg_wgBAll;
         yBAll = [yBAll; wgB.yy];
 %         set(hAvg, 'XData', x, 'YData', mean(yBAll));
 
-%         data2.Panel.AllWave.Comp = hAllWaveComp;
-%         guidata(hFig2, data2);
+        data2.Panel.AllWave.Comp = hAllWaveComp;
+        data2.Panel.Wave.Comp = hWaveComp;
+        guidata(hFig2, data2);
     end
     
 %     hAx.XLim = hAx.XLim - dt;

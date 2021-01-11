@@ -1,6 +1,6 @@
 function Comp = addComponents2Panel2_ViewB(hPanel)
 
-global wgBAll wgColor
+global wgBAll wgColor hwgB
 wgBAll = [];
 wgColor = [0 1 1
                 1 1 1
