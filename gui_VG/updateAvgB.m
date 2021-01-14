@@ -1,7 +1,7 @@
 function updateAvgB
 
 global hFig2
-global tt yy
+global tt yy baseLine
 global wgB yBAll
 
 data2 = guidata(hFig2);
@@ -17,7 +17,7 @@ pos = data2.Panel.Wave.Comp.hPlotObj.WavePickWin.Position;
     
     [~, ind(1)] = min(abs(tt-pos(1)));
     [~, ind(2)] = min(abs(tt-pos(1)-pos(3)));
-    [wgB] = fun_getAvgB(tt, yy, ind);
+    [wgB] = fun_getAvgB(tt, yy-baseLine, ind);
     
 %     wgBAll{length(wgBAll)+1} = wgB;
     

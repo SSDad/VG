@@ -27,7 +27,7 @@ data.Panel.WaveBar.hPanel.Visible = 'on';
 % data.Panel.BHC.hPanel.Visible = 'on';
 data.Panel.ParamButton.hPanel.Visible = 'on';
 data.Panel.Analysis.hPanel.Visible = 'on';
-data.Panel.Calib.hPanel.Visible = 'off';
+% data.Panel.Calib.hPanel.Visible = 'off';
 
 % data.Panel.Param.Comp.subPanel.Time.hPanel.Visible = 'on';
 % data.Panel.Param.Comp.subPanel.WaveBar.hPanel.Visible = 'on';

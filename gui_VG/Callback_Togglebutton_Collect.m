@@ -18,7 +18,7 @@ if strcmp(str, 'Go')
     data.Panel.BH.hPanel.Visible = 'on';
 
     bCollecting = 1;
-    data.Panel.Calib.hPanel.Visible = 'off'; % disable calib 
+    data.Panel.Calib.Comp.Pushbutton.Calib.Enable = 'off'; % disable calib 
 
     bBHStart = 0;
     bBHReset = 0;
@@ -64,9 +64,9 @@ else
     end
     
     bCollecting = 0;
-    if data.Panel.Param.hPanel.Visible == 'on'
-        data.Panel.Calib.hPanel.Visible = 'on'; % disable calib 
-    end
+%     if data.Panel.Param.hPanel.Disable == 'on'
+    data.Panel.Calib.Comp.Pushbutton.Calib.Enable = 'on'; % disable calib 
+%     end
    
     hBH.String = 'Start';
     hBH.ForegroundColor = 'g';
