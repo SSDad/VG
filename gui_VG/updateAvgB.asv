@@ -19,10 +19,8 @@ pos = data2.Panel.Wave.Comp.hPlotObj.WavePickWin.Position;
 [wgB] = fun_getAvgB(tt, yy-baseLine, ind);
     
 % peaks and troughs on wave
-peakInd = wgB.locs1+ind(1)-1;
-set(hPeaks, 'XData', tt(peakInd), 'YData', yy(peakInd)-baseLine);
-troughInd = wgB.locs2+ind(1)-1;
-set(hTroughs, 'XData', tt(troughInd), 'YData', yy(troughInd)-baseLine);
+
+
     
 if ~isempty(hg_wgB.Children)
     delete(hg_wgB.Children(:));
