@@ -1,14 +1,14 @@
 %% global 
 global hFig2
 global TimeRange
-global waveLW boxAlpha
-global tC
+% global waveLW boxAlpha
+% global tC
 global yBAll
 
 TimeRange = 30;
-waveLW= 3;
-boxAlpha = 0.25;
-tC = 20;
+% waveLW= 3;
+% boxAlpha = 0.25;
+% tC = 20;
 yBAll = [];
 
 %% main window
@@ -21,7 +21,8 @@ hFig2 = figure('MenuBar',            'none', ...
                     'Position',             [0.1 0.2 0.8 0.6],...
                     'Color',                 'black', ...
                     'CloseRequestFcn', @fig2CloseReq, ...
-                    'Visible',               'on');
+                    'Visible',               'on', ...
+                    'Tag', 'analysis');
 
 % addToolbar(hFig);
                 
@@ -33,6 +34,7 @@ data2.Panel.Zoom.Comp = addComponents2Panel2_Zoom(data2.Panel.Zoom.hPanel);
 data2.Panel.Pick.Comp = addComponents2Panel2_Pick(data2.Panel.Pick.hPanel);
 
 data2.Panel.ViewB.Comp = addComponents2Panel2_ViewB(data2.Panel.ViewB.hPanel);
+data2.Panel.TableB.Comp = addComponents2Panel2_TableB(data2.Panel.TableB.hPanel);
 
 % data.Panel.Collect.Comp = addComponents2Panel_Collect(data.Panel.Collect.hPanel);
 % data.Panel.WaveBar.Comp = addComponents2Panel_WaveBar(data.Panel.WaveBar.hPanel);

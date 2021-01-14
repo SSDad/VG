@@ -29,7 +29,7 @@ hold(Comp.hAxis.ViewB, 'on')
 % Comp.hPlotObj.wg = line(Comp.hAxis.ViewB, 'XData', [], 'YData', [],...
 %     'Color', 'g', 'LineStyle', '-', 'LineWidth', 1);
 
-Comp.hPlotObj.hg_wgB = hggroup(Comp.hAxis.ViewB);
-Comp.hPlotObj.hg_wgBAll = hggroup(Comp.hAxis.ViewB);
+Comp.hPlotObj.hg_wgB = hggroup(Comp.hAxis.ViewB);  % active 
+Comp.hPlotObj.hg_wgBAll = hggroup(Comp.hAxis.ViewB); % previous
 Comp.hPlotObj.Avg = line(Comp.hAxis.ViewB, 'XData', [], 'YData', [],...
     'Color', 'r', 'LineStyle', '-', 'LineWidth', 4);

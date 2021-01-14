@@ -34,7 +34,6 @@ if strcmp(src.Tag, 'B')
     else
         src.String = 'B';
 
-        % add box
         nBoxB = length(wgBAll);
 %         nBoxB = 0;
 %         if isfield(hWaveComp.hPlotObj, 'BoxH')
@@ -46,9 +45,6 @@ if strcmp(src.Tag, 'B')
         pos(4) = pos(4)-2;
         hWaveComp.hPlotObj.BoxB(nBoxB+1) = rectangle(hAxWave, 'Position', pos , 'EdgeColor', wgColor(nBoxB+1, :), 'LineWidth', 2);
         hAllWaveComp.hPlotObj.BoxB(nBoxB+1) = rectangle(hAxAllWave, 'Position', pos , 'EdgeColor', wgColor(nBoxB+1, :), 'LineWidth', 2);
-        text(hAxAllWave, pos(1)+pos(3)/2, pos(2)+pos(4)/2, num2str(nBoxB+1), 'Color', wgColor(nBoxB+1, :), 'FontSize', 24, 'FontWeight', 'bold')
-        
-        data2.Panel.TableB.Comp.Radiobutton.Box(nBoxB+1).Visible = 'on';
         
         % add active to wgBAll
         delete(hg_wgB.Children(:)); % remove active (green)

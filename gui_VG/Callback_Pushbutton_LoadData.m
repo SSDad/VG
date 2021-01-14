@@ -5,11 +5,13 @@ global TimeRange
 global tMax
 global wgBAll hwgB
 
-data = guidata(hFig);
+% data = guidata(hFig);
 data2 = guidata(hFig2);
+fd_VG = fullfile(tempdir, 'VG');
 
 %% load image data
-[matFileName, dataPath] = uigetfile(data.fd_VG);
+% [matFileName, dataPath] = uigetfile(data.fd_VG);
+[matFileName, dataPath] = uigetfile(fd_VG);
 
 if matFileName ~=0
 %     hWB = waitbar(0, 'Loading Images...');
