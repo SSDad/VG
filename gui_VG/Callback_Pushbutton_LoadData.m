@@ -11,12 +11,12 @@ fd_VG = fullfile(tempdir, 'VG');
 
 %% load image data
 % [matFileName, dataPath] = uigetfile(data.fd_VG);
-[matFileName, dataPath] = uigetfile(fd_VG);
+% [matFileName, dataPath] = uigetfile(fd_VG);
 
-if matFileName ~=0
-%     hWB = waitbar(0, 'Loading Images...');
+% if matFileName ~=0
+%     ffn = fullfile(dataPath, matFileName);
 
-    ffn = fullfile(dataPath, matFileName);
+    ffn = 'data_MRN-Mrn1234567_Fraction-1_DT-20210113-142422-145655_TE_1953.mat';
     load(ffn)
     tMax = tt(end);
     
@@ -57,4 +57,4 @@ if matFileName ~=0
 
 
     end
-end
+% end
