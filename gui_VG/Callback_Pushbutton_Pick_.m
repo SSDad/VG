@@ -4,8 +4,8 @@ global hFig2
 
 global wiwB
 global BoxColor
-global avgB
-global yBAll
+global avgB avgBnP
+global yBAll periodBAll
 
 data2 = guidata(hFig2);
 
@@ -57,12 +57,13 @@ if strcmp(src.Tag, 'B')
         
         avgB(iBoxB).hg = hggroup(data2.Panel.ViewB.Comp.hAxis.ViewB);  
 
-        x = 1:wiwB.nP;
+        x = 1:avgBnP;
         for iW = 1:size(wiwB.yy, 1)
             y = wiwB.yy(iW, :);
             line(avgB(iBoxB).hg, 'XData', x, 'YData', y, 'Color', BoxCLR);
         end
         yBAll = [yBAll; wiwB.yy];
+        periodBAll = [periodBAll diff(wiwB.locs2)];
 
         avgB(iBoxB).wib = wiwB;
 

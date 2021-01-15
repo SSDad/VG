@@ -1,6 +1,5 @@
 function Comp = addComponents2Panel2_ViewB(hPanel)
 
-% global wgBAll BoxColor hwgB
 global BoxColor
 global avgB
 
@@ -24,11 +23,14 @@ Comp.hAxis.ViewB = axes('Parent',                   hPanel, ...
                             'HandleVisibility',     'callback', ...
                             'Position',                 [0.1 0.1 0.85 0.85]);
 
-Comp.hAxis.Wave.XLabel.String = '';                        
-Comp.hAxis.Wave.YLabel.String = '';                        
+Comp.hAxis.ViewB.XTick = [];
+Comp.hAxis.ViewB.XLim = 
 hold(Comp.hAxis.ViewB, 'on')
 
-Comp.hPlotObj.hg_wgB = hggroup(Comp.hAxis.ViewB);  % active 
-% Comp.hPlotObj.hg_wgBAll = hggroup(Comp.hAxis.ViewB); % previous
+Comp.hPlotObj.hg_wiwB = hggroup(Comp.hAxis.ViewB);  % active 
 Comp.hPlotObj.Avg = line(Comp.hAxis.ViewB, 'XData', [], 'YData', [],...
-    'Color', 'r', 'LineStyle', '-', 'LineWidth', 4);
+    'Color', 'r', 'LineStyle', '-', 'LineWidth', 8);
+
+Comp.hPlotObj.LVBox = images.roi.Rectangle(Comp.hAxis.ViewB, 'Position', [0 0 0 0], 'Color', 'g',...
+        'LineWidth', 1, 'FaceAlpha', 0.2, 'Tag', 'LVBox', 'Visible', 'on', 'Deletable', false);
+addlistener(Comp.hPlotObj.LVBox, 'MovingROI', @Callback_LVBox);

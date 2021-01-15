@@ -2,6 +2,7 @@ function Callback_Radiobutton_TableB_Box_(src, evnt)
 
 global hFig2
 global avgB
+global yBAll periodBAll % all previous wave y and period
 
 data2 = guidata(hFig2);
 
@@ -11,4 +12,15 @@ if src.Value
     avgB(iBox).hg.Visible = 'on';
 else
     avgB(iBox).hg.Visible = 'off';
+end
+
+%% update param
+nBoxB = length(avgB);
+yA = [];
+pA = [];
+for iB = 1:nBoxB
+    if avgB(iBox).hg.Visible == 'on'
+        yA = [yA; avwiwB.yy];
+        
+    end
 end

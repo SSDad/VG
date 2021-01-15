@@ -1,16 +1,13 @@
 global hFig2
-global TimeRange dt
-global avgBnP yBAll periodBAll % all previous wave y and period
-global LAVBox
+global TimeRange
+global yBAll periodBAll % all previous wave y and period
 
 dt = 1/20;
 TimeRange = 30;
-avgBnP = 100;
+% waveLW= 3;
+% boxAlpha = 0.25;
+% tC = 20;
 yBAll = [];
-periodBAll = [];
-
-LAVBox.y1= [];
-LAVBox.y2= [];
 
 %% main window
 hFig2 = figure('MenuBar',            'none', ...
