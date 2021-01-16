@@ -61,3 +61,6 @@ hLAVBox.Position = [0 y1 avgBnP+2 LAVBox.y2-y1];
 
 [LAV] = fun_getLAV(yA, LAVBox.y2);
 data2.Panel.ParamB.Comp.Text.ParamValue(3).String = num2str(LAV, 2 );
+
+% reorder
+reorderPlotObj(data2.Panel.ViewB.Comp.hAxis.ViewB);

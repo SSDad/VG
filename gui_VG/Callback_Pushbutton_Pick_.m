@@ -81,3 +81,6 @@ if strcmp(src.Tag, 'B')
 %     hWaveWin.Position(3) = range(hAx.XLim);
 elseif strcmp(src.Tag, 'BH')
 end
+
+% reorder
+reorderPlotObj(data2.Panel.ViewB.Comp.hAxis.ViewB);

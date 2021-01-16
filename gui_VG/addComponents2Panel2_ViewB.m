@@ -29,8 +29,8 @@ hold(Comp.hAxis.ViewB, 'on')
 
 Comp.hPlotObj.hg_wiwB = hggroup(Comp.hAxis.ViewB);  % active 
 Comp.hPlotObj.Avg = line(Comp.hAxis.ViewB, 'XData', [], 'YData', [],...
-    'Color', 'r', 'LineStyle', '-', 'LineWidth', 8);
+    'Color', 'g', 'LineStyle', '-', 'LineWidth', 6, 'Tag', 'avgLine');
 
 Comp.hPlotObj.LAVBox = images.roi.Rectangle(Comp.hAxis.ViewB, 'Position', [0 0 0 0], 'Color', 'm',...
-        'LineWidth', 1, 'FaceAlpha', 0.2, 'Tag', 'LVBox', 'Visible', 'on', 'Deletable', false);
+        'LineWidth', 1, 'FaceAlpha', 0.2, 'Tag', 'LAVBox', 'Visible', 'on', 'Deletable', false);
 addlistener(Comp.hPlotObj.LAVBox, 'MovingROI', @Callback_LAVBox);

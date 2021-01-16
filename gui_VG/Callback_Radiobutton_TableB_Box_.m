@@ -50,3 +50,6 @@ data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = [min(yA(:))*.9 max(yA(:))*1.1];
 
 y1 = min(yA(:))*0.8;
 data2.Panel.ViewB.Comp.hPlotObj.LVBox.Position = [0 y1 avgBnP+2 LAVBox.y2-y1];
+
+% reorder
+reorderPlotObj(data2.Panel.ViewB.Comp.hAxis.ViewB);
