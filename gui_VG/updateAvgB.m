@@ -38,6 +38,7 @@ end
 
 yA = [yBAll; wiwB.yy];
 set(hAvg, 'XData', x, 'YData', mean(yA));
+data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = [min(yA(:))*.9 max(yA(:))*1.1];
 
 pA = [periodBAll diff(wiwB.locs2)];
 
@@ -49,22 +50,14 @@ data2.Panel.ParamB.Comp.Text.ParamValue(1).String = num2str(GAV, 2 );
 PV = sum(abs(pA-mean(pA)))/numel(pA)*dt;
 data2.Panel.ParamB.Comp.Text.ParamValue(2).String = num2str(PV, 2 );
 
-hLVBox = data2.Panel.ViewB.Comp.hPlotObj.LVBox;
+hLAVBox = data2.Panel.ViewB.Comp.hPlotObj.LAVBox;
 
 if isempty(LAVBox.y2)
     y2 = mean(yA(:));
     LAVBox.y2 = y2;
 end
-y1 = min(yA(:));
-hLVBox.Position = [0 y1 avgBnP+2 LAVBox.y2-y1];
+y1 = min(yA(:))*0.8;
+hLAVBox.Position = [0 y1 avgBnP+2 LAVBox.y2-y1];
 
-yBLV = [];
-yAmean = mean(yA);
-for iW = 1:size(yA, 1)
-    W = yA(iW, :);
-    dd= abs(W-yAmean);
-    ind = find(W<LAVBox.y2);
-    yBLV = [yBLV dd(ind)];
-end
-[LAV] = sum(yBLV)/numel(yBLV);
+[LAV] = fun_getLAV(yA, LAVBox.y2);
 data2.Panel.ParamB.Comp.Text.ParamValue(3).String = num2str(LAV, 2 );
