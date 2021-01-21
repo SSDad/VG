@@ -2,6 +2,7 @@ global hFig2
 global TimeRange dt
 global avgBnP yBAll periodBAll % all previous wave y and period
 global LAVBox
+global BoxColor
 
 dt = 1/20;
 TimeRange = 30;
@@ -11,6 +12,10 @@ periodBAll = [];
 
 LAVBox.y1= [];
 LAVBox.y2= [];
+
+BoxColor = [0 1 1
+                1 0 1];
+BoxColor = [BoxColor; rand(10, 3)];            
 
 %% main window
 hFig2 = figure('MenuBar',            'none', ...
@@ -37,6 +42,10 @@ data2.Panel.Pick.Comp = addComponents2Panel2_Pick(data2.Panel.Pick.hPanel);
 data2.Panel.ViewB.Comp = addComponents2Panel2_ViewB(data2.Panel.ViewB.hPanel);
 data2.Panel.TableB.Comp = addComponents2Panel2_TableB(data2.Panel.TableB.hPanel);
 data2.Panel.ParamB.Comp = addComponents2Panel2_ParamB(data2.Panel.ParamB.hPanel);
+
+data2.Panel.ViewBH.Comp = addComponents2Panel2_ViewBH(data2.Panel.ViewBH.hPanel);
+% data2.Panel.TableB.Comp = addComponents2Panel2_TableB(data2.Panel.TableB.hPanel);
+% data2.Panel.ParamB.Comp = addComponents2Panel2_ParamB(data2.Panel.ParamB.hPanel);
 
 % data.Panel.Collect.Comp = addComponents2Panel_Collect(data.Panel.Collect.hPanel);
 % data.Panel.WaveBar.Comp = addComponents2Panel_WaveBar(data.Panel.WaveBar.hPanel);

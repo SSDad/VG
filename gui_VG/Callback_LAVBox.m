@@ -4,8 +4,8 @@ global hFig2
 global yBAll LAVBox
 
 data2 = guidata(hFig2);
-src.Position(2) = min(yBAll(:))*0.8;
 pos = src.Position;
+% pos(2) = min(yBAll(:))*0.8;
 LAVBox.y2 = pos(2)+pos(4);
 
 

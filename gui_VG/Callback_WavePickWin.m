@@ -1,3 +1,11 @@
 function Callback_WavePickWin(src, evnt)
 
-updateAvgB;
+% global hFig2
+global pickMode
+
+% data2 = guidata(hFig2);
+if strcmp(pickMode, 'B')
+    updateAvgB;
+else
+    updateBH;
+end

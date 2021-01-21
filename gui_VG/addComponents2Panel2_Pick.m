@@ -1,14 +1,17 @@
 function Comp = addComponents2Panel2_Pick(hPanel)
 
-w_Gap = 0.01;
+w_Gap = 0.3;
 w_ratio = [1 1];
 nSub = length(w_ratio);
-w_1 = (1-w_Gap*(nSub+1))/sum(w_ratio);
+wB = (1-w_Gap)/sum(w_ratio);
 
-for n = 1:nSub
-    w(n) = w_1 * w_ratio(n);
-    x(n) = w_Gap*n+sum(w(1:n-1));
-end
+x(1) = 0;
+x(2) = wB+w_Gap;
+
+% for n = 1:nSub
+%     w(n) = w_1 * w_ratio(n);
+%     x(n) = w_Gap*n+sum(w(1:n-1));
+% end
 
 str{1} = 'B';
 str{2} = 'BH';
@@ -18,7 +21,7 @@ CLR = 'gr';
 for n = 1:nSub
     Comp.Pushbutton.Pick(n) = uicontrol('parent', hPanel,...
                             'Unit', 'Normalized',...
-                            'Position', [x(n), 0.1, w(n), 0.8], ...
+                            'Position', [x(n), 0.1, wB, 0.8], ...
                             'Style', 'pushbutton',...
                             'String', str{n},...
                             'FontSize', 12, ...

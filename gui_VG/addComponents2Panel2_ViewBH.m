@@ -1,0 +1,38 @@
+function Comp = addComponents2Panel2_ViewBH(hPanel)
+
+global BoxColor
+global wBH avgBnP
+
+wBH = [];
+
+% wgBAll = []; % 
+BoxColor = [0 1 1
+                1 0 1];
+BoxColor = [BoxColor; rand(10, 3)];            
+
+FC = [255 255 102]/255;
+FC = [255 255 255]/255;
+
+% axes
+Comp.hAxis.ViewBH = axes('Parent',                   hPanel, ...
+                            'color',        'none',...
+                            'xcolor', FC,...
+                            'ycolor', FC, ...
+                            'gridcolor',   FC,...
+                            'Units',                    'normalized', ...
+                            'HandleVisibility',     'callback', ...
+                            'Position',                 [0.1 0.1 0.85 0.85]);
+
+Comp.hAxis.ViewBH.XTick = [];
+% Comp.hAxis.ViewBH.XLim = [1 avgBnP];
+hold(Comp.hAxis.ViewBH, 'on')
+
+Comp.hPlotObj.hg_wiwBH = hggroup(Comp.hAxis.ViewBH);  % active 
+Comp.hPlotObj.wiwBH = line(Comp.hAxis.ViewBH, 'XData', [], 'YData', [],...
+    'Color', 'g', 'LineStyle', '-', 'LineWidth', 1, 'Tag', 'wiwBH');
+Comp.hPlotObj.Avg = line(Comp.hAxis.ViewBH, 'XData', [], 'YData', [],...
+    'Color', 'g', 'LineStyle', '-', 'LineWidth', 6, 'Tag', 'avgLine');
+
+Comp.hPlotObj.LAVBoxBH = images.roi.Rectangle(Comp.hAxis.ViewBH, 'Position', [0 0 0 0], 'Color', 'm',...
+        'LineWidth', 1, 'FaceAlpha', 0.2, 'Tag', 'LAVBox', 'Visible', 'on', 'Deletable', false);
+addlistener(Comp.hPlotObj.LAVBoxBH, 'MovingROI', @Callback_LAVBoxBH);

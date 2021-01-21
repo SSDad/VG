@@ -6,12 +6,15 @@ global avgB avgBnP
 avgB = [];
 
 % wgBAll = []; % 
+BoxColor = [0 1 1
+                1 0 1];
+BoxColor = [BoxColor; rand(10, 3)];            
 
 FC = [255 255 102]/255;
 FC = [255 255 255]/255;
 
 % axes
-Comp.hAxis.ViewB = axes('Parent',                   hPanel, ...
+Comp.hAxis.ViewBH = axes('Parent',                   hPanel, ...
                             'color',        'none',...
                             'xcolor', FC,...
                             'ycolor', FC, ...
@@ -20,12 +23,12 @@ Comp.hAxis.ViewB = axes('Parent',                   hPanel, ...
                             'HandleVisibility',     'callback', ...
                             'Position',                 [0.1 0.1 0.85 0.85]);
 
-Comp.hAxis.ViewB.XTick = [];
-Comp.hAxis.ViewB.XLim = [1 avgBnP];
-hold(Comp.hAxis.ViewB, 'on')
+Comp.hAxis.ViewBH.XTick = [];
+% Comp.hAxis.ViewBH.XLim = [1 avgBnP];
+hold(Comp.hAxis.ViewBH, 'on')
 
-Comp.hPlotObj.hg_wiwB = hggroup(Comp.hAxis.ViewB);  % active 
-Comp.hPlotObj.Avg = line(Comp.hAxis.ViewB, 'XData', [], 'YData', [],...
+Comp.hPlotObj.hg_wiwBH = hggroup(Comp.hAxis.ViewBH);  % active 
+Comp.hPlotObj.Avg = line(Comp.hAxis.ViewBH, 'XData', [], 'YData', [],...
     'Color', 'g', 'LineStyle', '-', 'LineWidth', 6, 'Tag', 'avgLine');
 
 Comp.hPlotObj.LAVBox = images.roi.Rectangle(Comp.hAxis.ViewB, 'Position', [0 0 0 0], 'Color', 'm',...
