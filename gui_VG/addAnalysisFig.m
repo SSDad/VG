@@ -50,7 +50,7 @@ data2.Panel.DeleteB.Comp = addComponents2Panel2_DeleteB(data2.Panel.DeleteB.hPan
 
 data2.Panel.ViewBH.Comp = addComponents2Panel2_ViewBH(data2.Panel.ViewBH.hPanel);
 % data2.Panel.TableB.Comp = addComponents2Panel2_TableB(data2.Panel.TableB.hPanel);
-% data2.Panel.ParamB.Comp = addComponents2Panel2_ParamB(data2.Panel.ParamB.hPanel);
+data2.Panel.ParamBH.Comp = addComponents2Panel2_ParamBH(data2.Panel.ParamBH.hPanel);
 
 % data.Panel.Collect.Comp = addComponents2Panel_Collect(data.Panel.Collect.hPanel);
 % data.Panel.WaveBar.Comp = addComponents2Panel_WaveBar(data.Panel.WaveBar.hPanel);
