@@ -47,6 +47,7 @@ if strcmp(src.Tag, 'B')
         % LAV
         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'off';
         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'off';
+        data2.Panel.ParamB.Comp.Text.ParamValueP(3).Visible = 'off';
                 
         updateAvgB;
 
@@ -85,28 +86,26 @@ if strcmp(src.Tag, 'B')
         % remove peaks
         set(data2.Panel.Wave.Comp.hPlotObj.Peaks, 'XData', [], 'YData', []);
         set(data2.Panel.Wave.Comp.hPlotObj.Troughs, 'XData', [], 'YData', []);
-    
  
         % BH button
         data2.Panel.Pick.Comp.Pushbutton.Pick(2).Enable = 'on';
         
         % LAV
         hLAVBox = data2.Panel.ViewB.Comp.hPlotObj.LAVBox;
-if isempty(LAVBox.y2)
-    y2 = mean(yBAll(:));
-    LAVBox.y2 = y2;
-end
-junk = min(yBAll(:));
-y1 = junk- abs(junk)*0.8;
-hLAVBox.Position = [0 y1 avgBnP+2 LAVBox.y2-y1];
+        y1 = data2.Panel.ViewB.Comp.hAxis.ViewB.YLim(1);
+        y2 = mean(yBAll(:));
+        hLAVBox.Position = [0 y1 avgBnP+2 y2-y1];
+        LAVBox.y1 = y1;
+        LAVBox.y2 = y2;
 
-[LAV] = fun_getLAV(yBAll, LAVBox.y2);
-data2.Panel.ParamB.Comp.Text.ParamValue(3).String = num2str(LAV, 2 );
-
-        
+        [LAV] = fun_getLAV(yBAll, y2, y1);
+        data2.Panel.ParamB.Comp.Text.ParamValue(3).String = num2str(LAV, 2 );       
+        LAVP = LAV/(max(yBAll(:))-min(yBAll(:)))*100;
+        data2.Panel.ParamB.Comp.Text.ParamValueP(3).String = [num2str(LAVP, 2), '%'];
         
         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'on';
         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'on';
+        data2.Panel.ParamB.Comp.Text.ParamValueP(3).Visible = 'on';
 
         data2.Panel.AllWave.Comp = hAllWaveComp;
         data2.Panel.Wave.Comp = hWaveComp;

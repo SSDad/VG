@@ -50,8 +50,11 @@ else
     data2.Panel.ViewB.Comp.hPlotObj.Avg.Visible = 'on';
 
     % LAV
-    [LAV] = fun_getLAV(yA, LAVBox.y2);
+    [LAV] = fun_getLAV(yA, LAVBox.y2, LAVBox.y1);
     data2.Panel.ParamB.Comp.Text.ParamValue(3).String = num2str(LAV, 2 );
+    LAVP = LAV/(max(yBAll(:))-min(yBAll(:)))*100;
+    data2.Panel.ParamB.Comp.Text.ParamValueP(3).String = [num2str(LAVP, 2), '%'];
+
     data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'on';
 
     % viewB axis YLim

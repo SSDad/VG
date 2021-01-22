@@ -38,7 +38,9 @@ end
 
 yA = [yBAll; wiwB.yy];
 set(hAvg, 'XData', x, 'YData', mean(yA));
-data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = [min(yA(:))*.9 max(yA(:))*1.1];
+
+junk = range(yA(:));
+data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = [min(yA(:)) - junk*.1 max(yA(:)) + junk*.1];
 
 pA = [periodBAll diff(wiwB.locs2)];
 
@@ -46,9 +48,13 @@ pA = [periodBAll diff(wiwB.locs2)];
 junk = abs(yA-mean(yA));
 GAV = sum(junk(:))/numel(junk);
 data2.Panel.ParamB.Comp.Text.ParamValue(1).String = num2str(GAV, 2 );
+GAVP = GAV/(max(yA(:))-min(yA(:)))*100;
+data2.Panel.ParamB.Comp.Text.ParamValueP(1).String = [num2str(GAVP, 2), '%'];
 
 PV = sum(abs(pA-mean(pA)))/numel(pA)*dt;
 data2.Panel.ParamB.Comp.Text.ParamValue(2).String = num2str(PV, 2 );
+PVP = PV/mean(pA)/dt;
+data2.Panel.ParamB.Comp.Text.ParamValueP(2).String =  [num2str(PVP, 2), '%'];
 
 % hLAVBox = data2.Panel.ViewB.Comp.hPlotObj.LAVBox;
 % if isempty(LAVBox.y2)

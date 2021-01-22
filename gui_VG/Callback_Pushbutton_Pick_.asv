@@ -7,6 +7,7 @@ global wiwB
 global BoxColor
 global avgB avgBnP
 global yBAll periodBAll
+global LAVBox
 global pickMode
 global wiwBH wBH
 
@@ -17,16 +18,6 @@ hAllWaveComp = data2.Panel.AllWave.Comp;
 hAxWave = hWaveComp.hAxis.Wave;
 hAxAllWave = hAllWaveComp.hAxis.AllWave;
 hWavePickWin = data2.Panel.Wave.Comp.hPlotObj.WavePickWin;
-
-bt = range(hAxWave.XLim)/10;
-x1 = hAxWave.XLim(1)+bt;
-x2 = hAxWave.XLim(2)-bt;
-y1 = hAxWave.YLim(1);
-y2 = hAxWave.YLim(2);
-
-hWavePickWin.Position = [x1, y1-1, x2-x1, y2-y1+2];
-hWavePickWin.Color = 'g';
-hWavePickWin.Visible = 'on';
 
 if strcmp(src.Tag, 'B')
 %     hAvg = data2.Panel.ViewB.Comp.hPlotObj.Avg;
@@ -39,6 +30,17 @@ if strcmp(src.Tag, 'B')
     if strcmp(src.String, 'B')
         src.String = 'Bingo';
         
+        % init. active box pos
+        bt = range(hAxWave.XLim)/10;
+        x1 = hAxWave.XLim(1)+bt;
+        x2 = hAxWave.XLim(2)-bt;
+        y1 = hAxWave.YLim(1);
+        y2 = hAxWave.YLim(2);
+
+        hWavePickWin.Position = [x1, y1-1, x2-x1, y2-y1+2];
+        hWavePickWin.Color = 'g';
+        hWavePickWin.Visible = 'on';
+
         % BH button
         data2.Panel.Pick.Comp.Pushbutton.Pick(2).Enable = 'off';
         
@@ -53,7 +55,7 @@ if strcmp(src.Tag, 'B')
 
         % add box
         hWavePickWin.Visible = 'off';
-        pos = hWavePickWin.Position
+        pos = hWavePickWin.Position;
         pos(2) = pos(2)+1;
         pos(4) = pos(4)-2;
         
@@ -83,11 +85,24 @@ if strcmp(src.Tag, 'B')
         % remove peaks
         set(data2.Panel.Wave.Comp.hPlotObj.Peaks, 'XData', [], 'YData', []);
         set(data2.Panel.Wave.Comp.hPlotObj.Troughs, 'XData', [], 'YData', []);
-    
  
         % BH button
         data2.Panel.Pick.Comp.Pushbutton.Pick(2).Enable = 'on';
+        
         % LAV
+        hLAVBox = data2.Panel.ViewB.Comp.hPlotObj.LAVBox;
+        y1 = data2.Panel.ViewB.Comp.hAxis.ViewB.YLim(1);
+        y2 = mean(yBAll(:));
+        hLAVBox.Position = [0 y1 avgBnP+2 y2-y1];
+        LAVBox.y1 = y1;
+        LAVBox.y2 = y2;
+
+        [LAV] = fun_getLAV(yBAll, y2, y1);
+        data2.Panel.ParamB.Comp.Text.ParamValue(3).String = num2str(LAV, 2 );       
+        AVP = GAV/(max(yA(:))-min(yA(:)))*100;
+        data2.Panel.ParamB.Comp.Text.ParamValueP(1).String = [num2str(GAVP, 2), '%'];
+
+        
         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'on';
         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'on';
 
@@ -107,6 +122,18 @@ elseif strcmp(src.Tag, 'BH')
         % B button
         data2.Panel.Pick.Comp.Pushbutton.Pick(1).Enable = 'off';
  
+        % init. active box pos
+        bt = range(hAxWave.XLim)/10;
+        x1 = hAxWave.XLim(1)+bt;
+        x2 = hAxWave.XLim(2)-bt;
+        y1 = hAxWave.YLim(1);
+        y2 = hAxWave.YLim(2);
+
+        hWavePickWin.Position = [x1, y1-1, x2-x1, y2-y1+2];
+        hWavePickWin.Color = 'g';
+        hWavePickWin.Visible = 'on';
+
+        
         % LAV
 %         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'off';
 %         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'off';
@@ -133,7 +160,7 @@ elseif strcmp(src.Tag, 'BH')
         % add wiw to view plot
         wBH(iBoxBH).wib = wiwBH;
         wBH(iBoxBH).hLine = line(data2.Panel.ViewBH.Comp.hAxis.ViewBH, 'XData', wiwBH.tt, 'YData', wiwBH.yy-baseLine, ...
-            'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 2);
+            'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 1);
         
         set(data2.Panel.ViewBH.Comp.hPlotObj.wiwBH, 'XData', [], 'YData', []);
 

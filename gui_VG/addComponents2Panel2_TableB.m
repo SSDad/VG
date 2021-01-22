@@ -3,7 +3,7 @@ function Comp = addComponents2Panel2_TableB(hPanel)
 % global wgBAll wgColor hwgB
 global BoxColor
 
-nB = 6;
+nB = 5;
 h_gap = 0.05;
 hB = (1-h_gap*(1+nB))/nB;
 
