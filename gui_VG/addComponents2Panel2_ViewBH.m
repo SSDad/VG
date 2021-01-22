@@ -6,9 +6,6 @@ global wBH avgBnP
 wBH = [];
 
 % wgBAll = []; % 
-BoxColor = [0 1 1
-                1 0 1];
-BoxColor = [BoxColor; rand(10, 3)];            
 
 FC = [255 255 102]/255;
 FC = [255 255 255]/255;

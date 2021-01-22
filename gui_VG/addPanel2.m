@@ -78,7 +78,7 @@ Panel.Pick.hPanel = uipanel('parent', hFig,...
                                 'ShadowColor',            'none');
                             
 
-h1 = h_View*0.4;
+h1 = h_View*0.45;
 h2 = h1;
 h3 = h_View - h1 - h2;
 %% avgB param

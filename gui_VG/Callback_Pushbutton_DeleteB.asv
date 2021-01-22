@@ -1,0 +1,73 @@
+function Callback_Pushbutton_DeleteB(src, evnt)
+
+global hFig2
+global avgB yBAll periodBAll
+global BoxColor
+
+data2 = guidata(hFig2);
+
+iBox = data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.Value-1;
+
+hWaveComp = data2.Panel.Wave.Comp;
+hAllWaveComp = data2.Panel.AllWave.Comp;
+
+% update ViewB
+delete(avgB(iBox).hg.Children(:));
+
+hWaveComp = data2.Panel.Wave.Comp;
+hAllWaveComp = data2.Panel.AllWave.Comp;
+
+junk1 = hWaveComp.hPlotObj.BoxB(iBox);
+junk2 = hAllWaveComp.hPlotObj.BoxB(iBox);
+junk3 = hAllWaveComp.hPlotObj.BoxText(iBox);
+nBox = length(avgB);
+for n = iBox:nBox-1
+    avgB(n) = avgB(n+1); % update avgB
+%     avgB(n).hg.Color = BoxColor(n, :);
+    
+    % update box
+    hWaveComp.hPlotObj.BoxB(n) = hWaveComp.hPlotObj.BoxB(n+1);
+%     hWaveComp.hPlotObj.BoxB(n).EdgeColor = BoxColor(n, :);
+    hAllWaveComp.hPlotObj.BoxB(n) = hAllWaveComp.hPlotObj.BoxB(n+1);
+%     hAllWaveComp.hPlotObj.BoxB(n).EdgeColor =  BoxColor(n, :);
+    hAllWaveComp.hPlotObj.BoxText(n) = hAllWaveComp.hPlotObj.BoxText(n+1);
+    hAllWaveComp.hPlotObj.BoxText(n).String = num2str(n);
+%     hAllWaveComp.hPlotObj.BoxText(n).Color = BoxColor(n, :);
+end
+delete(junk1);
+delete(junk2);
+delete(junk3);
+
+% update TableB color
+for n = 1:iBox
+
+avgB(nBox) = [];  % update avgB 
+
+data2.Panel.TableB.Comp.Radiobutton.Box(nBox).Visible = 'off'; % Table B
+
+% popup list
+nBox = nBox-1;
+BLS{1} = 'Box List';
+for n = 1:nBox
+    BLS{n+1} = ['       ', num2str(n)];
+end
+data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.String = BLS; 
+data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.Value = nBox+1; 
+
+% update yBAll periodBAll
+yA = [];
+pA = [];
+for iBox = 1:nBox
+    if data2.Panel.TableB.Comp.Radiobutton.Box(iBox).Value
+        yA = [yA; avgB(iBox).wib.yy];
+        pA = [pA diff(avgB(iBox).wib.locs2)];
+    end
+end
+yBAll = yA;
+periodBAll = pA;
+
+% update avg line
+data2.Panel.ViewB.Comp.hPlotObj.Avg.YData = mean(yA);
+
+updateAvgB;
+updateLAVBoxParam;

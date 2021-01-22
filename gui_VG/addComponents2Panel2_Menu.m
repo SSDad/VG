@@ -1,4 +1,4 @@
-function Comp = addComponents2Panel2_Param(hPanel)
+function Comp = addComponents2Panel2_Menu(hPanel)
 
 h_Gap = 0.01;
 h_ratio = [1];
