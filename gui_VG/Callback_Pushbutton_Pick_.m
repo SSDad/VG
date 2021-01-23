@@ -2,7 +2,6 @@ function Callback_Pushbutton_Pick_(src, evnt)
 
 global hFig2
 
-global baseLine
 global wiwB
 global BoxColor
 global avgB avgBnP
@@ -49,7 +48,7 @@ if strcmp(src.Tag, 'B')
         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'off';
         data2.Panel.ParamB.Comp.Text.ParamValueP(3).Visible = 'off';
                 
-    updateWIW;
+    updateWIWB;
     updateAvgB;
 
     else
@@ -152,7 +151,7 @@ elseif strcmp(src.Tag, 'BH')
 %         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'off';
 %         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'off';
         
-        updateBH;
+        updateWIWBH;
 
     else
         src.String = 'BH';
@@ -165,18 +164,38 @@ elseif strcmp(src.Tag, 'BH')
         pos(2) = pos(2)+1;
         pos(4) = pos(4)-2;
         
-        iBoxBH = length(wBH)+1;
-        BoxCLR = BoxColor(iBoxBH, :);
-        hWaveComp.hPlotObj.BoxBH(iBoxBH) = rectangle(hAxWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2);
-        hAllWaveComp.hPlotObj.BoxBH(iBoxBH) = rectangle(hAxAllWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2);
-        text(hAxAllWave, pos(1)+pos(3)/3, pos(2)+pos(4)/2, char(iBoxBH+'A'-1), 'Color', BoxCLR, 'FontSize', 24, 'FontWeight', 'bold')
+        nBoxBH = length(wBH)+1;
+        BoxCLR = BoxColor(nBoxBH, :);
+        hWaveComp.hPlotObj.BoxBH(nBoxBH) = rectangle(hAxWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2);
+        hAllWaveComp.hPlotObj.BoxBH(nBoxBH) = rectangle(hAxAllWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2);
+        text(hAxAllWave, pos(1)+pos(3)/3, pos(2)+pos(4)/2, char(nBoxBH+'A'-1), 'Color', BoxCLR, 'FontSize', 24, 'FontWeight', 'bold')
 
         % add wiw to view plot
-        wBH(iBoxBH).wib = wiwBH;
-        wBH(iBoxBH).hLine = line(data2.Panel.ViewBH.Comp.hAxis.ViewBH, 'XData', wiwBH.tt, 'YData', wiwBH.yy-baseLine, ...
+        wBH(nBoxBH).wib = wiwBH;
+        wBH(nBoxBH).hLine = line(data2.Panel.ViewBH.Comp.hAxis.ViewBH, 'XData', wiwBH.tt, 'YData', wiwBH.yy, ...
             'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 1);
         
         set(data2.Panel.ViewBH.Comp.hPlotObj.wiwBH, 'XData', [], 'YData', []);
+        
+        % LAV Box
+        x1 = inf;
+        x2 = 0;
+        y1 = inf;
+        y2 = -inf;
+        for iB = 1:nBoxBH
+            x1 = min(x1, wBH(iB).wib.tt(1));
+            x2 = max(x2, wBH(iB).wib.tt(end));
+            y1 = min(y1, min(wBH(iB).wib.yy));
+            y2 = max(y2, max(wBH(iB).wib.yy));
+        end
+        
+        xr = x2 - x1;
+        yr = y2 - y1;
+        data2.Panel.ViewBH.Comp.hAxis.ViewBH.XLim = [x1 - xr*0.1 x2 + xr*0.1];
+        data2.Panel.ViewBH.Comp.hAxis.ViewBH.YLim = [y1 - yr*0.1 y2 + yr*0.1];
+
+        data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Position = [x1 y1 x2-x1 y2-y1];
+        
 
 %         avgB(iBoxB).hg = hggroup(data2.Panel.ViewB.Comp.hAxis.ViewB);  
 % 

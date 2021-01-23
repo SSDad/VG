@@ -5,7 +5,7 @@ global pickMode
 
 % data2 = guidata(hFig2);
 if strcmp(pickMode, 'B')
-    updateWIW;
+    updateWIWB;
     updateAvgB;
 else
     updateBH;

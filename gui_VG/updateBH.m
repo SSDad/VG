@@ -3,11 +3,19 @@ function updateBH
 global hFig2
 global tt yy baseLine dt
 global wiwBH  % wave group in current picked window
+global wBH
+
 % global yBAll periodBAll % all previous wave y and period
 % global avgBnP
 % global LAVBox
 
 data2 = guidata(hFig2);
+% if ~isempty(wiwBH)
+    
+
+
+
+
 % % hAllWaveComp = data2.Panel.AllWave.Comp;
 % hPeaks = data2.Panel.Wave.Comp.hPlotObj.Peaks;
 % hTroughs = data2.Panel.Wave.Comp.hPlotObj.Troughs;

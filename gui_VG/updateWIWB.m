@@ -1,4 +1,4 @@
-function updateWIW
+function updateWIWB
 
 global hFig2
 global tt yy baseLine dt
