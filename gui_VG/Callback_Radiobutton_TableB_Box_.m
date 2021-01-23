@@ -37,17 +37,16 @@ if isempty(yBAll)
     data2.Panel.ParamB.Comp.Text.ParamValue(1).String = '';
     data2.Panel.ParamB.Comp.Text.ParamValue(2).String = '';
     data2.Panel.ParamB.Comp.Text.ParamValue(3).String = '';
+
+    data2.Panel.ParamB.Comp.Text.ParamValueP(1).String = '';
+    data2.Panel.ParamB.Comp.Text.ParamValueP(2).String = '';
+    data2.Panel.ParamB.Comp.Text.ParamValueP(3).String = '';
 else
+    data2.Panel.ViewB.Comp.hPlotObj.Avg.Visible = 'on';
     
     updateAvgB;    
     % LAV
     updateLAVBoxParam;
-    
-%     [LAV] = fun_getLAV(yA, LAVBox.y2, LAVBox.y1);
-%     data2.Panel.ParamB.Comp.Text.ParamValue(3).String = num2str(LAV, 2 );
-%     LAVP = LAV/(max(yBAll(:))-min(yBAll(:)))*100;
-%     data2.Panel.ParamB.Comp.Text.ParamValueP(3).String = [num2str(LAVP, 2), '%'];
-
     data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'on';
 
 %     % viewB axis YLim

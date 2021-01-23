@@ -105,7 +105,7 @@ if strcmp(src.Tag, 'B')
         LAVBox.y1 = y1;
         LAVBox.y2 = y2;
 
-         updateLAVBoxParam;
+        updateLAVBoxParam;
         
         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'on';
         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'on';

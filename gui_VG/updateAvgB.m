@@ -7,9 +7,10 @@ global yBAll periodBAll % all previous wave y and period
 global avgBnP
 
 data2 = guidata(hFig2);
+
+hAvg = data2.Panel.ViewB.Comp.hPlotObj.Avg;
     
 if ~isempty(wiwB)
-    hAvg = data2.Panel.ViewB.Comp.hPlotObj.Avg;
     hg_wiwB =    data2.Panel.ViewB.Comp.hPlotObj.hg_wiwB;
     if ~isempty(hg_wiwB.Children)
         delete(hg_wiwB.Children(:));
@@ -23,16 +24,19 @@ if ~isempty(wiwB)
 
     yA = [yBAll; wiwB.yy];
     pA = [periodBAll diff(wiwB.locs2)];
-    set(hAvg, 'XData', x, 'YData', mean(yA));
-    junk = range(yA(:));
-    data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = [min(yA(:)) - junk*.1 max(yA(:)) + junk*.1];
-
-    %% bring avg line to top
-    reorderPlotObj(data2.Panel.ViewB.Comp.hAxis.ViewB);
 else
     yA = yBAll;
     pA = periodBAll;
 end
+
+%% update avg
+    x = 1:avgBnP;
+    set(hAvg, 'XData', x, 'YData', mean(yA));
+    junk = range(yA(:));
+    data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = [min(yA(:)) - junk*.1 max(yA(:)) + junk*.1];
+
+    % bring avg line to top
+    reorderPlotObj(data2.Panel.ViewB.Comp.hAxis.ViewB);
 
 %% update param
 junk = abs(yA-mean(yA));
