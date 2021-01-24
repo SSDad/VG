@@ -8,7 +8,7 @@ global avgB avgBnP
 global yBAll periodBAll
 global LAVBox
 global pickMode
-global wiwBH wBH
+global wiwBH wBH wBHLim
 
 data2 = guidata(hFig2);
 
@@ -176,26 +176,14 @@ elseif strcmp(src.Tag, 'BH')
             'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 1);
         
         set(data2.Panel.ViewBH.Comp.hPlotObj.wiwBH, 'XData', [], 'YData', []);
-        
-        % LAV Box
-        x1 = inf;
-        x2 = 0;
-        y1 = inf;
-        y2 = -inf;
-        for iB = 1:nBoxBH
-            x1 = min(x1, wBH(iB).wib.tt(1));
-            x2 = max(x2, wBH(iB).wib.tt(end));
-            y1 = min(y1, min(wBH(iB).wib.yy));
-            y2 = max(y2, max(wBH(iB).wib.yy));
-        end
-        
-        xr = x2 - x1;
-        yr = y2 - y1;
-        data2.Panel.ViewBH.Comp.hAxis.ViewBH.XLim = [x1 - xr*0.1 x2 + xr*0.1];
-        data2.Panel.ViewBH.Comp.hAxis.ViewBH.YLim = [y1 - yr*0.1 y2 + yr*0.1];
 
-        data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Position = [x1 y1 x2-x1 y2-y1];
-        
+        % refresh LAV Box
+        if nBoxBH > 1
+            data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Position = ...
+                [wBHLim.x1 wBHLim.y1 wBHLim.x2-wBHLim.x1 wBHLim.y2-wBHLim.y1];
+            
+            updateBH;
+        end
 
 %         avgB(iBoxB).hg = hggroup(data2.Panel.ViewB.Comp.hAxis.ViewB);  
 % 

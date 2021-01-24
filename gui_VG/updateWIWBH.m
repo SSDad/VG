@@ -21,3 +21,5 @@ pos = data2.Panel.Wave.Comp.hPlotObj.WavePickWin.Position;
 wiwBH.tt = tt(ind(1):ind(2)) - tt(ind(1));
 wiwBH.yy = yy(ind(1):ind(2)) - baseLine;
 set(hwiwBH, 'XData', wiwBH.tt, 'YData', wiwBH.yy);
+
+updateBHLimit;

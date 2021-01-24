@@ -8,5 +8,5 @@ if strcmp(pickMode, 'B')
     updateWIWB;
     updateAvgB;
 else
-    updateBH;
+    updateWIWBH;
 end
