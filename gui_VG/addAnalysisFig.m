@@ -69,6 +69,3 @@ data2.Panel.ParamBH.Comp = addComponents2Panel2_ParamBH(data2.Panel.ParamBH.hPan
 % data.WaveParam.T = 30;
 % 
 guidata(hFig2, data2);
-% 
-% %% analysis window
-% addAnalysisFig;

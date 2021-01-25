@@ -25,8 +25,8 @@ end
 yy1B = repmat( LAVBoxBH.y1, size(yBHAll));
 yy2B = repmat( LAVBoxBH.y2, size(yBHAll));
 
-yBHAll(yBHAll < yy1B) = nan;
-yBHAll(yBHAll > yy2B) = nan;
+yBHAll(yBHAll > yy1B) = nan;
+yBHAll(yBHAll < yy2B) = nan;
 
 set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', tt, 'YData', mean(yBHAll));
 junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nBH, 1));

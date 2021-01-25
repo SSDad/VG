@@ -9,6 +9,7 @@ global yBAll periodBAll
 global LAVBox
 global pickMode
 global wiwBH wBH wBHLim
+global LAVBoxBH
 
 data2 = guidata(hFig2);
 
@@ -182,6 +183,7 @@ elseif strcmp(src.Tag, 'BH')
             data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Position = ...
                 [wBHLim.x1 wBHLim.y1 wBHLim.x2-wBHLim.x1 wBHLim.y2-wBHLim.y1];
             
+            LAVBoxBH = wBHLim;
             updateBH;
         end
 

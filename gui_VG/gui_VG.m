@@ -1,7 +1,7 @@
 function gui_VG
 
 %% global 
-global hFig 
+global hFig hFig2
 global TimeRange
 global waveLW boxAlpha
 global tC
@@ -60,3 +60,4 @@ guidata(hFig, data);
 
 %% analysis window
 addAnalysisFig;
+hFig2.Visible = 'off';
