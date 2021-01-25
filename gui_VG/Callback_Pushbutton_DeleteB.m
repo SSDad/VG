@@ -24,16 +24,12 @@ nBox = length(avgB);
 junkColor = BoxColor(iBox, :);
 for n = iBox:nBox-1
     avgB(n) = avgB(n+1); % update avgB
-%     avgB(n).hg.Color = BoxColor(n, :);
     
     % update box
     data2.Panel.Wave.Comp.hPlotObj.BoxB(n) = hWaveComp.hPlotObj.BoxB(n+1);
-%     hWaveComp.hPlotObj.BoxB(n).EdgeColor = BoxColor(n, :);
     data2.Panel.AllWave.Comp.hPlotObj.BoxB(n) = hAllWaveComp.hPlotObj.BoxB(n+1);
-%     hAllWaveComp.hPlotObj.BoxB(n).EdgeColor =  BoxColor(n, :);
     data2.Panel.AllWave.Comp.hPlotObj.BoxText(n) = hAllWaveComp.hPlotObj.BoxText(n+1);
     data2.Panel.AllWave.Comp.hPlotObj.BoxText(n).String = num2str(n);
-%     hAllWaveComp.hPlotObj.BoxText(n).Color = BoxColor(n, :);
 
     BoxColor(n, :) =  BoxColor(n+1, :);
 end

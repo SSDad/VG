@@ -8,19 +8,25 @@ global LAVBoxBH
 data2 = guidata(hFig2);
 x1 = LAVBoxBH.x1;
 x2 = LAVBoxBH.x2;
-
 data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = num2str(x2 - x1, 3);
 
 nBH = length(wBH);
-for n = 1:nBH
-    t2(n) = wBH(n).wib.tt(end);
+m = 0;
+for iBox = 1:nBH
+    if data2.Panel.TableBH.Comp.Radiobutton.Box(iBox).Value
+        m = m+1;
+        sBH(m) = iBox;
+        t2(m) = wBH(iBox).wib.tt(end);
+    end
 end
 tt2 = min([t2 x2]);
 tt1 = max(0, x1);
 tt = linspace(tt1, tt2, 1000);
 
-for n = 1:nBH
-    yBHAll(n, :) = interp1( wBH(n).wib.tt,  wBH(n).wib.yy, tt);
+nsBH = length(sBH);
+for m = 1:nsBH
+    iBox = sBH(m);
+    yBHAll(m, :) = interp1( wBH(iBox).wib.tt,  wBH(iBox).wib.yy, tt);
 end
 yy1B = repmat( LAVBoxBH.y1, size(yBHAll));
 yy2B = repmat( LAVBoxBH.y2, size(yBHAll));
@@ -28,10 +34,14 @@ yy2B = repmat( LAVBoxBH.y2, size(yBHAll));
 yBHAll(yBHAll < yy1B) = nan;
 yBHAll(yBHAll > yy2B) = nan;
 
-set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', tt, 'YData', mean(yBHAll));
-junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nBH, 1));
+set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', tt, 'YData', mean(yBHAll)); %avg line
+junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nsBH, 1));
 AV = mean(junk(:), 'omitnan');
 data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = num2str(AV, 2);
+
+% bring avg line to top
+reorderPlotObj(data2.Panel.ViewBH.Comp.hAxis.ViewBH);
+
 
 % global yBAll periodBAll % all previous wave y and period
 % global avgBnP

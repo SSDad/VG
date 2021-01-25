@@ -3,7 +3,7 @@ function Callback_Pushbutton_Pick_(src, evnt)
 global hFig2
 
 global wiwB
-global BoxColor
+global BoxColor BoxColorBH
 global avgB avgBnP
 global yBAll periodBAll
 global LAVBox
@@ -49,8 +49,8 @@ if strcmp(src.Tag, 'B')
         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'off';
         data2.Panel.ParamB.Comp.Text.ParamValueP(3).Visible = 'off';
                 
-    updateWIWB;
-    updateAvgB;
+        updateWIWB;
+        updateAvgB;
 
     else
         src.String = 'B';
@@ -72,6 +72,7 @@ if strcmp(src.Tag, 'B')
         hAllWaveComp.hPlotObj.BoxText(nBoxB) = text(hAxAllWave, pos(1)+pos(3)/2, pos(2)+pos(4)/2, num2str(nBoxB),...
             'Color', BoxCLR, 'FontSize', 24, 'FontWeight', 'bold');
        
+        % tableB
         data2.Panel.TableB.Comp.Radiobutton.Box(nBoxB).Visible = 'on';
         
         % add wiw to avg plot
@@ -166,10 +167,11 @@ elseif strcmp(src.Tag, 'BH')
         pos(4) = pos(4)-2;
         
         nBoxBH = length(wBH)+1;
-        BoxCLR = BoxColor(nBoxBH, :);
+        BoxCLR = BoxColorBH(nBoxBH, :);
         hWaveComp.hPlotObj.BoxBH(nBoxBH) = rectangle(hAxWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2);
         hAllWaveComp.hPlotObj.BoxBH(nBoxBH) = rectangle(hAxAllWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2);
-        text(hAxAllWave, pos(1)+pos(3)/3, pos(2)+pos(4)/2, char(nBoxBH+'A'-1), 'Color', BoxCLR, 'FontSize', 24, 'FontWeight', 'bold')
+        hAllWaveComp.hPlotObj.BoxTextBH(nBoxBH) = text(hAxAllWave, pos(1)+pos(3)/3, pos(2)+pos(4)/2, char(nBoxBH+'A'-1),...
+            'Color', BoxCLR, 'FontSize', 24, 'FontWeight', 'bold');
 
         % add wiw to view plot
         wBH(nBoxBH).wib = wiwBH;
@@ -177,6 +179,10 @@ elseif strcmp(src.Tag, 'BH')
             'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 1);
         
         set(data2.Panel.ViewBH.Comp.hPlotObj.wiwBH, 'XData', [], 'YData', []);
+
+        % tableBH
+        data2.Panel.TableBH.Comp.Radiobutton.Box(nBoxBH).Value = 1;
+        data2.Panel.TableBH.Comp.Radiobutton.Box(nBoxBH).Visible = 'on';
 
         % refresh LAV Box
         if nBoxBH > 1
@@ -186,6 +192,19 @@ elseif strcmp(src.Tag, 'BH')
             LAVBoxBH = wBHLim;
             updateBH;
         end
+        
+        % deleteBH
+        BLS{1} = 'Box List';
+        for n = 1:nBoxBH
+            BLS{n+1} = ['       ', char(n+'A'-1)];
+        end
+        data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.String = BLS; 
+        data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.Value = nBoxBH+1; 
+
+        data2.Panel.AllWave.Comp = hAllWaveComp;
+        data2.Panel.Wave.Comp = hWaveComp;
+        guidata(hFig2, data2);
+
 
 %         avgB(iBoxB).hg = hggroup(data2.Panel.ViewB.Comp.hAxis.ViewB);  
 % 
