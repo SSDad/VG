@@ -5,6 +5,7 @@ global tt yy baseLine dt
 global wiwB  % wave group in current picked window
 global yBAll periodBAll % all previous wave y and period
 global avgBnP
+global Thresh
 
 data2 = guidata(hFig2);
 
@@ -44,8 +45,24 @@ GAV = sum(junk(:))/numel(junk);
 data2.Panel.ParamB.Comp.Text.ParamValue(1).String = num2str(GAV, 2 );
 GAVP = GAV/(max(yA(:))-min(yA(:)))*100;
 data2.Panel.ParamB.Comp.Text.ParamValueP(1).String = [num2str(GAVP, 2), '%'];
+if GAVP <= Thresh(1, 1)
+    CLR = 'g';
+elseif GAVP >= Thresh(1, 2)
+    CLR = 'r';
+else
+    CLR = 'y';
+end
+data2.Panel.ParamB.Comp.Text.ParamValueP(1).ForegroundColor = CLR;
 
 PV = sum(abs(pA-mean(pA)))/numel(pA)*dt;
 data2.Panel.ParamB.Comp.Text.ParamValue(2).String = [num2str(PV, 2 ), 's'];
 PVP = PV/mean(pA)/dt*100;
 data2.Panel.ParamB.Comp.Text.ParamValueP(2).String =  [num2str(PVP, 2), '%'];
+if PVP <= Thresh(2, 1)
+    CLR = 'g';
+elseif PVP >= Thresh(2, 2)
+    CLR = 'r';
+else
+    CLR = 'y';
+end
+data2.Panel.ParamB.Comp.Text.ParamValueP(2).ForegroundColor = CLR;

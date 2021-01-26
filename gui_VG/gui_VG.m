@@ -11,8 +11,6 @@ waveLW= 3;
 boxAlpha = 0.25;
 tC = 20;
 
-global hFig2
-
 %% main window
 hFig = figure('MenuBar',            'none', ...
                     'Toolbar',              'none', ...

@@ -4,6 +4,7 @@ global hFig2
 % global tt yy baseLine dt
 global wBH
 global LAVBoxBH
+global Thresh
 
 data2 = guidata(hFig2);
 x1 = LAVBoxBH.x1;
@@ -38,6 +39,16 @@ set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', tt, 'YData', mean(yBHAll)); %
 junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nsBH, 1));
 AV = mean(junk(:), 'omitnan');
 data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = num2str(AV, 2);
+
+if AV < Thresh(4, 1)
+    CLR = 'g';
+elseif AV > Thresh(4, 2)
+    CLR = 'r';
+else
+    CLR = 'y';
+end
+data2.Panel.ParamBH.Comp.Text.ParamValue(2).ForegroundColor = CLR;
+
 
 % bring avg line to top
 reorderPlotObj(data2.Panel.ViewBH.Comp.hAxis.ViewBH);

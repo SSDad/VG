@@ -5,6 +5,8 @@ global TimeRange dt
 global avgBnP yBAll periodBAll % all previous wave y and period
 global LAVBox
 global BoxColor BoxColorBH
+global hFig_ThreshSetting
+global Thresh
 
 dt = 1/20;
 TimeRange = 30;
@@ -21,6 +23,11 @@ BoxColor = [1 0 0
                 1 1 0];
 BoxColor = [BoxColor; rand(6, 3)];            
 BoxColorBH = BoxColor;
+
+Thresh = [7 8
+               8 9
+               6 7
+               0.03 0.04];
 
 %% main window
 hFig2 = figure('MenuBar',            'none', ...
@@ -71,3 +78,6 @@ data2.Panel.DeleteBH.Comp = addComponents2Panel2_DeleteBH(data2.Panel.DeleteBH.h
 % data.WaveParam.T = 30;
 % 
 guidata(hFig2, data2);
+
+addFig_ThreshSetting;
+hFig_ThreshSetting.Visible = 'off';

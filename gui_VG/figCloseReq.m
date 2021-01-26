@@ -1,6 +1,7 @@
 function figCloseReq(src, callbackdata)
 
-global hFig2
+global hFig2 hFig_ThreshSetting
+
 global dyn
 
 % delete object
@@ -13,9 +14,10 @@ if exist('dyn')
 end
 
 % close fig2
-if ishandle(hFig2)
+% if ishandle(hFig2)
     delete(hFig2)
-end
+    delete(hFig_ThreshSetting);
+% end
 
 % close fig
 delete(src)
