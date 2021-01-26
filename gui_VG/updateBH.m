@@ -8,7 +8,7 @@ global LAVBoxBH
 data2 = guidata(hFig2);
 x1 = LAVBoxBH.x1;
 x2 = LAVBoxBH.x2;
-data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = num2str(x2 - x1, 3);
+data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = [num2str(x2 - x1, 2), ' s'];
 
 nBH = length(wBH);
 m = 0;

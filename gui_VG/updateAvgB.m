@@ -46,6 +46,6 @@ GAVP = GAV/(max(yA(:))-min(yA(:)))*100;
 data2.Panel.ParamB.Comp.Text.ParamValueP(1).String = [num2str(GAVP, 2), '%'];
 
 PV = sum(abs(pA-mean(pA)))/numel(pA)*dt;
-data2.Panel.ParamB.Comp.Text.ParamValue(2).String = num2str(PV, 2 );
-PVP = PV/mean(pA)/dt;
+data2.Panel.ParamB.Comp.Text.ParamValue(2).String = [num2str(PV, 2 ), 's'];
+PVP = PV/mean(pA)/dt*100;
 data2.Panel.ParamB.Comp.Text.ParamValueP(2).String =  [num2str(PVP, 2), '%'];

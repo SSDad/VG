@@ -19,6 +19,8 @@ if strcmp(str, 'Go')
 
     bCollecting = 1;
     data.Panel.Calib.Comp.Pushbutton.Calib.Enable = 'off'; % disable calib 
+    
+    data.Panel.Analysis.hPanel.Visible = 'off'; % disable analysis
 
     bBHStart = 0;
     bBHReset = 0;
@@ -90,5 +92,7 @@ else
     datafn = fullfile(fd_MRN, ['data_MRN-', MRN, '_Fraction-', Fraction, '_DT-', datestr(tStart,'YYYYmmDD-HHMMSS'), '-',...
         datestr(now,'HHMMSS'), '_TE_', num2str(round(range(tt))), '.mat']);
     save(datafn, 'tt', 'yy', 'baseLine');
-   
+
+    data.Panel.Analysis.hPanel.Visible = 'on'; % disable analysis
+
 end
