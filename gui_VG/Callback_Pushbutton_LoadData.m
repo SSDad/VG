@@ -2,8 +2,9 @@ function Callback_Pushbutton_LoadData(src, evnt)
 
 global hFig hFig2
 global TimeRange
-global tMax
+global tMax dt
 global wgBAll hwgB
+global tt yy baseLine
 
 % data = guidata(hFig);
 data2 = guidata(hFig2);
@@ -20,8 +21,16 @@ fd_VG = fullfile(tempdir, 'VG');
 %     ffn = 'data_MRN-Mrn202101_Fraction-1_DT-20210118-090323-091507_TE_702';
 %     ffn = 'data_MRN-Mrn202101_Fraction-2_DT-20210118-091655-092650_TE_595';
 
-ffn = uigetfile('*.mat');
-load(ffn)
+ffn = uigetfile({'*.txt'; '*.mat'});
+
+if ffn~=0
+    [~, ~, ext] = fileparts(ffn);
+    if strcmp(ext, '.mat')
+        load(ffn)
+    elseif strcmp(ext, '.txt')
+        [tt, yy, baseLine] = fun_loadRPMTxtData(ffn);
+        dt = tt(2) - tt(1);
+    end
     tMax = tt(end);
     
     % wave
@@ -58,7 +67,5 @@ load(ffn)
         end
         set(data2.Panel.ViewB.Comp.hPlotObj.Avg, 'XData', [], 'YData', []);
     end
+end
 
-
-    end
-% end
