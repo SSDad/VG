@@ -1,4 +1,6 @@
-function [tt, yy, baseLine] = fun_loadRPMTxtData(ffn)
+clearvars;
+
+ffn = '012.txt';
 
 fid=fopen(ffn);
 tLine = fgetl(fid);
@@ -9,9 +11,14 @@ while ischar(tLine)
 end
 fclose(fid);
 
-ort = 'Anterior-Posterior';
-% ort = 'Left-Right';
-% ort = 'Head-Feet';
+pos{1} = 'Anterior-Posterior';
+pos{2} = 'Left-Right';
+pos{3} = 'Head-Feet';
+
+for n = 1:3
+    
+    ort = pos{n};
+
 idx = find(contains(tLines, ort, 'IgnoreCase',true));
 idx = idx(end);
 
@@ -27,10 +34,22 @@ idx2 = idx -1;
 dataCell = tLines(idx1:idx2);
 
 junk = cell2mat(cellfun(@str2num, dataCell, 'UniformOutput', false));
-tt = junk(:, 1);
-yy = junk(:, 2);
+tt(:, n) = junk(:, 1);
+yy(:, n) = junk(:, 2);
 
-baseLine = 0;
+end
+
+save('dataRPM', 'tt', 'yy', 'pos')
 
 figure(99), clf
 plot(tt, yy)
+set(gca, 'XLim', [tt(1, 1), tt(end, 1)])
+legend(pos)
+
+figure(100), clf
+for n = 1:3
+    subplot(3, 1, n);
+    plot(tt(:, n), yy(:, n));
+    set(gca, 'XLim', [tt(1, 1), tt(end, 1)]);
+    title(pos{n});
+end

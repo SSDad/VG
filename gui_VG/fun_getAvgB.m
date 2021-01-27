@@ -2,7 +2,7 @@ function [wiw] = fun_getAvgB(tt, yy, ind, avgBnP)
 
 wiw = [];
 
-bPlot = 1;
+bPlot = 0;
 
 dt = tt(2)-tt(1);
 t = tt(ind(1):ind(2));
