@@ -21,8 +21,8 @@ fd_VG = fullfile(tempdir, 'VG');
 %     ffn = 'data_MRN-Mrn202101_Fraction-1_DT-20210118-090323-091507_TE_702';
 %     ffn = 'data_MRN-Mrn202101_Fraction-2_DT-20210118-091655-092650_TE_595';
 
-% ffn = uigetfile({'*.txt'; '*.mat'});
-ffn = uigetfile({'*.mat'});
+ffn = uigetfile({'*.txt'; '*.mat'});
+% ffn = uigetfile({'*.mat'});
 
 if ffn~=0
     [~, ~, ext] = fileparts(ffn);
@@ -30,6 +30,8 @@ if ffn~=0
         load(ffn)
     elseif strcmp(ext, '.txt')
         [tt, yy, baseLine] = fun_loadRPMTxtData(ffn);
+        tt = tt';
+        yy = yy';
         dt = tt(2) - tt(1);
     end
     tMax = tt(end);

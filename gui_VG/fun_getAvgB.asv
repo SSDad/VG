@@ -2,7 +2,7 @@ function [wiw] = fun_getAvgB(tt, yy, ind, avgBnP)
 
 wiw = [];
 
-bPlot = 0;
+bPlot = 1;
 
 dt = tt(2)-tt(1);
 t = tt(ind(1):ind(2));
@@ -39,10 +39,10 @@ sw = sgolayfilt(w, 3, framelen);
 
 dL = diff(locs1);
 indOL = isoutlier(dL);
-meanL = mean(dL(~indOL));
+
 
 fsw = max(sw) - sw ;
-[pks2, locs2] = findpeaks(fsw, 'MinPeakDistance', meanL*0.6, 'MInPeakheight', mean(fsw));
+[pks2, locs2] = findpeaks(fsw, 'MinPeakDistance', MPD/dt, 'MInPeakheight', mean(fsw));
 % [pks2, locs2] = findpeaks(fsw);
 wiw.locs1 = locs1;
 wiw.locs2 = locs2;
