@@ -24,11 +24,12 @@ hBHC = data.Panel.BHC.Comp.Edit.Counter;
 hBH = data.Panel.BH.Comp.Togglebutton.BH;
 
 T = TimeRange;
+extT = T/100;
 % T = data.WaveParam.T;
 dt = data.WaveParam.dt;
 nP = round(T/dt);
 if tt(end) > T
-    hAx.XLim = [tt(end)-T tt(end)];
+    hAx.XLim = [tt(end)-T tt(end)+extT];
     if length(yy) > nP
         yMax = max(yy(end-nP:end));
         yMin = min(yy(end-nP:end));
@@ -37,7 +38,7 @@ if tt(end) > T
         yMin = min(yy);
     end
 else
-        hAx.XLim = [0 T];
+        hAx.XLim = [0 T+extT];
         yMax = max(yy);
         yMin = min(yy);
 end
@@ -92,7 +93,7 @@ if tt(end) > 5
     hAx2.XLim = [0 1];
     hAx2.YLim = hAx.YLim;
      
-    x1 = 0.1;
+    x1 = 0.25;
     x2 = 1-x1;
     
     y1B = yy(end) - baseLine;
