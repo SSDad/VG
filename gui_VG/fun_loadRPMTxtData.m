@@ -1,5 +1,7 @@
 function [tt, yy, baseLine] = fun_loadRPMTxtData(ffn)
 
+bPlot = 0;
+
 fid=fopen(ffn);
 tLine = fgetl(fid);
 tLines = cell(0,1);
@@ -32,5 +34,7 @@ yy = junk(:, 2);
 
 baseLine = 0;
 
-figure(99), clf
-plot(tt, yy)
+if bPlot
+    figure(99), clf
+    plot(tt, yy)
+end
