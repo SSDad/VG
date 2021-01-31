@@ -14,6 +14,7 @@ fclose(fid);
 ort = 'Anterior-Posterior';
 % ort = 'Left-Right';
 % ort = 'Head-Feet';
+
 idx = find(contains(tLines, ort, 'IgnoreCase',true));
 idx = idx(end);
 

@@ -8,7 +8,7 @@ dt = tt(2)-tt(1);
 t = tt(ind(1):ind(2));
 v = yy(ind(1):ind(2));
 
-%% remove trend
+%% remove drifting
 opol = 6;
 [p, s, mu] = polyfit(t, v, opol);
 f_y = polyval(p, t, [], mu);
