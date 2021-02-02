@@ -5,7 +5,6 @@ global TimeRange
 global tMax dt
 global tt yy baseLine
 global avgB
-global wBH
 
 % data = guidata(hFig);
 data2 = guidata(hFig2);
@@ -90,7 +89,6 @@ if ffn~=0
         data2.Panel.ParamB.Comp.Text.Param(5).Name(2).String = 'PV';
         data2.Panel.ParamB.Comp.Text.Param(5).Name(3).String = 'PV';
         
-        % delete list
         data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.String = 'Box List'; 
         data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.Value = 1; 
 
@@ -101,25 +99,6 @@ if ffn~=0
         delete(hAllWaveComp.hPlotObj.BoxBH(:));
         delete(hWaveComp.hPlotObj.BoxBH(:));
         delete(hAllWaveComp.hPlotObj.BoxTextBH(:));
-
-        for n = 1:length(wBH) 
-            delete(wBH(n).hLine); % avgB waves
-            data2.Panel.TableBH.Comp.Radiobutton.Box(n).Value = 0;
-            data2.Panel.TableBH.Comp.Radiobutton.Box(n).Visible = 'off'; % radio button off
-        end
-        wBH = []; % wBH
-        
-        set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', [], 'YData', []); % avg line
-        
-        data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Position = [0 0 0 0]; % LAV box
-        
-        % param
-        data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = 'Time';
-        data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = 'AV';
-
-        % delete list
-        data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.String = 'Box List'; 
-        data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.Value = 1; 
     end
     
     % clear boxes
