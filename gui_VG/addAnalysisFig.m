@@ -27,7 +27,7 @@ BoxColorBH = BoxColor;
 Thresh = [7 8
                8 9
                6 7
-               0.03 0.04];
+               10 11];
 
 %% main window
 hFig2 = figure('MenuBar',            'none', ...

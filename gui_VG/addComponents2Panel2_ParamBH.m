@@ -64,3 +64,4 @@ for n = 1:nR
                             'Visible', 'off', ...
                             'Enable', 'on');
 end
+Comp.Text.ParamValueP(2).Visible = 'on';

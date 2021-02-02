@@ -41,17 +41,17 @@ junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nsBH, 1));
 AV = mean(junk(:), 'omitnan');
 data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = num2str(AV, 2);
 
-AVP = AV/ampAvgB*100;
-data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(AVP, 3), '%'];
+AVP = AV/ampAvgB;
+data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(AVP*100, 3), '%'];
 
 if AVP < Thresh(4, 1)
     CLR = 'g';
-elseif AVP > Thresh(4, 2)
+elseif AV > Thresh(4, 2)
     CLR = 'r';
 else
     CLR = 'y';
 end
-data2.Panel.ParamBH.Comp.Text.ParamValueP(2).ForegroundColor = CLR;
+data2.Panel.ParamBH.Comp.Text.ParamValue(2).ForegroundColor = CLR;
 
 % bring avg line to top
 reorderPlotObj(data2.Panel.ViewBH.Comp.hAxis.ViewBH);

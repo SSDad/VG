@@ -73,7 +73,7 @@ for n = 1:nR
 end
 
 for m = [3 5]
-    for n = 1:nR-1
+    for n = 1:nR
         y = yy(n);
         uicontrol('parent', hPanel, ...
                                 'Style', 'text',...
