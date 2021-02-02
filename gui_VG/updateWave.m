@@ -24,7 +24,7 @@ hBHC = data.Panel.BHC.Comp.Edit.Counter;
 hBH = data.Panel.BH.Comp.Togglebutton.BH;
 
 T = TimeRange;
-extT = T/100;
+extT = T/20;
 % T = data.WaveParam.T;
 dt = data.WaveParam.dt;
 nP = round(T/dt);

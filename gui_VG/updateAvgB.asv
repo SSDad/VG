@@ -6,7 +6,6 @@ global wiwB  % wave group in current picked window
 global yBAll periodBAll % all previous wave y and period
 global avgBnP
 global Thresh
-global ampAvgB
 
 data2 = guidata(hFig2);
 
@@ -42,12 +41,12 @@ end
 
 %% update param
 yAmean = mean(yA);
-ampAvgB = max(yAmean)-min(yAmean);
-data2.Panel.ParamB.Comp.Text.Param(1).Name(2).String = num2str(ampAvgB, 2 );
+amp = max(yAmean)-min(yAmean);
+data2.Panel.ParamB.Comp.Text.Param(1).Name(2).String = num2str(amp, 2 );
 junk = abs(yA-yAmean);
 GAV = sum(junk(:))/numel(junk);
 data2.Panel.ParamB.Comp.Text.Param(2).Name(2).String = num2str(GAV, 2 );
-GAVP = GAV/(ampAvgB)*100;
+GAVP = GAV/(amp)*100;
 data2.Panel.ParamB.Comp.Text.Param(2).Name(3).String = [num2str(GAVP, 2), '%'];
 if GAVP <= Thresh(1, 1)
     CLR = 'g';
