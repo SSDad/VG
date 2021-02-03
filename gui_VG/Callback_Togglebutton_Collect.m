@@ -89,7 +89,7 @@ else
     end
     
     Fraction = data.Panel.PtInfo.Comp.Edit.Fraction.String;
-    datafn = fullfile(fd_MRN, ['data_MRN-', MRN, '_Fraction-', Fraction, '_DT-', datestr(tStart,'YYYYmmDD-HHMMSS'), '-',...
+    datafn = fullfile(fd_MRN, ['Wave_MRN-', MRN, '_F-', Fraction, '_DT-', datestr(tStart,'YYYYmmDD-HHMMSS'), '-',...
         datestr(now,'HHMMSS'), '_TE_', num2str(round(range(tt))), '.mat']);
     save(datafn, 'tt', 'yy', 'baseLine');
 

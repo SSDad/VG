@@ -53,7 +53,7 @@ if ~exist(fd_VG, 'dir')
     mkdir(fd_VG);
 end
 data.fd_VG = fd_VG;
-data.MRN = [];
+
 
 guidata(hFig, data);
 

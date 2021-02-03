@@ -81,14 +81,17 @@ if ffn~=0
         data2.Panel.ParamB.Comp.Text.Param(1).Name(2).String = 'Amp';
         data2.Panel.ParamB.Comp.Text.Param(2).Name(2).String = 'GAV';
         data2.Panel.ParamB.Comp.Text.Param(2).Name(3).String = 'GAV';
+        data2.Panel.ParamB.Comp.Text.Param(2).Name(3).ForegroundColor = 'g';
 
         data2.Panel.ParamB.Comp.Text.Param(3).Name(2).String = 'LAV';
         data2.Panel.ParamB.Comp.Text.Param(3).Name(3).String = 'LAV';
+        data2.Panel.ParamB.Comp.Text.Param(3).Name(3).ForegroundColor = 'g';
 
         data2.Panel.ParamB.Comp.Text.Param(4).Name(2).String = 'Period';
 
         data2.Panel.ParamB.Comp.Text.Param(5).Name(2).String = 'PV';
         data2.Panel.ParamB.Comp.Text.Param(5).Name(3).String = 'PV';
+        data2.Panel.ParamB.Comp.Text.Param(5).Name(3).ForegroundColor = 'g';
         
         % delete list
         data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.String = 'Box List'; 
@@ -116,12 +119,13 @@ if ffn~=0
         % param
         data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = 'Time';
         data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = 'AV';
+        data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = 'AV';
+        data2.Panel.ParamBH.Comp.Text.ParamValueP(2).ForegroundColor = 'g';
 
         % delete list
         data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.String = 'Box List'; 
         data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.Value = 1; 
     end
     
-    % clear boxes
 end
 

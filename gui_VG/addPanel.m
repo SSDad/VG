@@ -3,7 +3,7 @@ function Panel = addPanel(hFig)
 w_Menu = 0.15;
 w_View = 1-w_Menu;
 
-h_PtInfo = 0.15;
+h_PtInfo = 0.2;
 h_Go = 0.1;
 h_WaveBar = 0.1;
 h_ParamButton = 0.075;
