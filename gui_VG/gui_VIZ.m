@@ -1,4 +1,4 @@
-function gui_VG
+function gui_VIZ
 
 %% global 
 global hFig hFig2
