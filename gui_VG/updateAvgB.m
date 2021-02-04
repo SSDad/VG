@@ -59,10 +59,10 @@ end
 data2.Panel.ParamB.Comp.Text.Param(2).Name(3).ForegroundColor = CLR;
 
 PV = sum(abs(pA-mean(pA)))/numel(pA)*dt;
-data2.Panel.ParamB.Comp.Text.Param(4).Name(2).String = [num2str(mean(pA)*dt, 2 ), 's'];
-data2.Panel.ParamB.Comp.Text.Param(5).Name(2).String = [num2str(PV, 2 ), 's'];
+data2.Panel.ParamB.Comp.Text.Param(5).Name(2).String = [num2str(mean(pA)*dt, 2 ), 's'];
+data2.Panel.ParamB.Comp.Text.Param(6).Name(2).String = [num2str(PV, 2 ), 's'];
 PVP = PV/mean(pA)/dt*100;
-data2.Panel.ParamB.Comp.Text.Param(5).Name(3).String =  [num2str(PVP, 2), '%'];
+data2.Panel.ParamB.Comp.Text.Param(6).Name(3).String =  [num2str(PVP, 2), '%'];
 if PVP <= Thresh(2, 1)
     CLR = 'g';
 elseif PVP >= Thresh(2, 2)

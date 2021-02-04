@@ -5,8 +5,8 @@ h_gap = 0.01;
 hB = (1-h_gap*(1+nR))/nR;
 
 paramName{1} = 'Time';
-paramName{2} = 'AV';
-paramName{3} = '';
+paramName{2} = 'Box';
+paramName{3} = 'AV';
 
 w_gap = 0.0;
 nC = 3;
@@ -34,6 +34,7 @@ for n = 1:nR
                             'Visible', 'on', ...
                             'Enable', 'on');
 end
+Comp.Text.ParamName(2).ForegroundColor = 'm';
 
 for n = 1:nR
     y = yy(n);
@@ -61,7 +62,8 @@ for n = 1:nR
                             'FontWeight', 'bold', ...
                             'BackgroundColor', 'k',...
                             'ForegroundColor', 'g',...
-                            'Visible', 'off', ...
+                            'Visible', 'on', ...
                             'Enable', 'on');
 end
-Comp.Text.ParamValueP(2).Visible = 'on';
+Comp.Text.ParamValueP(1).Visible = 'off';
+Comp.Text.ParamValueP(2).ForegroundColor = 'c';

@@ -10,14 +10,18 @@ global ampAvgB
 data2 = guidata(hFig2);
 x1 = LAVBoxBH.x1;
 x2 = LAVBoxBH.x2;
-data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = [num2str(x2 - x1, 2), ' s'];
+data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = [num2str(x2 - x1, 3), 's'];
+
+boxH = LAVBoxBH.y2-LAVBoxBH.y1;
+data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = [num2str(boxH, 3)];
+data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(boxH/ampAvgB*100, 3), '%'];
 
 nBH = length(wBH);
 m = 0;
 for iBox = 1:nBH
     if data2.Panel.TableBH.Comp.Radiobutton.Box(iBox).Value
         m = m+1;
-        sBH(m) = iBox;
+        sBH(m) = iBox; % selected BH
         t2(m) = wBH(iBox).wib.tt(end);
     end
 end
@@ -39,10 +43,10 @@ yBHAll(yBHAll > yy2B) = nan;
 set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', tt, 'YData', mean(yBHAll)); %avg line
 junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nsBH, 1));
 AV = mean(junk(:), 'omitnan');
-data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = num2str(AV, 2);
+data2.Panel.ParamBH.Comp.Text.ParamValue(3).String = num2str(AV, 2);
 
 AVP = AV/ampAvgB*100;
-data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(AVP, 3), '%'];
+data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = [num2str(AVP, 3), '%'];
 
 if AVP < Thresh(4, 1)
     CLR = 'g';
@@ -51,7 +55,7 @@ elseif AVP > Thresh(4, 2)
 else
     CLR = 'y';
 end
-data2.Panel.ParamBH.Comp.Text.ParamValueP(2).ForegroundColor = CLR;
+data2.Panel.ParamBH.Comp.Text.ParamValueP(3).ForegroundColor = CLR;
 
 % bring avg line to top
 reorderPlotObj(data2.Panel.ViewBH.Comp.hAxis.ViewBH);
