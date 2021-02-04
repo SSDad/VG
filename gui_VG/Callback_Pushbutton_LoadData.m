@@ -9,7 +9,8 @@ global wBH
 
 % data = guidata(hFig);
 data2 = guidata(hFig2);
-fd_VG = fullfile(tempdir, 'VG');
+% fd_VG = fullfile(tempdir, 'VG');
+fd_VG = 'C:\VIZ';
 
 %% load image data
 % [matFileName, dataPath] = uigetfile(data.fd_VG);
@@ -22,15 +23,16 @@ fd_VG = fullfile(tempdir, 'VG');
 %     ffn = 'data_MRN-Mrn202101_Fraction-1_DT-20210118-090323-091507_TE_702';
 %     ffn = 'data_MRN-Mrn202101_Fraction-2_DT-20210118-091655-092650_TE_595';
 
-ffn = uigetfile({'*.mat'; '*.txt'});
+% ffn = uigetfile({'*.mat'; '*.txt'});
 % ffn = uigetfile({'*.mat'});
+[ffn, dataPath] = uigetfile(fd_VG);
 
 if ffn~=0
     [~, ~, ext] = fileparts(ffn);
     if strcmp(ext, '.mat')
-        load(ffn)
+        load(fullfile(dataPath, ffn))
     elseif strcmp(ext, '.txt')
-        [tt, yy, baseLine] = fun_loadRPMTxtData(ffn);
+        [tt, yy, baseLine] = fun_loadRPMTxtData(fullfile(dataPath, ffn));
         tt = tt';
         yy = yy';
         dt = tt(2) - tt(1);

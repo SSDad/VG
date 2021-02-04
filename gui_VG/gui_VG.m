@@ -48,7 +48,8 @@ data.WaveParam.dt = 1/20;
 data.WaveParam.T = 30;
 
 % save data
-fd_VG = fullfile(tempdir, 'VG');
+% fd_VG = fullfile(tempdir, 'VG');
+fd_VG = 'C:\VIZ';
 if ~exist(fd_VG, 'dir')
     mkdir(fd_VG);
 end
