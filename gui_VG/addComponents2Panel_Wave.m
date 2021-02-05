@@ -17,7 +17,7 @@ Comp.hAxis.Wave = axes('Parent',                   hPanel, ...
 
 Comp.hAxis.Wave.XLabel.String = 'Time (s)';                        
 Comp.hAxis.Wave.YLabel.String = 'Relative Pressure (kPa)';                        
-% Comp.hAxis.Image.XAxisLocation='top';
+Comp.hAxis.Wave.Box='on';
 hold(Comp.hAxis.Wave, 'on')
 
 Comp.hPlotObj.Wave = line(Comp.hAxis.Wave, 'XData', [], 'YData', [],...
