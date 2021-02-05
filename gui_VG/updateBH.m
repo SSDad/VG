@@ -6,6 +6,7 @@ global wBH
 global LAVBoxBH
 global Thresh
 global ampAvgB
+global paramBH
 
 data2 = guidata(hFig2);
 
@@ -29,6 +30,9 @@ if isempty(sBH) % all off
     data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = '';
     
     data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Visible = 'off';  
+    paramBH.AV = [];
+    paramBH.boxH = [];
+    
 else
     
     x1 = LAVBoxBH.x1;
@@ -37,7 +41,11 @@ data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = [num2str(x2 - x1, 3), 's'];
 
 boxH = LAVBoxBH.y2-LAVBoxBH.y1;
 data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = [num2str(boxH, 3)];
-data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(boxH/ampAvgB*100, 3), '%'];
+paramBH.boxH = boxH;
+
+if ~isempty(ampAvgB)
+    data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(boxH/ampAvgB*100, 3), '%'];
+end
 
 tt2 = min([t2 x2]);
 tt1 = max(0, x1);
@@ -66,19 +74,21 @@ end
 junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nsBH, 1));
 AV = mean(junk(:), 'omitnan');
 data2.Panel.ParamBH.Comp.Text.ParamValue(3).String = num2str(AV, 2);
+paramBH.AV = AV;
 
-AVP = AV/ampAvgB*100;
-data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = [num2str(AVP, 3), '%'];
+if ~isempty(ampAvgB)
+    AVP = AV/ampAvgB*100;
+    data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = [num2str(AVP, 3), '%'];
 
-if AVP < Thresh(4, 1)
-    CLR = 'g';
-elseif AVP > Thresh(4, 2)
-    CLR = 'r';
-else
-    CLR = 'y';
+    if AVP < Thresh(4, 1)
+        CLR = 'g';
+    elseif AVP > Thresh(4, 2)
+        CLR = 'r';
+    else
+        CLR = 'y';
+    end
+    data2.Panel.ParamBH.Comp.Text.ParamValueP(3).ForegroundColor = CLR;
 end
-data2.Panel.ParamBH.Comp.Text.ParamValueP(3).ForegroundColor = CLR;
-
 % bring avg line to top
 reorderPlotObj(data2.Panel.ViewBH.Comp.hAxis.ViewBH);
 end

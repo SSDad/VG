@@ -1,6 +1,7 @@
 function clearB
 
 global hFig2
+global ampAvgB
 
 data2 = guidata(hFig2);
 
@@ -15,3 +16,8 @@ for n = 1:6
 end
 
 data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'off';
+
+ampAvgB = [];
+data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = '';
+data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = '';
+

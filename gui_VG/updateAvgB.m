@@ -8,6 +8,7 @@ global avgBnP
 global Thresh
 global ampAvgB
 global ViewBYLim
+global paramBH
 
 data2 = guidata(hFig2);
 
@@ -76,5 +77,22 @@ end
 data2.Panel.ParamB.Comp.Text.ParamValueP(2).ForegroundColor = CLR;
 
 syncYLim;
+
+% paramBH
+if ~isempty(paramBH.AV)
+    data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(paramBH.boxH/ampAvgB*100, 3), '%'];
+
+    AVP = paramBH.AV/ampAvgB*100;
+    data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = [num2str(AVP, 3), '%'];
+
+    if AVP < Thresh(4, 1)
+        CLR = 'g';
+    elseif AVP > Thresh(4, 2)
+        CLR = 'r';
+    else
+        CLR = 'y';
+    end
+    data2.Panel.ParamBH.Comp.Text.ParamValueP(3).ForegroundColor = CLR;
+end
 
 end
