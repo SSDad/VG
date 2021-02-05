@@ -7,6 +7,7 @@ global yBAll periodBAll % all previous wave y and period
 global avgBnP
 global Thresh
 global ampAvgB
+global ViewBYLim
 
 data2 = guidata(hFig2);
 
@@ -32,13 +33,15 @@ else
 end
 
 %% update avg
+if ~isempty(yA)
     x = 1:avgBnP;
-    set(hAvg, 'XData', x, 'YData', mean(yA));
-    junk = range(yA(:));
-    data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = [min(yA(:)) - junk*.1 max(yA(:)) + junk*.1];
+set(hAvg, 'XData', x, 'YData', mean(yA));
+junk = range(yA(:));
+ViewBYLim = [min(yA(:)) - junk*.1 max(yA(:)) + junk*.1];
+data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = ViewBYLim;
 
-    % bring avg line to top
-    reorderPlotObj(data2.Panel.ViewB.Comp.hAxis.ViewB);
+% bring avg line to top
+reorderPlotObj(data2.Panel.ViewB.Comp.hAxis.ViewB);
 
 %% update param
 yAmean = mean(yA);
@@ -71,3 +74,7 @@ else
     CLR = 'y';
 end
 data2.Panel.ParamB.Comp.Text.ParamValueP(2).ForegroundColor = CLR;
+
+syncYLim;
+
+end

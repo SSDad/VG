@@ -10,6 +10,7 @@ data2 = guidata(hFig2);
 iBox = data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.Value-1;
 
 % update ViewBH
+if iBox > 0
 delete(wBH(iBox).hLine);
 
 hWaveComp = data2.Panel.Wave.Comp;
@@ -57,21 +58,6 @@ data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.Value = nBox+1;
 % update yBAll periodBAll
 updateBH;
 
-% yA = [];
-% pA = [];
-% for iBox = 1:nBox
-%     if data2.Panel.TableB.Comp.Radiobutton.Box(iBox).Value
-%         yA = [yA; avgB(iBox).wib.yy];
-%         pA = [pA diff(avgB(iBox).wib.locs2)];
-%     end
-% end
-% yBAll = yA;
-% periodBAll = pA;
-
-% % update avg line
-% data2.Panel.ViewB.Comp.hPlotObj.Avg.YData = mean(yA);
-
 guidata(hFig2, data2)
 
-% updateAvgB;
-% updateLAVBoxParam;
+end

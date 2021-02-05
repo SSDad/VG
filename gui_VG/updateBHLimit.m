@@ -3,7 +3,7 @@ function updateBHLimit
 global hFig2
 global wBH
 global wiwBH
-global wBHLim
+global ViewBHLim
 
 data2 = guidata(hFig2);
 
@@ -32,7 +32,7 @@ yr = y2 - y1;
 data2.Panel.ViewBH.Comp.hAxis.ViewBH.XLim = [x1 - xr*0.1 x2 + xr*0.1];
 data2.Panel.ViewBH.Comp.hAxis.ViewBH.YLim = [y1 - yr*0.1 y2 + yr*0.1];
 
-wBHLim.x1 = x1;
-wBHLim.x2 = x2;
-wBHLim.y1 = y1;
-wBHLim.y2 = y2;
+ViewBHLim.x1 = x1;
+ViewBHLim.x2 = x2;
+ViewBHLim.y1 = y1;
+ViewBHLim.y2 = y2;

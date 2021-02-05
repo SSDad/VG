@@ -23,3 +23,5 @@ wiwBH.yy = yy(ind(1):ind(2)) - baseLine;
 set(hwiwBH, 'XData', wiwBH.tt, 'YData', wiwBH.yy);
 
 updateBHLimit;
+
+syncYLim;

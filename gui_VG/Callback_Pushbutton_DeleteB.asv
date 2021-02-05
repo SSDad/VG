@@ -79,9 +79,6 @@ periodBAll = pA;
 
 guidata(hFig2, data2)
 
-if nBox == 0
-    clearB
-else
-    updateAvgB;
-    updateLAVBoxParam;
+updateAvgB;
+updateLAVBoxParam;
 end

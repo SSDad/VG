@@ -7,6 +7,7 @@ global LAVBox
 global BoxColor BoxColorBH
 global hFig_ThreshSetting
 global Thresh
+global ViewBYLim ViewBHLim
 
 dt = 1/20;
 TimeRange = 30;
@@ -28,6 +29,9 @@ Thresh = [7 8
                8 9
                6 7
                10 11];
+
+ViewBYLim = [];           
+ViewBHLim = [];
 
 %% main window
 hFig2 = figure('MenuBar',            'none', ...
