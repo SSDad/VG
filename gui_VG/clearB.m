@@ -20,4 +20,3 @@ data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'off';
 ampAvgB = [];
 data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = '';
 data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = '';
-

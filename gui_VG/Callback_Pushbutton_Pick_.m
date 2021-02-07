@@ -204,8 +204,5 @@ elseif strcmp(src.Tag, 'BH')
         data2.Panel.AllWave.Comp = hAllWaveComp;
         data2.Panel.Wave.Comp = hWaveComp;
         guidata(hFig2, data2);
-
     end
-
 end
-
