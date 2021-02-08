@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="1006430704" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="3221425606" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>VIZ</param.appname>
     <param.icon />
     <param.icons />
@@ -148,6 +148,7 @@
       <file>${PROJECT_ROOT}\gui_VG\addPanel.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addPanel2.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Edit_Box_.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\Callback_Edit_pps_.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Edit_Thresh_.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Edit_Time_.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Edit_VLimit_.m</file>
