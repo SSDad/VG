@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="1006430704" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>VIZ</param.appname>
     <param.icon />
     <param.icons />
@@ -174,6 +174,7 @@
       <file>${PROJECT_ROOT}\gui_VG\Callback_WavePickWin.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_WaveRect.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_WaveWin.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\clearB.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fig2CloseReq.m</file>
       <file>${PROJECT_ROOT}\gui_VG\figCloseReq.m</file>
       <file>${PROJECT_ROOT}\gui_VG\figCloseReq_ThreshSetting.m</file>
@@ -181,6 +182,7 @@
       <file>${PROJECT_ROOT}\gui_VG\fun_getLAV.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_loadRPMTxtData.m</file>
       <file>${PROJECT_ROOT}\gui_VG\reorderPlotObj.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\syncYLim.m</file>
       <file>${PROJECT_ROOT}\gui_VG\updateAvgB.m</file>
       <file>${PROJECT_ROOT}\gui_VG\updateBH.m</file>
       <file>${PROJECT_ROOT}\gui_VG\updateBHLimit.m</file>

@@ -67,8 +67,11 @@ if tt(end) > 5
     % WaveRect init
     if ~bWaveRectInit
         bWaveRectInit = 1;
-        y_WaveRect(1) = 0;
-        y_WaveRect(2) = (max(yy)+min(yy))/2-baseLine;
+        
+        junk(1) = 0;
+        junk(2) = (max(yy)+min(yy))/2-baseLine;
+        y_WaveRect(1) = min(junk);
+        y_WaveRect(2) = max(junk);
         hRect.Position = [x1-xb y_WaveRect(1) x2-x1+xb*2 diff(y_WaveRect)];
         hRect.Visible = 'on';
 

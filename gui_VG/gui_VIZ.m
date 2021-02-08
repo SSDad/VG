@@ -5,11 +5,15 @@ global hFig hFig2
 global TimeRange
 global waveLW boxAlpha
 global tC
+global bWaveRectInit;
+global y_WaveRect;
 
 TimeRange = 30;
 waveLW= 3;
 boxAlpha = 0.25;
 tC = 20;
+bWaveRectInit = 0;
+y_WaveRect = [nan nan];
 
 %% main window
 hFig = figure('MenuBar',            'none', ...
