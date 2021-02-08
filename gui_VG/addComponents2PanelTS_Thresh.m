@@ -9,7 +9,7 @@ hB = (1-h_gap*(1+nR))/nR;
 paramName{1} = 'GAV';
 paramName{2} = 'PV';
 paramName{3} = 'LAV';
-paramName{4} = 'AV';
+paramName{4} = 'BH-AV';
 
 w_gap = [0 0 0. 0.05 0 0.05];
 wC = [0.2 0.3 0.05 0.3 0.05];
@@ -22,7 +22,7 @@ for n = 1:nR
     yy(n) = h_gap*(nR-n+1)+hB*(nR-n);
 end
 
-FS = 12;
+FS = 11;
 for n = 1:nR
     y = yy(n);
     Comp.Text.ParamName(n) = uicontrol('parent', hPanel, ...

@@ -19,7 +19,7 @@ bWaveRectInit = 0;
 y_WaveRect = [nan nan];
 
 tsd_prev = 0;
-tE_sd = 5;
+tE_sd = 15;
 
 %% main window
 hFig = figure('MenuBar',            'none', ...
