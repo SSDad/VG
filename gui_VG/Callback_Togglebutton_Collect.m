@@ -2,10 +2,12 @@ function Callback_Togglebutton_Collect(src, evnt)
 
 global hFig
 global tt yy tStart
+global pps
 global dyn
 global baseLine
 global bWaveRectInit;
 global bBHStart bBHReset tC
+global tsd_prev
 
 str = src.String;
 data = guidata(hFig);
@@ -38,7 +40,7 @@ if strcmp(str, 'Go')
         dyn = dynamometer;
     end
 
-    dt = data.WaveParam.dt;
+    dt = 1/pps;
 
     % start recording
     dyn.start;
@@ -80,18 +82,21 @@ else
     src.ForegroundColor = 'g';
     src.BackgroundColor = [1 1 1]*0.25;
     
-    fd_VG = data.fd_VG;
-    
-    MRN = data.Panel.PtInfo.Comp.Edit.MRN.String;
-    fd_MRN = fullfile(fd_VG, MRN);
-    if ~exist(fd_MRN, 'dir')
-        mkdir(fd_MRN);
-    end
-    
-    Fraction = data.Panel.PtInfo.Comp.Edit.Fraction.String;
-    datafn = fullfile(fd_MRN, ['Wave_MRN-', MRN, '_F-', Fraction, '_DT-', datestr(tStart,'YYYYmmDD-HHMMSS'), '-',...
-        datestr(now,'HHMMSS'), '_TE_', num2str(round(range(tt))), '.mat']);
-    save(datafn, 'tt', 'yy', 'baseLine');
+%     % save wave
+tsd_prev = 0;
+
+%     fd_VG = data.fd_VG;
+%     
+%     MRN = data.Panel.PtInfo.Comp.Edit.MRN.String;
+%     fd_MRN = fullfile(fd_VG, MRN);
+%     if ~exist(fd_MRN, 'dir')
+%         mkdir(fd_MRN);
+%     end
+%     
+%     Fraction = data.Panel.PtInfo.Comp.Edit.Fraction.String;
+%     datafn = fullfile(fd_MRN, ['Wave_MRN-', MRN, '_F-', Fraction, '_DT-', datestr(tStart,'YYYYmmDD-HHMMSS'), '-',...
+%         datestr(now,'HHMMSS'), '_TE_', num2str(round(range(tt))), '.mat']);
+%     save(datafn, 'tt', 'yy', 'baseLine');
 
     data.Panel.Analysis.hPanel.Visible = 'on'; % disable analysis
 
