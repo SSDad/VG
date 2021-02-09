@@ -2,6 +2,9 @@ function Comp = addComponents2Panel_Wave(hPanel)
 
 global waveLW
 global TimeRange extT
+global yLim_Wave
+global y_WaveRect
+global boxAlpha
 
 FC = [255 255 102]/255;
 FC = [255 255 255]/255;
@@ -22,7 +25,7 @@ Comp.hAxis.Wave.YLabel.String = 'Relative Pressure (kPa)';
 Comp.hAxis.Wave.XLim = [0 TimeRange+extT];
 Comp.hAxis.Wave.YLim = [-0.1 1];
 Comp.hAxis.Wave.Box='on';
-hold(Comp.hAxis.Wave, 'on')
+% hold(Comp.hAxis.Wave, 'on')
 
 Comp.hPlotObj.Wave = line(Comp.hAxis.Wave, 'XData', [], 'YData', [],...
     'Marker', 'none',  'MarkerSize', 24,...
@@ -39,13 +42,13 @@ Comp.hAxis.Box = axes('Parent',                   hPanel, ...
                             'Position',                 axPos);
 
 Comp.hAxis.Box.XLim = [0 TimeRange+extT];
-Comp.hAxis.Box.YLim = [-0.1 1];
+Comp.hAxis.Box.YLim = yLim_Wave;
 Comp.hAxis.Box.XTick = [];
 Comp.hAxis.Box.YTick = [];
 
-pos = [-extT 0 TimeRange+extT*3 0.3];
+pos = [-extT y_WaveRect(1) TimeRange+extT*3 diff(y_WaveRect)];
 Comp.hPlotObj.WaveRect = images.roi.Rectangle(Comp.hAxis.Box, 'Position', pos, 'Color', 'g',...
-        'LineWidth', 1, 'FaceAlpha', 0.3, 'Tag', 'WaveRect', 'Visible', 'on');
+        'LineWidth', 1, 'FaceAlpha', boxAlpha, 'Tag', 'WaveRect', 'Visible', 'on');
 addlistener(Comp.hPlotObj.WaveRect, 'MovingROI', @Callback_WaveRect);
 
 axes(Comp.hAxis.Box);

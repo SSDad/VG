@@ -3,7 +3,7 @@ function updateWave
 global hFig
 global tt yy 
 global baseLine
-global bWaveRectInit;
+% global bWaveRectInit;
 global y_WaveRect;
 global TimeRange extT pps
 global bBHStart bBHReset t0 tC tE BHC
@@ -19,29 +19,30 @@ set(hWave, 'XData', tt, 'YData', yy-baseLine);
 hRadioAuto = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
 
 % hLW =data.Panel.Param.Comp.subPanel.Box.Edit.LW;
-hBoxHi =data.Panel.Param.Comp.subPanel.Box.Edit.BoxHi;
-hBoxLo =data.Panel.Param.Comp.subPanel.Box.Edit.BoxLo;
+% hBoxHi =data.Panel.Param.Comp.subPanel.Box.Edit.BoxHi;
+% hBoxLo =data.Panel.Param.Comp.subPanel.Box.Edit.BoxLo;
 hBHC = data.Panel.BHC.Comp.Edit.Counter;
 hBH = data.Panel.BH.Comp.Togglebutton.BH;
 
 dt = 1/pps;
 nP = round(TimeRange/dt);
-if tt(end) > TimeRange
-    hAx.XLim = [tt(end)-TimeRange tt(end)+extT];
-%     junk = hAx.XLim
-    if length(yy) > nP
-        yMax = max(yy(end-nP:end));
-        yMin = min(yy(end-nP:end));
-    else
-        yMax = max(yy);
-        yMin = min(yy);
-    end
-else
-    hAx.XLim = [0 TimeRange+extT];
-%     junk = hAx.XLim
-        yMax = max(yy);
-        yMin = min(yy);
-end
+xMax = max(tt(end)+extT, TimeRange+extT);
+xMin = xMax - TimeRange - extT;
+hAx.XLim = [xMin xMax];
+
+iy = max(length(yy)-nP, 1);
+        yMax = max(yy(iy:end));
+        yMin = min(yy(iy:end));
+%     else
+%         yMax = max(yy);
+%         yMin = min(yy);
+%     end
+% else
+%     hAx.XLim = [0 TimeRange+extT];
+% %     junk = hAx.XLim
+%         yMax = max(yy);
+%         yMin = min(yy);
+% end
 
 yMax = max(yMax-baseLine, 1);
 yMin = min(yMin-baseLine, -0.1);
@@ -59,34 +60,34 @@ end
 % set(hAvgLine, 'XData', hAx.XLim, 'YData', [yAvg yAvg]);
 
 hRect = data.Panel.Wave.Comp.hPlotObj.WaveRect;
-x1 = hAx.XLim(1);
-x2 = hAx.XLim(2);
-xb = (x2-x1)/10;
+% x1 = hAx.XLim(1);
+% x2 = hAx.XLim(2);
+% xb = (x2-x1)/10;
 
-if tt(end) > 5
+% if tt(end) > 5
     % WaveRect init
-    if ~bWaveRectInit
-        bWaveRectInit = 1;
+%     if ~bWaveRectInit
+%         bWaveRectInit = 1;
         
-        junk(1) = 0;
-        junk(2) = (max(yy)+min(yy))/2-baseLine;
-        y_WaveRect(1) = min(min(junk), 0);
-        y_WaveRect(2) = max(max(junk), 0.3);
-        hRect.Position = [x1-xb y_WaveRect(1) x2-x1+xb*2 diff(y_WaveRect)];
-        hRect.Position(2) = [x1-xb y_WaveRect(1) x2-x1+xb*2 diff(y_WaveRect)];
-        hRect.Visible = 'on';
+%         junk(1) = 0;
+%         junk(2) = (max(yy)+min(yy))/2-baseLine;
+%         y_WaveRect(1) = min(min(junk), 0);
+%         y_WaveRect(2) = max(max(junk), 0.3);
+%         hRect.Position = [x1-xb y_WaveRect(1) x2-x1+xb*2 diff(y_WaveRect)];
+%         hRect.Position(2) = [x1-xb y_WaveRect(1) x2-x1+xb*2 diff(y_WaveRect)];
+%         hRect.Visible = 'on';
 
-        pos = hRect.Position;
+%         pos = hRect.Position;
 
-        YLim = hAx.YLim;
-        hgPatch = data.Panel.Bar.Comp.hPlotObj.gPatch;
+%         YLim = hAx.YLim;
+%         hgPatch = data.Panel.Bar.Comp.hPlotObj.gPatch;
 %         hrPatch = data.Panel.Bar.Comp.hPlotObj.rPatch;
-        set(hgPatch, 'XData', [0 0 1 1 ], 'YData', [pos(2) pos(2)+pos(4) pos(2)+pos(4) pos(2) ]);
+%         set(hgPatch, 'XData', [0 0 1 1 ], 'YData', [pos(2) pos(2)+pos(4) pos(2)+pos(4) pos(2) ]);
 %         set(hrPatch, 'XData', [0 0 1 1 ], 'YData', [pos(2)+pos(4) YLim(2) YLim(2) pos(2)+pos(4)]);
         
-        hBoxLo.String = num2str(pos(2),  '%.2f');
-        hBoxHi.String = num2str(pos(2) + pos(4),  '%.2f');
-    end
+%         hBoxLo.String = num2str(pos(2),  '%.2f');
+%         hBoxHi.String = num2str(pos(2) + pos(4),  '%.2f');
+%     end
 %     hRect.Position(1) = x1 - xb;
 %     hRect.Position(3) = x2-x1+xb*2;
         
@@ -104,7 +105,7 @@ if tt(end) > 5
     hB = diff(hAx2.YLim)/20;
     hBar.Position = [x1 y1B x2-x1 hB];
     
-end
+% end
 
 %% update BHC
 if (bBHReset )

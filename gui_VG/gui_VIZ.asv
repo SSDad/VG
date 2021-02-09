@@ -57,7 +57,7 @@ data.Panel.Calib.Comp = addComponents2Panel_Calib(data.Panel.Calib.hPanel);
 data.Panel.Param.Comp = addComponents2Panel_Param(data.Panel.Param.hPanel);
 
 data.Panel.Wave.Comp = addComponents2Panel_Wave(data.Panel.Wave.hPanel);
-data.Panel.Bar.Comp = addComponents2Panel_Bar(data.Panel.Bar.hPanel, data.Panel.Wave.Comp.hAxis.Wave);
+data.Panel.Bar.Comp = addComponents2Panel_Bar(data.Panel.Bar.hPanel, );
 
 data.FC = [255 255 102]/255;
 data.ActiveAxis.MovePoints = 0;

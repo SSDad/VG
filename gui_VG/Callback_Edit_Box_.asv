@@ -16,17 +16,22 @@ if strcmp(src.Tag, 'LW')
     LW = str2double(data.Panel.Param.Comp.subPanel.Box.Edit.LW.String);
     hW.LineWidth = LW;
 elseif strcmp(src.Tag, 'BoxHi')
-     y_WaveRect(2) = str2double(data.Panel.Param.Comp.subPanel.Box.Edit.BoxHi.String);
+     y_WaveRect(2) = str2double(data.Panel.Param.Comp.subPanel.Box.Edit.BoxHi.String)
      hBox.Position(4) = y_WaveRect(2) - hBox.Position(2);
     
+%      y_WaveRect(2) = boxHi;
+%      hPatch.YData = [y_WaveRect(1) y_WaveRect(1) y_WaveRect(2) y_WaveRect(2)];
      set(hPatch, 'XData', [0 1 1 0 ], 'YData', [y_WaveRect(1) y_WaveRect(1) y_WaveRect(2) y_WaveRect(2)]);
 
 elseif strcmp(src.Tag, 'BoxLo')
     y0 = hBox.Position(2);
-    y_WaveRect(1) = str2double(data.Panel.Param.Comp.subPanel.Box.Edit.BoxLo.String);
+    y_WaveRect(1) = str2double(data.Panel.Param.Comp.subPanel.Box.Edit.BoxLo.String)
     hBox.Position(2) = y_WaveRect(1);
     hBox.Position(4) = y0 - y_WaveRect(1) + hBox.Position(4);
 
+    y_WaveRect(2) = 
+%     y_WaveRect(1) = boxLo;
+%      hPatch.YData = [y_WaveRect(1) y_WaveRect(1) y_WaveRect(2) y_WaveRect(2)];
      set(hPatch, 'XData', [0 1 1 0 ], 'YData', [y_WaveRect(1) y_WaveRect(1) y_WaveRect(2) y_WaveRect(2)]);
 elseif strcmp(src.Tag, 'BoxAlpha')
     boxAlpha = str2double(data.Panel.Param.Comp.subPanel.Box.Edit.alpha.String);

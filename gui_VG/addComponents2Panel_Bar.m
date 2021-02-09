@@ -1,4 +1,6 @@
-function Comp = addComponents2Panel_Bar(hPanel)
+function Comp = addComponents2Panel_Bar(hPanel, hWaveAxis)
+
+global y_WaveRect
 
 bgColor = [0 220 220]/255;
 boxColor = [0 220 50]/255;
@@ -14,9 +16,12 @@ Comp.hAxis.Bar = axes('Parent',                   hPanel, ...
                             'YTick', [], ...
                             'Visible', 'on');
 
-hold(Comp.hAxis.Bar, 'on')
+Comp.hAxis.Bar.XLim = [0 1];
+linkaxes([Comp.hAxis.Bar hWaveAxis], 'y');
+% hold(Comp.hAxis.Bar, 'on')
 
-Comp.hPlotObj.gPatch = patch(Comp.hAxis.Bar, 'XData', [0 0 0 0 ], 'YData', [0 0 0 0 ], ...
+Comp.hPlotObj.gPatch = patch(Comp.hAxis.Bar, 'XData', [0 1 1 0 ],...
+    'YData', [y_WaveRect(1) y_WaveRect(1) y_WaveRect(2) y_WaveRect(2)], ...
     'EdgeColor', 'none', 'FaceColor', boxColor, 'FaceAlpha', 0.9);
 
 % Comp.hPlotObj.rPatch = patch(Comp.hAxis.Bar, 'XData', [0 0 0 0 ], 'YData', [0 0 0 0 ], ...
@@ -24,3 +29,4 @@ Comp.hPlotObj.gPatch = patch(Comp.hAxis.Bar, 'XData', [0 0 0 0 ], 'YData', [0 0 
 
 Comp.hPlotObj.Bar = rectangle(Comp.hAxis.Bar, 'Position', [0 0 0 0 ], ...
     'EdgeColor', 'none', 'FaceColor', barColor, 'LineWidth', 2);
+
