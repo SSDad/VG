@@ -5,7 +5,7 @@ global tt yy
 global baseLine
 global bWaveRectInit;
 global y_WaveRect;
-global TimeRange pps
+global TimeRange extT pps
 global bBHStart bBHReset t0 tC tE BHC
 global tsd_prev tE_sd
 
@@ -16,7 +16,7 @@ hWave = data.Panel.Wave.Comp.hPlotObj.Wave;
 set(hWave, 'XData', tt, 'YData', yy-baseLine);
 
 % hRadioM = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Manual;
-hRadioA = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
+hRadioAuto = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
 
 % hLW =data.Panel.Param.Comp.subPanel.Box.Edit.LW;
 hBoxHi =data.Panel.Param.Comp.subPanel.Box.Edit.BoxHi;
@@ -24,13 +24,11 @@ hBoxLo =data.Panel.Param.Comp.subPanel.Box.Edit.BoxLo;
 hBHC = data.Panel.BHC.Comp.Edit.Counter;
 hBH = data.Panel.BH.Comp.Togglebutton.BH;
 
-T = TimeRange;
-extT = T/20;
-% T = data.WaveParam.T;
 dt = 1/pps;
-nP = round(T/dt);
-if tt(end) > T
-    hAx.XLim = [tt(end)-T tt(end)+extT];
+nP = round(TimeRange/dt);
+if tt(end) > TimeRange
+    hAx.XLim = [tt(end)-TimeRange tt(end)+extT];
+%     junk = hAx.XLim
     if length(yy) > nP
         yMax = max(yy(end-nP:end));
         yMin = min(yy(end-nP:end));
@@ -39,14 +37,15 @@ if tt(end) > T
         yMin = min(yy);
     end
 else
-        hAx.XLim = [0 T+extT];
+    hAx.XLim = [0 TimeRange+extT];
+%     junk = hAx.XLim
         yMax = max(yy);
         yMin = min(yy);
 end
 
-yMax = yMax-baseLine;
-yMin = yMin-baseLine;
-if hRadioA.Value
+yMax = max(yMax-baseLine, 1);
+yMin = min(yMin-baseLine, -0.1);
+if hRadioAuto.Value
     yB = (yMax-yMin)/10;
     if yMax>yMin
         hAx.YLim = [yMin-yB yMax+yB];
@@ -71,9 +70,10 @@ if tt(end) > 5
         
         junk(1) = 0;
         junk(2) = (max(yy)+min(yy))/2-baseLine;
-        y_WaveRect(1) = min(junk);
-        y_WaveRect(2) = max(junk);
+        y_WaveRect(1) = min(min(junk), 0);
+        y_WaveRect(2) = max(max(junk), 0.3);
         hRect.Position = [x1-xb y_WaveRect(1) x2-x1+xb*2 diff(y_WaveRect)];
+        hRect.Position(2) = [x1-xb y_WaveRect(1) x2-x1+xb*2 diff(y_WaveRect)];
         hRect.Visible = 'on';
 
         pos = hRect.Position;
@@ -87,8 +87,8 @@ if tt(end) > 5
         hBoxLo.String = num2str(pos(2),  '%.2f');
         hBoxHi.String = num2str(pos(2) + pos(4),  '%.2f');
     end
-    hRect.Position(1) = x1 - xb;
-    hRect.Position(3) = x2-x1+xb*2;
+%     hRect.Position(1) = x1 - xb;
+%     hRect.Position(3) = x2-x1+xb*2;
         
     % bar
     hAx2 = data.Panel.Bar.Comp.hAxis.Bar;

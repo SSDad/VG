@@ -28,7 +28,7 @@ if strcmp(str, 'Go')
     bBHReset = 0;
     
     bWaveRectInit = 0;
-    data.Panel.Wave.Comp.hPlotObj.WaveRect.Position = [0 0 0 0];
+%     data.Panel.Wave.Comp.hPlotObj.WaveRect.Position = [0 0 0 0];
 
     
     src.String = 'Stop';

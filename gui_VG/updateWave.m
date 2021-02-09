@@ -59,20 +59,21 @@ end
 % set(hAvgLine, 'XData', hAx.XLim, 'YData', [yAvg yAvg]);
 
 hRect = data.Panel.Wave.Comp.hPlotObj.WaveRect;
-x1 = hAx.XLim(1);
-x2 = hAx.XLim(2);
-xb = (x2-x1)/10;
+% x1 = hAx.XLim(1);
+% x2 = hAx.XLim(2);
+% xb = (x2-x1)/10;
 
 if tt(end) > 5
     % WaveRect init
     if ~bWaveRectInit
         bWaveRectInit = 1;
         
-        junk(1) = 0;
-        junk(2) = (max(yy)+min(yy))/2-baseLine;
-        y_WaveRect(1) = min(junk);
-        y_WaveRect(2) = max(junk);
-        hRect.Position = [x1-xb y_WaveRect(1) x2-x1+xb*2 diff(y_WaveRect)];
+%         junk(1) = 0;
+%         junk(2) = (max(yy)+min(yy))/2-baseLine;
+%         y_WaveRect(1) = min(min(junk), 0);
+%         y_WaveRect(2) = max(max(junk), 0.3);
+%         hRect.Position = [x1-xb y_WaveRect(1) x2-x1+xb*2 diff(y_WaveRect)];
+%         hRect.Position(2) = [x1-xb y_WaveRect(1) x2-x1+xb*2 diff(y_WaveRect)];
         hRect.Visible = 'on';
 
         pos = hRect.Position;
@@ -86,8 +87,8 @@ if tt(end) > 5
         hBoxLo.String = num2str(pos(2),  '%.2f');
         hBoxHi.String = num2str(pos(2) + pos(4),  '%.2f');
     end
-    hRect.Position(1) = x1 - xb;
-    hRect.Position(3) = x2-x1+xb*2;
+%     hRect.Position(1) = x1 - xb;
+%     hRect.Position(3) = x2-x1+xb*2;
         
     % bar
     hAx2 = data.Panel.Bar.Comp.hAxis.Bar;
