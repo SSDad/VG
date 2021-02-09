@@ -1,17 +1,18 @@
 function Callback_WaveRect(src, evnt)
 
 global hFig
-global y_WaveRect
+% global y_WaveRect
 
 pos = src.Position;
-y_WaveRect(1) = pos(2);
-y_WaveRect(2) = pos(2) + pos(4);
+% y_WaveRect(1) = pos(2);
+% y_WaveRect(2) = pos(2) + pos(4);
 
 data = guidata(hFig);
+data.Panel.Bar.Comp.hPlotObj.gRect.Position = pos;
 % YLim = data.Panel.Bar.Comp.hAxis.Bar.YLim;
-hgPatch = data.Panel.Bar.Comp.hPlotObj.gPatch;
+% hgPatch = data.Panel.Bar.Comp.hPlotObj.gPatch;
 % hrPatch = data.Panel.Bar.Comp.hPlotObj.rPatch;
-set(hgPatch, 'XData', [0 0 1 1 ], 'YData', [pos(2) pos(2)+pos(4) pos(2)+pos(4) pos(2) ]);
+% set(hgPatch, 'XData', [0 0 1 1 ], 'YData', [pos(2) pos(2)+pos(4) pos(2)+pos(4) pos(2) ]);
 % set(hrPatch, 'XData', [0 0 1 1 ], 'YData', [pos(2)+pos(4) YLim(2) YLim(2) pos(2)+pos(4)]);
 
 data.Panel.Param.Comp.subPanel.Box.Edit.BoxHi.String = num2str(pos(2) + pos(4),  '%.2f');

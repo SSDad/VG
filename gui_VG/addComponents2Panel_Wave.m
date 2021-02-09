@@ -48,7 +48,7 @@ Comp.hAxis.Box.YTick = [];
 
 pos = [-extT y_WaveRect(1) TimeRange+extT*3 diff(y_WaveRect)];
 Comp.hPlotObj.WaveRect = images.roi.Rectangle(Comp.hAxis.Box, 'Position', pos, 'Color', 'g',...
-        'LineWidth', 1, 'FaceAlpha', boxAlpha, 'Tag', 'WaveRect', 'Visible', 'on');
+        'LineWidth', 1, 'FaceAlpha', boxAlpha, 'Tag', 'WaveRect', 'Visible', 'off');
 addlistener(Comp.hPlotObj.WaveRect, 'MovingROI', @Callback_WaveRect);
 
 axes(Comp.hAxis.Box);

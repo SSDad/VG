@@ -25,7 +25,7 @@ yInit_WaveRect = [0 0.3];
 y_WaveRect = yInit_WaveRect;
 
 tsd_prev = 0;
-tE_sd = 15;
+tE_sd = 30;  % auto save data
 
 BHC = 20;
 
@@ -57,7 +57,8 @@ data.Panel.Calib.Comp = addComponents2Panel_Calib(data.Panel.Calib.hPanel);
 data.Panel.Param.Comp = addComponents2Panel_Param(data.Panel.Param.hPanel);
 
 data.Panel.Wave.Comp = addComponents2Panel_Wave(data.Panel.Wave.hPanel);
-data.Panel.Bar.Comp = addComponents2Panel_Bar(data.Panel.Bar.hPanel, );
+data.Panel.Bar.Comp = addComponents2Panel_Bar(data.Panel.Bar.hPanel, data.Panel.Wave.Comp);
+linkprop([Comp.hPlotObj.gRect, data.Panel.Wave.Comp.hPlotObj.WaveRect], 'Position');
 
 data.FC = [255 255 102]/255;
 data.ActiveAxis.MovePoints = 0;

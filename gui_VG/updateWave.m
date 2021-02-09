@@ -4,7 +4,7 @@ global hFig
 global tt yy 
 global baseLine
 % global bWaveRectInit;
-global y_WaveRect;
+% global y_WaveRect;
 global TimeRange extT pps
 global bBHStart bBHReset t0 tC tE BHC
 global tsd_prev tE_sd
@@ -13,7 +13,6 @@ global tsd_prev tE_sd
 data = guidata(hFig);
 hAx = data.Panel.Wave.Comp.hAxis.Wave;
 hWave = data.Panel.Wave.Comp.hPlotObj.Wave;
-set(hWave, 'XData', tt, 'YData', yy-baseLine);
 
 % hRadioM = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Manual;
 hRadioAuto = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
@@ -26,23 +25,29 @@ hBH = data.Panel.BH.Comp.Togglebutton.BH;
 
 dt = 1/pps;
 nP = round(TimeRange/dt);
+
+idx1 = max(length(yy)-nP, 1);
+set(hWave, 'XData', tt(idx1:end), 'YData', yy(idx1:end)-baseLine);
+
 xMax = max(tt(end)+extT, TimeRange+extT);
 xMin = xMax - TimeRange - extT;
 hAx.XLim = [xMin xMax];
 
-iy = max(length(yy)-nP, 1);
-yMax = max(yy(iy:end));
-yMin = min(yy(iy:end));
-
-yMax = max(yMax-baseLine, 1);
-yMin = min(yMin-baseLine, -0.1);
 if hRadioAuto.Value
+    yMax = max(yy(idx1:end));
+    yMin = min(yy(idx1:end));
     yB = (yMax-yMin)/10;
-    if yMax>yMin
-        hAx.YLim = [yMin-yB yMax+yB];
-        data.Panel.Param.Comp.subPanel.VLimit.Edit.High.String = num2str(yMax+yB, '%.2f');
-        data.Panel.Param.Comp.subPanel.VLimit.Edit.Low.String = num2str(yMin-yB, '%.2f');
-    end
+    y1 = yMin-yB;
+    y2 = yMax+yB;
+    
+    y2 = max(y2-baseLine, 1);
+    y1 = min(y1-baseLine, -0.1);
+
+    %     if yMax>yMin
+        hAx.YLim = [y1 y2];
+        data.Panel.Param.Comp.subPanel.VLimit.Edit.High.String = num2str(y2, '%.2f');
+        data.Panel.Param.Comp.subPanel.VLimit.Edit.Low.String = num2str(y1, '%.2f');
+%     end
 end
 
 % hRect = data.Panel.Wave.Comp.hPlotObj.WaveRect;
@@ -51,15 +56,17 @@ end
     hAx2 = data.Panel.Bar.Comp.hAxis.Bar;
     hBar = data.Panel.Bar.Comp.hPlotObj.Bar;
 
-    hAx2.XLim = [0 1];
-    hAx2.YLim = hAx.YLim;
+%     hAx2.XLim = [0 1];
+%     hAx2.YLim = hAx.YLim;
      
-    x1 = 0.25;
-    x2 = 1-x1;
+%     x1 = 0.25;
+%     x2 = 1-x1;
     
     y1B = yy(end) - baseLine;
     hB = diff(hAx2.YLim)/20;
-    hBar.Position = [x1 y1B x2-x1 hB];
+%     hBar.Position = [x1 y1B x2-x1 hB];
+    hBar.Position(2) = y1B;
+    hBar.Position(4) = hB;
     
 % end
 
