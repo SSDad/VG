@@ -2,7 +2,7 @@ function gui_VIZ
 
 %% global 
 global hFig hFig2
-global TimeRange
+global TimeRange extT
 global pps
 global waveLW boxAlpha
 global tC
@@ -12,6 +12,7 @@ global tsd_prev tE_sd
 global BHC
 
 TimeRange = 30;
+extT = TimeRange/20;
 pps = 20;
 waveLW= 3;
 boxAlpha = 0.25;
@@ -56,9 +57,6 @@ data.Panel.Bar.Comp = addComponents2Panel_Bar(data.Panel.Bar.hPanel);
 
 data.FC = [255 255 102]/255;
 data.ActiveAxis.MovePoints = 0;
-
-% data.WaveParam.dt = 1/20;
-% data.WaveParam.T = 30;
 
 % save data
 % fd_VG = fullfile(tempdir, 'VG');

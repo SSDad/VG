@@ -5,7 +5,7 @@ global tt yy
 global baseLine
 global bWaveRectInit;
 global y_WaveRect;
-global TimeRange extT pps
+global TimeRange pps
 global bBHStart bBHReset t0 tC tE BHC
 global tsd_prev tE_sd
 
@@ -16,7 +16,7 @@ hWave = data.Panel.Wave.Comp.hPlotObj.Wave;
 set(hWave, 'XData', tt, 'YData', yy-baseLine);
 
 % hRadioM = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Manual;
-hRadioAuto = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
+hRadioA = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
 
 % hLW =data.Panel.Param.Comp.subPanel.Box.Edit.LW;
 hBoxHi =data.Panel.Param.Comp.subPanel.Box.Edit.BoxHi;
@@ -24,11 +24,13 @@ hBoxLo =data.Panel.Param.Comp.subPanel.Box.Edit.BoxLo;
 hBHC = data.Panel.BHC.Comp.Edit.Counter;
 hBH = data.Panel.BH.Comp.Togglebutton.BH;
 
+T = TimeRange;
+extT = T/20;
+% T = data.WaveParam.T;
 dt = 1/pps;
-nP = round(TimeRange/dt);
-if tt(end) > TimeRange
-    hAx.XLim = [tt(end)-TimeRange tt(end)+extT];
-%     junk = hAx.XLim
+nP = round(T/dt);
+if tt(end) > T
+    hAx.XLim = [tt(end)-T tt(end)+extT];
     if length(yy) > nP
         yMax = max(yy(end-nP:end));
         yMin = min(yy(end-nP:end));
@@ -37,15 +39,14 @@ if tt(end) > TimeRange
         yMin = min(yy);
     end
 else
-    hAx.XLim = [0 TimeRange+extT];
-%     junk = hAx.XLim
+        hAx.XLim = [0 T+extT];
         yMax = max(yy);
         yMin = min(yy);
 end
 
-yMax = max(yMax-baseLine, 1);
-yMin = min(yMin-baseLine, -0.1);
-if hRadioAuto.Value
+yMax = yMax-baseLine;
+yMin = yMin-baseLine;
+if hRadioA.Value
     yB = (yMax-yMin)/10;
     if yMax>yMin
         hAx.YLim = [yMin-yB yMax+yB];

@@ -1,6 +1,7 @@
 function Comp = addComponents2Panel_Wave(hPanel)
 
 global waveLW
+global TimeRange extT
 
 FC = [255 255 102]/255;
 FC = [255 255 255]/255;
@@ -17,7 +18,9 @@ Comp.hAxis.Wave = axes('Parent',                   hPanel, ...
 
 Comp.hAxis.Wave.XLabel.String = 'Time (s)';                        
 Comp.hAxis.Wave.YLabel.String = 'Relative Pressure (kPa)';                        
-Comp.hAxis.Wave.Box='on';
+Comp.hAxis.Wave.XLim = [0 TimeRange+extT];
+Comp.hAxis.Wave.YLim = [-0.1 1];
+% Comp.hAxis.Wave.Box='on';
 hold(Comp.hAxis.Wave, 'on')
 
 Comp.hPlotObj.Wave = line(Comp.hAxis.Wave, 'XData', [], 'YData', [],...
