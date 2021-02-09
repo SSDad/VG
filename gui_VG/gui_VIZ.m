@@ -14,7 +14,7 @@ global BHC
 
 TimeRange = 30;
 extT = TimeRange/20;
-pps = 20;
+pps = 10;
 waveLW= 3;
 boxAlpha = 0.25;
 tC = 20;
