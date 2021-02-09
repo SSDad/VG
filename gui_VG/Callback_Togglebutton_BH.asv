@@ -1,6 +1,6 @@
 function Callback_Togglebutton_BH(src, evnt)
 
-% global hFig
+global hFig
 global t0 tE tC
 global bBHStart bBHReset
 global BHC
@@ -20,8 +20,6 @@ if strcmp(str, 'Start')
     t0 = tic;
     tE = toc(t0);
 
-%     hBHC.String = num2str(BHC);
-    
 %     et = toc(t0);
 %     bBHReset = false;
 %     while (et < tC) & (~bBHReset)

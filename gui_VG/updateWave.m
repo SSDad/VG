@@ -6,7 +6,7 @@ global baseLine
 global bWaveRectInit;
 global y_WaveRect;
 global TimeRange pps
-global bBHStart bBHReset t0 tC tE
+global bBHStart bBHReset t0 tC tE BHC
 global tsd_prev tE_sd
 
 %% wave
@@ -124,10 +124,11 @@ if (bBHStart )
         hBH.String = 'Start';
         hBH.ForegroundColor = 'g';
         hBH.BackgroundColor = [1 1 1]*0.25;
-        hBHC.String = num2str(tC, '%0.0f');
+        hBHC.String = num2str(BHC, '%0.0f');
     end
 end
 
+%% auto save data
 if tt(end) - tsd_prev > tE_sd    
     tsd_prev = tt(end);
         
@@ -144,8 +145,8 @@ if tt(end) - tsd_prev > tE_sd
     datafn = fullfile(fd_MRN, ['Wave_', MRN, '_F', Fraction, '_', datestr(now,'YYYYmmDD'), '.mat']);
     save(datafn, 'tt', 'yy', 'baseLine');
     
-    display(tt(end));
-    display(MRN);
-    display(Fraction);
+%     display(tt(end));
+%     display(MRN);
+%     display(Fraction);
     
 end

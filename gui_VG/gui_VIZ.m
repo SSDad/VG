@@ -9,6 +9,7 @@ global tC
 global bWaveRectInit;
 global y_WaveRect;
 global tsd_prev tE_sd
+global BHC
 
 TimeRange = 30;
 pps = 20;
@@ -20,6 +21,8 @@ y_WaveRect = [nan nan];
 
 tsd_prev = 0;
 tE_sd = 15;
+
+BHC = 20;
 
 %% main window
 hFig = figure('MenuBar',            'none', ...
