@@ -5,11 +5,11 @@ global hFig hFig2
 global TimeRange extT
 global pps
 global waveLW boxAlpha
-global tC
+% global tC
 % global bWaveRectInit
 global yLim_Wave
 global yInit_WaveRect y_WaveRect
-global tsd_prev tE_sd
+% global tsd_prev tE_sd
 global BHC
 
 global tmr
@@ -21,17 +21,18 @@ extT = TimeRange/20;
 pps = 10;
 waveLW= 3;
 boxAlpha = 0.25;
-tC = 20;
+% tC = 20;
 % bWaveRectInit = 0;
 
 yLim_Wave = [-0.1 1];
 yInit_WaveRect = [0 0.3];
 y_WaveRect = yInit_WaveRect;
 
-tsd_prev = 0;
-tE_sd = 30;  % auto save data
+% tsd_prev = 0;
+% tE_sd = 30;  % auto save data
 
-BHC = 5;
+BHC = 20;
+tAutoSaveData = 30;
 
 %% main window
 hFig = figure('MenuBar',            'none', ...
@@ -100,8 +101,8 @@ tmrBH.ExecutionMode = 'fixedRate';
 % save data timer
 tmrSaveData = timer;
 tmrSaveData.TimerFcn = @fun_tmrSaveData;
-tmrSaveData.Period = 10;
-tmrSaveData.TasksToExecute = TT/10;
+tmrSaveData.Period = tAutoSaveData;
+tmrSaveData.TasksToExecute = TT/tAutoSaveData;
 tmrSaveData.ExecutionMode = 'fixedRate';
 
 guidata(hFig, data);
