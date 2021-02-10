@@ -13,7 +13,7 @@ global tsd_prev tE_sd
 global BHC
 
 global tmr
-global tmrBH
+global tmrBH hBHC hBH
 global tmrSaveData
 
 TimeRange = 30;
@@ -31,7 +31,7 @@ y_WaveRect = yInit_WaveRect;
 tsd_prev = 0;
 tE_sd = 30;  % auto save data
 
-BHC = 20;
+BHC = 5;
 
 %% main window
 hFig = figure('MenuBar',            'none', ...
@@ -64,6 +64,9 @@ data.Panel.Wave.Comp = addComponents2Panel_Wave(data.Panel.Wave.hPanel);
 data.Panel.Bar.Comp = addComponents2Panel_Bar(data.Panel.Bar.hPanel, data.Panel.Wave.Comp);
 linkprop([data.Panel.Wave.Comp.hPlotObj.WaveRect, data.Panel.Bar.Comp.hPlotObj.gRect], 'Position');
 
+hBH = data.Panel.BH.Comp.Togglebutton.BH;
+hBHC = data.Panel.BHC.Comp.Edit.Counter;
+
 data.FC = [255 255 102]/255;
 data.ActiveAxis.MovePoints = 0;
 
@@ -89,8 +92,9 @@ tmr.ExecutionMode = 'fixedRate';
 % BH timer
 tmrBH = timer;
 tmrBH.TimerFcn = @fun_tmrBH;
+tmrBH.StopFcn = @fun_tmrBHStop;
 tmrBH.Period = 1;
-tmrBH.TasksToExecute = TT;
+tmrBH.TasksToExecute = BHC;
 tmrBH.ExecutionMode = 'fixedRate';
 
 % save data timer

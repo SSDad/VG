@@ -4,6 +4,8 @@ global hFig2 hFig_ThreshSetting
 
 global dyn
 
+global tmr tmrBH tmrSaveData
+
 % delete object
 if exist('dyn')
     if ~isempty(dyn)
@@ -12,6 +14,13 @@ if exist('dyn')
         end
     end
 end
+
+stop(tmr);
+delete(tmr);
+stop(tmrBH);
+delete(tmrBH);
+stop(tmrSaveData);
+delete(tmrSaveData);
 
 % close fig2
 % if ishandle(hFig2)

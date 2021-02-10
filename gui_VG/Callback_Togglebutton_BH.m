@@ -1,24 +1,28 @@
 function Callback_Togglebutton_BH(src, evnt)
 
 % global hFig
-global t0 tE tC
-global bBHStart bBHReset
-global BHC
+% global t0 tE tC
+% global bBHStart bBHReset
+global BHC tmrBH hBHC
 
 str = src.String;
 % data = guidata(hFig);
 % hBHC = data.Panel.BHC.Comp.Edit.Counter;
 
 if strcmp(str, 'Start')
-    bBHStart = 1;
     
     src.String = ' X';
     src.ForegroundColor = 'r';
     src.BackgroundColor = [1 1 1]*0.2;
 
-    tC = BHC;
-    t0 = tic;
-    tE = toc(t0);
+    start(tmrBH);
+%     
+%     bBHStart = 1;
+%     
+% 
+%     tC = BHC;
+%     t0 = tic;
+%     tE = toc(t0);
 
 %     hBHC.String = num2str(BHC);
     
@@ -31,7 +35,14 @@ if strcmp(str, 'Start')
 %         
 %     end
 else
-    bBHReset = 1;
+    stop(tmrBH);
+%     hBHC.String = num2str(BHC, '%0.0f');
+% 
+%     hBH.String = 'Start';
+%     hBH.ForegroundColor = 'g';
+%     hBH.BackgroundColor = [1 1 1]*0.25;
+
+%     bBHReset = 1;
 end
 
 % src.String = 'Start';
