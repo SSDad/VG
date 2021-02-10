@@ -9,6 +9,8 @@ global baseLine
 global bBHStart bBHReset tC
 global tsd_prev
 
+global tmr
+
 str = src.String;
 data = guidata(hFig);
 global bCollecting
@@ -30,10 +32,6 @@ if strcmp(str, 'Go')
     bBHStart = 0;
     bBHReset = 0;
     
-%     bWaveRectInit = 0;
-%     data.Panel.Wave.Comp.hPlotObj.WaveRect.Position = [0 0 0 0];
-
-    
     src.String = 'Stop';
     src.ForegroundColor = 'r';
     src.BackgroundColor = [1 1 1]*0.2;
@@ -43,28 +41,31 @@ if strcmp(str, 'Go')
         dyn = dynamometer;
     end
 
-    dt = 1/pps;
-
     % start recording
     dyn.start;
     tt = [];
     yy = [];
-    tStart = clock;
 
-    while 1
-        pause(dt);
-        % update internal buffer and return last value
-        if isvalid(dyn)
-            tt = [tt etime(clock, tStart)];
-            yy = [yy dyn.read+baseLine]; 
-            % display
-            updateWave;
-        else
-            break;
-        end
-    end
+    start(tmr);
+    wait(tmr);
+
+    
+%     while 1
+%         pause(dt);
+%         % update internal buffer and return last value
+%         if isvalid(dyn)
+%             tt = [tt etime(clock, tStart)];
+%             yy = [yy dyn.read+baseLine]; 
+%             % display
+%             updateWave;
+%         else
+%             break;
+%         end
+%     end
 else
 
+    stop(tmr)
+    
     if isvalid(dyn)
         dyn.stop;
         dyn.delete;

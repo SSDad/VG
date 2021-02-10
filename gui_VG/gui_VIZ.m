@@ -12,6 +12,8 @@ global yInit_WaveRect y_WaveRect
 global tsd_prev tE_sd
 global BHC
 
+global tmr
+
 TimeRange = 30;
 extT = TimeRange/20;
 pps = 10;
@@ -71,6 +73,18 @@ if ~exist(fd_VG, 'dir')
 end
 data.fd_VG = fd_VG;
 data.MRN = [];
+
+% timer
+tmr = timer;
+
+% tmr.StartFcn = @fun_tmrStart;
+tmr.TimerFcn = @fun_tmr;
+% tmr.StopFcn = @fun_tmrStop;
+
+dt = 1/pps;
+tmr.Period = dt;
+tmr.TasksToExecute = 12*60*60/dt;
+tmr.ExecutionMode = 'fixedRate';
 
 guidata(hFig, data);
 
