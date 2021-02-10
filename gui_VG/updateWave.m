@@ -3,8 +3,6 @@ function updateWave
 global hFig
 global tt yy 
 global baseLine
-% global bWaveRectInit;
-% global y_WaveRect;
 global TimeRange extT pps
 global bBHStart bBHReset t0 tC tE BHC
 global tsd_prev tE_sd
@@ -17,9 +15,6 @@ hWave = data.Panel.Wave.Comp.hPlotObj.Wave;
 % hRadioM = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Manual;
 hRadioAuto = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
 
-% hLW =data.Panel.Param.Comp.subPanel.Box.Edit.LW;
-% hBoxHi =data.Panel.Param.Comp.subPanel.Box.Edit.BoxHi;
-% hBoxLo =data.Panel.Param.Comp.subPanel.Box.Edit.BoxLo;
 hBHC = data.Panel.BHC.Comp.Edit.Counter;
 hBH = data.Panel.BH.Comp.Togglebutton.BH;
 
@@ -42,34 +37,20 @@ if hRadioAuto.Value
     
     y2 = max(y2-baseLine, 1);
     y1 = min(y1-baseLine, -0.1);
-
-    %     if yMax>yMin
-        hAx.YLim = [y1 y2];
-        data.Panel.Param.Comp.subPanel.VLimit.Edit.High.String = num2str(y2, '%.2f');
-        data.Panel.Param.Comp.subPanel.VLimit.Edit.Low.String = num2str(y1, '%.2f');
-%     end
+    hAx.YLim = [y1 y2];
+    data.Panel.Param.Comp.subPanel.VLimit.Edit.High.String = num2str(y2, '%.2f');
+    data.Panel.Param.Comp.subPanel.VLimit.Edit.Low.String = num2str(y1, '%.2f');
 end
-
-% hRect = data.Panel.Wave.Comp.hPlotObj.WaveRect;
 
     % bar
     hAx2 = data.Panel.Bar.Comp.hAxis.Bar;
     hBar = data.Panel.Bar.Comp.hPlotObj.Bar;
 
-%     hAx2.XLim = [0 1];
-%     hAx2.YLim = hAx.YLim;
-     
-%     x1 = 0.25;
-%     x2 = 1-x1;
-    
     y1B = yy(end) - baseLine;
     hB = diff(hAx2.YLim)/20;
-%     hBar.Position = [x1 y1B x2-x1 hB];
     hBar.Position(2) = y1B;
     hBar.Position(4) = hB;
     
-% end
-
 %% update BHC
 if (bBHReset )
     bBHStart = 0;
