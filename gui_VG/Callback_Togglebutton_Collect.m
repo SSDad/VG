@@ -1,16 +1,14 @@
 function Callback_Togglebutton_Collect(src, evnt)
 
 global hFig
-global tt yy tStart
-global pps
+global yy
 global dyn
-global baseLine
-% global bWaveRectInit;
-% global bBHStart bBHReset tC
 global tsd_prev
 
 global tmr
 global BHC
+
+global tmrSaveData
 
 str = src.String;
 data = guidata(hFig);
@@ -30,9 +28,6 @@ if strcmp(str, 'Go')
     
     data.Panel.Analysis.hPanel.Visible = 'off'; % disable analysis
 
-%     bBHStart = 0;
-%     bBHReset = 0;
-    
     src.String = 'Stop';
     src.ForegroundColor = 'r';
     src.BackgroundColor = [1 1 1]*0.2;
@@ -50,7 +45,9 @@ if strcmp(str, 'Go')
     pause(0.1);
     start(tmr);
 %     wait(tmr);
-    
+
+start(tmrSaveData);
+
 %     while 1
 %         pause(dt);
 %         % update internal buffer and return last value
@@ -64,8 +61,10 @@ if strcmp(str, 'Go')
 %         end
 %     end
 else
-
     stop(tmr)
+
+    stop(tmrSaveData);
+    saveData;
     
     if isvalid(dyn)
         dyn.stop;

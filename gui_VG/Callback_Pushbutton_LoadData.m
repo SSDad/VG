@@ -42,7 +42,7 @@ if ffn~=0
     % wave
     hAxWave = data2.Panel.Wave.Comp.hAxis.Wave;
     hWave = data2.Panel.Wave.Comp.hPlotObj.Wave;
-    set(hWave, 'XData', tt, 'YData', yy-baseLine);
+    set(hWave, 'XData', tt, 'YData', yy);
     
     hAxWave.XLim(1) = 0;
     if tMax < TimeRange
@@ -53,7 +53,7 @@ if ffn~=0
     
     % all wave
     hAllWave = data2.Panel.AllWave.Comp.hPlotObj.AllWave;
-    set(hAllWave, 'XData', tt, 'YData', yy-baseLine);
+    set(hAllWave, 'XData', tt, 'YData', yy);
     hAxAllWave = data2.Panel.AllWave.Comp.hAxis.AllWave;
     hAxAllWave.XLim = [tt(1) tt(end)];
 %     hAxAllWave.XLim = [tt(1) 30*60];
