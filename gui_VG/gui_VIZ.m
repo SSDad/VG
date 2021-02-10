@@ -13,6 +13,8 @@ global tsd_prev tE_sd
 global BHC
 
 global tmr
+global tmrBH
+global tmrSaveData
 
 TimeRange = 30;
 extT = TimeRange/20;
@@ -74,17 +76,29 @@ end
 data.fd_VG = fd_VG;
 data.MRN = [];
 
-% timer
+% main timer
 tmr = timer;
-
 % tmr.StartFcn = @fun_tmrStart;
 tmr.TimerFcn = @fun_tmr;
 % tmr.StopFcn = @fun_tmrStop;
-
-dt = 1/pps;
-tmr.Period = dt;
-tmr.TasksToExecute = 12*60*60/dt;
+TT = 12*60*60;
+tmr.Period = 1/pps;
+tmr.TasksToExecute = TT*pps;
 tmr.ExecutionMode = 'fixedRate';
+
+% BH timer
+tmrBH = timer;
+tmrBH.TimerFcn = @fun_tmrBH;
+tmrBH.Period = 1;
+tmrBH.TasksToExecute = TT;
+tmrBH.ExecutionMode = 'fixedRate';
+
+% save data timer
+tmrSaveData = timer;
+tmrSaveData.TimerFcn = @fun_tmrSaveData;
+tmrSaveData.Period = 10;
+tmrSaveData.TasksToExecute = TT/10;
+tmrSaveData.ExecutionMode = 'fixedRate';
 
 guidata(hFig, data);
 

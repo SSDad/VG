@@ -47,7 +47,7 @@ if strcmp(str, 'Go')
     yy = [];
 
     start(tmr);
-    wait(tmr);
+%     wait(tmr);
 
     
 %     while 1
