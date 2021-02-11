@@ -1,21 +1,24 @@
 function Callback_Pushbutton_Calib(src, evnt)
 
 global hFig
+global bEmu
 global dyn
 global baseLine
 
-str = src.String;
-
-if exist('dyn')
-    if ~isempty(dyn)
-        if isvalid(dyn)
-            dyn.delete;
+if bEmu
+    baseLine = 100+rand(1);
+else
+    if exist('dyn')
+        if ~isempty(dyn)
+            if isvalid(dyn)
+                dyn.delete;
+            end
         end
     end
-end
 
-dyn = dynamometer;
-baseLine = dyn.baseline;
+    dyn = dynamometer;
+    baseLine = dyn.baseline;
+end
 
 data = guidata(hFig);
 data.Panel.Calib.Comp.Text.CalibValue.String = [num2str(baseLine, '%0.2f'), ' kPa'];

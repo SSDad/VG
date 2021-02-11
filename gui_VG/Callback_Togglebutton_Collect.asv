@@ -8,7 +8,9 @@ global tmr
 global BHC
 global tmrSaveData
 
-global dyn
+if ~bEmu
+    global dyn
+end
 
 str = src.String;
 data = guidata(hFig);
@@ -19,7 +21,6 @@ hBH = data.Panel.BH.Comp.Togglebutton.BH;
 if strcmp(str, 'Go')
     data.Panel.Wave.Comp.hPlotObj.WaveRect.Visible = 'on';
     data.Panel.BH.hPanel.Visible = 'on';
-    data.Panel.BH.Comp.Togglebutton.BH.Visible = 'off';
     data.Panel.Calib.Comp.Pushbutton.Calib.Enable = 'off'; % disable calib 
     data.Panel.Analysis.hPanel.Visible = 'off'; % disable analysis
 

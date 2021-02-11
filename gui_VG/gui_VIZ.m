@@ -1,35 +1,30 @@
 function gui_VIZ
 
 %% global 
+global bEmu
 global hFig hFig2
 global TimeRange extT
 global pps
 global waveLW boxAlpha
-% global tC
-% global bWaveRectInit
 global yLim_Wave
 global yInit_WaveRect y_WaveRect
-% global tsd_prev tE_sd
 global BHC
 
 global tmr
 global tmrBH hBHC hBH
 global tmrSaveData
 
+bEmu = 0;
+
 TimeRange = 30;
 extT = TimeRange/20;
 pps = 10;
 waveLW= 3;
 boxAlpha = 0.25;
-% tC = 20;
-% bWaveRectInit = 0;
 
 yLim_Wave = [-0.1 1];
 yInit_WaveRect = [0 0.3];
 y_WaveRect = yInit_WaveRect;
-
-% tsd_prev = 0;
-% tE_sd = 30;  % auto save data
 
 BHC = 20;
 tAutoSaveData = 30;
@@ -58,6 +53,7 @@ data.Panel.BH.Comp = addComponents2Panel_BH(data.Panel.BH.hPanel);
 data.Panel.BHC.Comp = addComponents2Panel_BHC(data.Panel.BHC.hPanel);
 data.Panel.ParamButton.Comp = addComponents2Panel_ParamButton(data.Panel.ParamButton.hPanel);
 data.Panel.Analysis.Comp = addComponents2Panel_Analysis(data.Panel.Analysis.hPanel);
+data.Panel.Mode.Comp = addComponents2Panel_Mode(data.Panel.Mode.hPanel);
 data.Panel.Calib.Comp = addComponents2Panel_Calib(data.Panel.Calib.hPanel);
 data.Panel.Param.Comp = addComponents2Panel_Param(data.Panel.Param.hPanel);
 

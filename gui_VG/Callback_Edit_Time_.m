@@ -1,6 +1,6 @@
 function Callback_Edit_Time_(src, evnt)
 
-global TimeRange
+global TimeRange extT
 
 TimeRange = str2double(src.String);
-Comp.hAxis.Box.XLim = [0 TimeRange+extT];
+% Comp.hAxis.Box.XLim = [0 TimeRange+extT];
