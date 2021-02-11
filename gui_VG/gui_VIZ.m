@@ -4,7 +4,7 @@ function gui_VIZ
 global bEmu
 global hFig hFig2
 global TimeRange extT
-global pps
+global pps avgNP
 global waveLW boxAlpha
 global yLim_Wave
 global yInit_WaveRect y_WaveRect
@@ -19,6 +19,8 @@ bEmu = 0;
 TimeRange = 30;
 extT = TimeRange/20;
 pps = 10;
+avgNP = 4;
+
 waveLW= 3;
 boxAlpha = 0.25;
 

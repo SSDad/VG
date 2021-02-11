@@ -3,14 +3,13 @@ function Callback_Togglebutton_Collect(src, evnt)
 global bEmu
 global hFig
 global yy
+global avgNP
 
 global tmr
 global BHC
 global tmrSaveData
 
-if ~bEmu
-    global dyn
-end
+global dyn
 
 str = src.String;
 data = guidata(hFig);
@@ -21,6 +20,7 @@ hBH = data.Panel.BH.Comp.Togglebutton.BH;
 if strcmp(str, 'Go')
     data.Panel.Wave.Comp.hPlotObj.WaveRect.Visible = 'on';
     data.Panel.BH.hPanel.Visible = 'on';
+    data.Panel.BH.Comp.Togglebutton.BH.Visible = 'off';
     data.Panel.Calib.Comp.Pushbutton.Calib.Enable = 'off'; % disable calib 
     data.Panel.Analysis.hPanel.Visible = 'off'; % disable analysis
 
@@ -35,7 +35,7 @@ if strcmp(str, 'Go')
         end
         dyn.start;      % start recording
     end
-    yy = [];
+    yy = zeros(1, avgNP;
     pause(0.1);
     start(tmr);
     start(tmrSaveData);

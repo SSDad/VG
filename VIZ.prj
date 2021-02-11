@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="4232055987" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="3036599059" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>VIZ</param.appname>
     <param.icon />
     <param.icons />
@@ -138,6 +138,7 @@
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_BHC.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_Calib.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_Collect.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_Mode.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_Param.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_ParamButton.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_PtInfo.m</file>
@@ -155,6 +156,7 @@
       <file>${PROJECT_ROOT}\gui_VG\Callback_Edit_VLimit_.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_LAVBox.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_LAVBoxBH.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\Callback_Popup_Mode.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_About.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_Analysis.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_BHE.m</file>
@@ -186,6 +188,7 @@
       <file>${PROJECT_ROOT}\gui_VG\fun_tmr.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrBH.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrBHStop.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\fun_tmrEmu.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrSaveData.m</file>
       <file>${PROJECT_ROOT}\gui_VG\reorderPlotObj.m</file>
       <file>${PROJECT_ROOT}\gui_VG\saveData.m</file>

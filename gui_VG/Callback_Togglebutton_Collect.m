@@ -3,6 +3,7 @@ function Callback_Togglebutton_Collect(src, evnt)
 global bEmu
 global hFig
 global yy
+global avgNP
 
 global tmr
 global BHC
@@ -34,7 +35,7 @@ if strcmp(str, 'Go')
         end
         dyn.start;      % start recording
     end
-    yy = [];
+    yy = zeros(1, avgNP-1);
     pause(0.1);
     start(tmr);
     start(tmrSaveData);
@@ -57,7 +58,10 @@ else
     hBHC.String = num2str(BHC, '%0.0f');
     data.Panel.BH.hPanel.Visible = 'off';
     data.Panel.BHC.hPanel.Visible = 'off';
-    
+
+    data.Panel.PtInfo.Comp.Edit.MRN.String = 'MRN';
+    data.Panel.PtInfo.Comp.Edit.Fraction.String = 'Fx';
+
     src.String = 'Go';
     src.ForegroundColor = 'g';
     src.BackgroundColor = [1 1 1]*0.25;
