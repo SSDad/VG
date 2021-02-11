@@ -1,7 +1,7 @@
 function saveData
 
 global hFig
-global yy pps
+global tt yy
 global baseLine
 
 data = guidata(hFig);
@@ -15,6 +15,6 @@ end
 Fraction = data.Panel.PtInfo.Comp.Edit.Fraction.String;
 datafn = fullfile(fd_MRN, ['Wave_', MRN, '_F', Fraction, '_', datestr(now,'YYYYmmDD'), '.mat']);
 
-dt = 1/pps;
-tt = (1:length(yy))*dt;
+% dt = 1/pps;
+% tt = (1:length(yy))*dt;
 save(datafn, 'tt', 'yy', 'baseLine');

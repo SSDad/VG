@@ -38,7 +38,7 @@ if hRadioAuto.Value
     data.Panel.Param.Comp.subPanel.VLimit.Edit.Low.String = num2str(y1, '%.2f');
 end
 
-    % bar
+    %% bar
     hAx2 = data.Panel.Bar.Comp.hAxis.Bar;
     hBar = data.Panel.Bar.Comp.hPlotObj.Bar;
 
