@@ -22,7 +22,9 @@ if strcmp(str, 'Go')
     data.Panel.BH.hPanel.Visible = 'on';
     data.Panel.BH.Comp.Togglebutton.BH.Visible = 'off';
     data.Panel.Calib.Comp.Pushbutton.Calib.Enable = 'off'; % disable calib 
+    data.Panel.Mode.Comp.PopUpMenu.Mode.Enable = 'off'; % disable calib 
     data.Panel.Analysis.hPanel.Visible = 'off'; % disable analysis
+    data.Panel.Param.Comp.subPanel.pps.Edit.pps.Enable = 'off'; % disable calib 
 
     src.String = 'Stop';
     src.ForegroundColor = 'r';
@@ -50,8 +52,11 @@ else
             dyn.delete;
         end
     end
-    data.Panel.Calib.Comp.Pushbutton.Calib.Enable = 'on'; % disable calib 
-   
+    
+    data.Panel.Calib.Comp.Pushbutton.Calib.Enable = 'on'; % disable calib
+    data.Panel.Mode.Comp.PopUpMenu.Mode.Enable = 'on'; % disable mode
+    data.Panel.Param.Comp.subPanel.pps.Edit.pps.Enable = 'on'; % disable calib 
+
     hBH.String = 'Start';
     hBH.ForegroundColor = 'g';
     hBH.BackgroundColor = [1 1 1]*0.25;
