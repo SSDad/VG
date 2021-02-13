@@ -29,13 +29,19 @@ else
         bDevice = 0;
         msg{1} = 'GoLink is not connected!';
         msg{2} = 'Please double check...';
-        msgColor = 'r';
+
+        data.Panel.PtInfo.hPanel.Visible = 'off';
+        data.Panel.Collect.hPanel.Visible = 'off';
+        data.Panel.WaveBar.hPanel.Visible = 'off';
+        data.Panel.ParamButton.hPanel.Visible = 'off';
+        data.Panel.Analysis.hPanel.Visible = 'off';
+
     end
     if bDevice
         baseLine = dyn.baseline;
     end
 end
-fun_messageBox(msg, msgColor);
+fun_messageBox(msg);
 
 if bDevice
     data.Panel.Calib.Comp.Text.CalibValue.String = [num2str(baseLine, '%0.2f'), ' kPa'];

@@ -17,4 +17,8 @@ else
     data.Panel.PtInfo.Comp.Edit.MRN.String = 'Demo';
 end
 
-
+        data.Panel.PtInfo.hPanel.Visible = 'off';
+        data.Panel.Collect.hPanel.Visible = 'off';
+        data.Panel.WaveBar.hPanel.Visible = 'off';
+        data.Panel.ParamButton.hPanel.Visible = 'off';
+        data.Panel.Analysis.hPanel.Visible = 'off';
