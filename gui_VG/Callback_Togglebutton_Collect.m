@@ -45,6 +45,10 @@ else
     stop(tmr)
     stop(tmrSaveData);
     saveData;
+    msg{1} = 'Bingo!';
+    msg{2} = 'Data has been saved successfully.';
+    msgColor = 'g';
+    fun_messageBox(msg, msgColor);
     
     if ~bEmu
         if isvalid(dyn)

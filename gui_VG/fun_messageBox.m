@@ -16,7 +16,7 @@ mby0 = (scrSize(4)-mbH)/2;
 
 hMB = msgbox('');
 hMB.Position = [mbx0 mby0 mbW mbH];
- hMB.Color = [1 1 1]*0.1;
+hMB.Color = [1 1 1]*0.1;
 % w = pos(3);
 % h = pos(4);
 % hMB.Position = [pos(1)-w*2.5 pos(2)-h/2 w*6 h*2];

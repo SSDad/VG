@@ -27,8 +27,8 @@ else
         dyn = dynamometer;
     catch
         bDevice = 0;
-        msg{1} = 'GoLink is not connected!';
-        msg{2} = 'Please double check...';
+        msg{1} = 'Ehh...';
+        msg{2} = 'GoLink is not connected...';
         msgColor = 'r';
     end
     if bDevice
