@@ -35,7 +35,7 @@ else
         baseLine = dyn.baseline;
     end
 end
-fun_messageBox(msg, msgColor);
+[hMB] = fun_messageBox('Calibration', msg, msgColor);
 
 if bDevice
     data.Panel.Calib.Comp.Text.CalibValue.String = [num2str(baseLine, '%0.2f'), ' kPa'];

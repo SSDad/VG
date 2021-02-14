@@ -48,7 +48,7 @@ else
     msg{1} = 'Bingo!';
     msg{2} = 'Data has been saved successfully.';
     msgColor = 'g';
-    fun_messageBox(msg, msgColor);
+    [hMB_saveData] = fun_messageBox('Save Data', msg, msgColor);
     
     if ~bEmu
         if isvalid(dyn)
