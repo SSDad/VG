@@ -68,9 +68,13 @@ else
     data.Panel.BH.hPanel.Visible = 'off';
     data.Panel.BHC.hPanel.Visible = 'off';
 
-    data.Panel.PtInfo.Comp.Edit.MRN.String = 'MRN';
-    data.Panel.PtInfo.Comp.Edit.Fraction.String = 'Fx';
-
+    if ~bEmu
+        data.Panel.PtInfo.Comp.Edit.MRN.String = 'MRN';
+        data.Panel.PtInfo.Comp.Edit.Fraction.String = 'Fx';
+    else
+        data.Panel.PtInfo.Comp.Edit.MRN.String = 'Demo';
+    end
+    
     src.String = 'Go';
     src.ForegroundColor = 'g';
     src.BackgroundColor = [1 1 1]*0.25;

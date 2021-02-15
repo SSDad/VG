@@ -1,8 +1,8 @@
 function updateWave
 
 global hFig
-global tt yy 
-global TimeRange extT pps
+global tt yy pps
+global TimeRange extT
 
 %% wave
 data = guidata(hFig);
@@ -13,7 +13,7 @@ hWave = data.Panel.Wave.Comp.hPlotObj.Wave;
 hRadioAuto = data.Panel.Param.Comp.subPanel.VLimit.Radiobutton.Auto;
 
 dt = 1/pps;
-tt = (1:length(yy))*dt;
+tt = (1:length(yy))*dt - dt;
 
 nP = round(TimeRange/dt);
 

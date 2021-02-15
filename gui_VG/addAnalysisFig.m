@@ -1,7 +1,7 @@
 function addAnalysisFig
 
 global hFig2
-global TimeRange dt
+global TimeRange
 global avgBnP yBAll periodBAll % all previous wave y and period
 global LAVBox
 global BoxColor BoxColorBH
@@ -11,7 +11,6 @@ global ViewBYLim ViewBHLim
 global ampAvgB
 global paramBH
 
-dt = 1/20;
 TimeRange = 30;
 avgBnP = 100;
 yBAll = [];

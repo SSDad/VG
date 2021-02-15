@@ -1,10 +1,10 @@
 function Callback_Pushbutton_LoadData(src, evnt)
 
-global hFig hFig2
+global hFig2
 global TimeRange
-global tMax dt
+global tMax
 global tt yy baseLine
-global avgB
+global avgB yBAll
 global wBH
 
 % data = guidata(hFig);
@@ -35,7 +35,7 @@ if ffn~=0
         [tt, yy, baseLine] = fun_loadRPMTxtData(fullfile(dataPath, ffn));
         tt = tt';
         yy = yy';
-        dt = tt(2) - tt(1);
+%         dt = tt(2) - tt(1);
     end
     tMax = tt(end);
     
@@ -56,10 +56,13 @@ if ffn~=0
     set(hAllWave, 'XData', tt, 'YData', yy);
     hAxAllWave = data2.Panel.AllWave.Comp.hAxis.AllWave;
     hAxAllWave.XLim = [tt(1) tt(end)];
-%     hAxAllWave.XLim = [tt(1) 30*60];
+    y1 = min(yy);
+    y2 = max(yy);
+    hAxAllWave.YLim = [y1 y2];
 
     hWaveWin = data2.Panel.AllWave.Comp.hPlotObj.WaveWin;
-    hWaveWin.Position = [hAxWave.XLim(1) hAxAllWave.YLim(1)-1 range(hAxWave.XLim) range(hAxAllWave.YLim)+2];
+    yR = y2-y1;
+    hWaveWin.Position = [hAxWave.XLim(1) y1-yR/10 range(hAxWave.XLim) yR+yR/10*2];
     
     % clear B
     hWaveComp = data2.Panel.Wave.Comp;
@@ -74,6 +77,7 @@ if ffn~=0
             data2.Panel.TableB.Comp.Radiobutton.Box(n).Visible = 'off'; % radio button off
         end
         avgB(1:length(avgB)) = []; % avgB
+        yBAll = [];
         
         set(data2.Panel.ViewB.Comp.hPlotObj.Avg, 'XData', [], 'YData', []); % avg line
         

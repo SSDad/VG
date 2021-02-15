@@ -17,10 +17,10 @@ w = v - f_y;
 
 if bPlot
     figure(101), clf
-    plot(t, v)
+    plot(t, v, 'r')
     hold on
-    plot(t, f_y)
-    plot(t, w)
+    plot(t, f_y, 'g')
+    plot(t, w, 'b')
     legend({'org', 'trend', 'trend removed'})
 end
 
@@ -58,7 +58,7 @@ if bPlot
 end
 
 for n = 1:length(locs2)-1
-    ww = w(locs2(n):locs2(n+1));
+    ww = v(locs2(n):locs2(n+1));
     yy = imresize(ww, [1 avgBnP]);
     wiw.tt{n} = t(locs2(n):locs2(n+1));
     wiw.ww{n} = ww;

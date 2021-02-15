@@ -1,7 +1,6 @@
 function updateAvgB
 
 global hFig2
-global tt yy baseLine dt
 global wiwB  % wave group in current picked window
 global yBAll periodBAll % all previous wave y and period
 global avgBnP
@@ -9,6 +8,7 @@ global Thresh
 global ampAvgB
 global ViewBYLim
 global paramBH
+global pps
 
 data2 = guidata(hFig2);
 
@@ -62,6 +62,7 @@ else
 end
 data2.Panel.ParamB.Comp.Text.Param(2).Name(3).ForegroundColor = CLR;
 
+dt = 1/pps;
 PV = sum(abs(pA-mean(pA)))/numel(pA)*dt;
 data2.Panel.ParamB.Comp.Text.Param(5).Name(2).String = [num2str(mean(pA)*dt, 2 ), 's'];
 data2.Panel.ParamB.Comp.Text.Param(6).Name(2).String = [num2str(PV, 2 ), 's'];

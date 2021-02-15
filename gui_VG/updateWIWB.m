@@ -1,7 +1,7 @@
 function updateWIWB
 
 global hFig2
-global tt yy baseLine dt
+global tt yy
 global wiwB  % wave group in current picked window
 % global yBAll periodBAll % all previous wave y and period
 global avgBnP
@@ -16,13 +16,13 @@ pos = data2.Panel.Wave.Comp.hPlotObj.WavePickWin.Position;
 
 [~, ind(1)] = min(abs(tt-pos(1)));
 [~, ind(2)] = min(abs(tt-pos(1)-pos(3)));
-[wiwB] = fun_getAvgB(tt, yy-baseLine, ind, avgBnP);
+[wiwB] = fun_getAvgB(tt, yy, ind, avgBnP);
     
 %% peaks and troughs on wave
 peakInd = wiwB.locs1+ind(1)-1;
-set(hPeaks, 'XData', tt(peakInd), 'YData', yy(peakInd)-baseLine);
+set(hPeaks, 'XData', tt(peakInd), 'YData', yy(peakInd));
 troughInd = wiwB.locs2+ind(1)-1;
-set(hTroughs, 'XData', tt(troughInd), 'YData', yy(troughInd)-baseLine);
+set(hTroughs, 'XData', tt(troughInd), 'YData', yy(troughInd));
     
 
 % 
