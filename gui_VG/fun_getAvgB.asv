@@ -44,14 +44,7 @@ meanL = mean(dL(~indOL));
 fsw = max(sw) - sw ;
 [pks2, locs2] = findpeaks(fsw, 'MinPeakDistance', meanL*0.6, 'MInPeakheight', mean(fsw));
 % [pks2, locs2] = findpeaks(fsw);
-if locs2(1) < locs1(1)
-    locs2(1) = [];
-end
-if locs2(end) > locs1(end)
-    locs2(end) = [];
-end
-
-% locs2 = locs2(2:end-1);
+locs2 = locs2(2)
 wiw.locs1 = locs1;
 wiw.locs2 = locs2;
 
