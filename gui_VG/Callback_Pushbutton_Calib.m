@@ -8,12 +8,13 @@ global baseLine
 data = guidata(hFig);
 
 bDevice = 1;
-msg{1} = 'Bingo!';
-msg{2} = 'Barometer calibration is done...';
+msg{1} = '            Barometer calibration is done...';
+msg{2} = '';
 msgColor = 'g';
 if bEmu
     baseLine = 100+rand(1);
-    msg{2} = 'Barometer calibration is viutually done.';
+    msg{1} = '            Barometer calibration is virtually done...';
+    msg{2} = '';
 else
     if exist('dyn')
         if ~isempty(dyn)
@@ -27,9 +28,9 @@ else
         dyn = dynamometer;
     catch
         bDevice = 0;
-        msg{1} = 'Uh-oh!';
-        msg{2} = 'GoLink is not connected...';
-        msgColor = 'r';
+        msg{1} = '            Sensor is not connected...';
+        msg{2} = '';
+        msgColor = 'y';
     end
     if bDevice
         baseLine = dyn.baseline;

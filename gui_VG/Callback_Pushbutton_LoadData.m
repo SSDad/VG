@@ -6,7 +6,6 @@ global tMax
 global tt yy baseLine
 global avgB yBAll periodBAll % all previous wave y and period
 global wBH
-global pps
 
 % data = guidata(hFig);
 data2 = guidata(hFig2);
@@ -81,6 +80,8 @@ if ffn~=0
         yBAll = [];
         periodBAll = [];
 
+%         wiwBH = struct; % BH
+        
         set(data2.Panel.ViewB.Comp.hPlotObj.Avg, 'XData', [], 'YData', []); % avg line
         
         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Position = [0 0 0 0]; % LAV box

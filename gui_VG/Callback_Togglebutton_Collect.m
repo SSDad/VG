@@ -45,8 +45,8 @@ else
     stop(tmr)
     stop(tmrSaveData);
     saveData;
-    msg{1} = 'Bingo!';
-    msg{2} = 'Data has been saved successfully...';
+    msg{1} = '         Data has been saved successfully...';
+    msg{2} = ' ';
     msgColor = 'g';
     [hMB_saveData] = fun_messageBox('Save Data', msg, msgColor);
     
