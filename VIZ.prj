@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3036599059" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="3965853224" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>VIZ</param.appname>
     <param.icon />
     <param.icons />
@@ -185,6 +185,7 @@
       <file>${PROJECT_ROOT}\gui_VG\fun_getAvgB.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_getLAV.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_loadRPMTxtData.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\fun_messageBox.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmr.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrBH.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrBHStop.m</file>

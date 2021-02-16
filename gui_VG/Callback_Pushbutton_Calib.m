@@ -9,7 +9,7 @@ data = guidata(hFig);
 
 bDevice = 1;
 msg{1} = 'Bingo!';
-msg{2} = 'Barometer calibration is done.';
+msg{2} = 'Barometer calibration is done...';
 msgColor = 'g';
 if bEmu
     baseLine = 100+rand(1);
@@ -27,7 +27,7 @@ else
         dyn = dynamometer;
     catch
         bDevice = 0;
-        msg{1} = 'Ehh...';
+        msg{1} = 'Uh-oh!';
         msg{2} = 'GoLink is not connected...';
         msgColor = 'r';
     end
