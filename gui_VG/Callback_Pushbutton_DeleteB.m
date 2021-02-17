@@ -8,6 +8,8 @@ data2 = guidata(hFig2);
 
 iBox = data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.Value-1;
 
+if iBox >0
+    
 hWaveComp = data2.Panel.Wave.Comp;
 hAllWaveComp = data2.Panel.AllWave.Comp;
 
@@ -84,4 +86,6 @@ if nBox == 0
 else
     updateAvgB;
     updateLAVBoxParam;
+end
+
 end

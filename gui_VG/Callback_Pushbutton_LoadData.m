@@ -35,7 +35,6 @@ if ffn~=0
         [tt, yy, baseLine] = fun_loadRPMTxtData(fullfile(dataPath, ffn));
         tt = tt';
         yy = yy';
-%         dt = tt(2) - tt(1);
     end
     tMax = tt(end);
     
@@ -80,8 +79,6 @@ if ffn~=0
         yBAll = [];
         periodBAll = [];
 
-%         wiwBH = struct; % BH
-        
         set(data2.Panel.ViewB.Comp.hPlotObj.Avg, 'XData', [], 'YData', []); % avg line
         
         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Position = [0 0 0 0]; % LAV box
