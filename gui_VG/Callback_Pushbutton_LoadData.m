@@ -1,16 +1,16 @@
 function Callback_Pushbutton_LoadData(src, evnt)
 
-global hFig2
+global hFig hFig2
 global TimeRange
 global tMax
 global tt yy baseLine
 global avgB yBAll periodBAll % all previous wave y and period
 global wBH
 
-% data = guidata(hFig);
+data = guidata(hFig);
 data2 = guidata(hFig2);
 % fd_VG = fullfile(tempdir, 'VG');
-fd_VG = 'C:\VIZ';
+fd_VG = data.fd_VG;
 
 %% load image data
 % [matFileName, dataPath] = uigetfile(data.fd_VG);
