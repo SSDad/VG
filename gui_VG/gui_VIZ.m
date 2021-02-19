@@ -71,7 +71,13 @@ data.ActiveAxis.MovePoints = 0;
 
 % save data
 % fd_VG = fullfile(tempdir, 'VG');
-fd_VG = 'C:\VIZ';
+hd = '\\bjcfs02.carenet.org\rocdata\ROCData';
+if exist(hd, 'dir')
+    fd_VG = fullfile(hd, 'VIZ');
+else
+    fd_VG = 'C:\VIZ';
+end
+% fd_VG = 'C:\VIZ';
 if ~exist(fd_VG, 'dir')
     mkdir(fd_VG);
 end
