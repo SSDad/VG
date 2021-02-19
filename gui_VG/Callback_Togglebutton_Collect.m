@@ -80,4 +80,5 @@ else
     src.BackgroundColor = [1 1 1]*0.25;
     
     data.Panel.Analysis.hPanel.Visible = 'on'; % disable analysis
+    
 end
