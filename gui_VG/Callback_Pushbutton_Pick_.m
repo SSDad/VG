@@ -69,7 +69,7 @@ if strcmp(src.Tag, 'B')
             'Tag', num2str(nBoxB));
         hAllWaveComp.hPlotObj.BoxB(nBoxB) = rectangle(hAxAllWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2,...
             'Tag', num2str(nBoxB));
-        hAllWaveComp.hPlotObj.BoxText(nBoxB) = text(hAxAllWave, pos(1)+pos(3)/2, pos(2)+pos(4)/2, num2str(nBoxB),...
+        hAllWaveComp.hPlotObj.BoxBText(nBoxB) = text(hAxAllWave, pos(1)+pos(3)/2, pos(2)+pos(4)/2, num2str(nBoxB),...
             'Color', BoxCLR, 'FontSize', 24, 'FontWeight', 'bold');
        
         % tableB
@@ -170,7 +170,7 @@ elseif strcmp(src.Tag, 'BH')
         BoxCLR = BoxColorBH(nBoxBH, :);
         hWaveComp.hPlotObj.BoxBH(nBoxBH) = rectangle(hAxWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2);
         hAllWaveComp.hPlotObj.BoxBH(nBoxBH) = rectangle(hAxAllWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2);
-        hAllWaveComp.hPlotObj.BoxTextBH(nBoxBH) = text(hAxAllWave, pos(1)+pos(3)/3, pos(2)+pos(4)/2, char(nBoxBH+'A'-1),...
+        hAllWaveComp.hPlotObj.BoxBHText(nBoxBH) = text(hAxAllWave, pos(1)+pos(3)/3, pos(2)+pos(4)/2, char(nBoxBH+'A'-1),...
             'Color', BoxCLR, 'FontSize', 24, 'FontWeight', 'bold');
 
         % add wiw to view plot

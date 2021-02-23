@@ -169,6 +169,8 @@ if exist(affn, 'file')
     paramBH = analysisData.paramBH;
     LAVBox =  analysisData.LAVBox;
     LAVBoxBH =  analysisData.LAVBoxBH;
+    analysisData.RB = RB;
+
 
     % boxes
     Boxes = analysisData.Boxes;
@@ -235,13 +237,5 @@ if exist(affn, 'file')
     updateAvgB;
     updateLAVBoxParam;
 
-    RB = analysisData.RB;
-    for iB = 1:length(RB.BoxB)
-        data2.Panel.TableB.Comp.Radiobutton.Box(iB).Visible = RB.BoxB(iB).Visible;
-    end
-    
-    delPU = analysisData.delPU;
-    data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.String = delPU.ListBoxB.String; 
-    data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.Value = delPU.ListBoxB.Value; 
 end
 
