@@ -37,6 +37,7 @@ else
     
     x1 = LAVBoxBH.x1;
 x2 = LAVBoxBH.x2;
+paramBH.Time = x2-x1;
 data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = [num2str(x2 - x1, 3), 's'];
 
 boxH = LAVBoxBH.y2-LAVBoxBH.y1;

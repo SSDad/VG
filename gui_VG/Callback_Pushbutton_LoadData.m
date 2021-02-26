@@ -10,7 +10,7 @@ global wBH
 global LAVBox LAVBoxBH
 global paramB paramBH
 global avgBnP
-global BoxColor
+global BoxColor BoxColorBH
 
 % data = guidata(hFig);
 % fd_VG = data.fd_VG;
@@ -83,7 +83,7 @@ if ffn~=0
     if isfield(hAllWaveComp.hPlotObj, 'BoxB')
         delete(hAllWaveComp.hPlotObj.BoxB(:));  
         delete(hWaveComp.hPlotObj.BoxB(:));
-        delete(hAllWaveComp.hPlotObj.BoxText(:));
+        delete(hAllWaveComp.hPlotObj.BoxBText(:));
 
         for n = 1:length(avgB) 
             delete(avgB(n).hg.Children(:)); % avgB waves
@@ -126,11 +126,11 @@ if ffn~=0
     if isfield(hAllWaveComp.hPlotObj, 'BoxBH')
         delete(hAllWaveComp.hPlotObj.BoxBH(:));
         delete(hWaveComp.hPlotObj.BoxBH(:));
-        delete(hAllWaveComp.hPlotObj.BoxTextBH(:));
+        delete(hAllWaveComp.hPlotObj.BoxBHText(:));
 
         for n = 1:length(wBH) 
             delete(wBH(n).hLine); % avgB waves
-            data2.Panel.TableBH.Comp.Radiobutton.Box(n).Value = 0;
+%             data2.Panel.TableBH.Comp.Radiobutton.Box(n).Value = 0;
             data2.Panel.TableBH.Comp.Radiobutton.Box(n).Visible = 'off'; % radio button off
         end
         wBH = []; % wBH
@@ -172,11 +172,9 @@ if exist(affn, 'file')
 
     % boxes
     Boxes = analysisData.Boxes;
-    hAxWave = hWaveComp.hAxis.Wave;
-    hAxAllWave = hAllWaveComp.hAxis.AllWave;
-    hWaveComp = data2.Panel.Wave.Comp;
-    hAllWaveComp = data2.Panel.AllWave.Comp;
-    % B
+    hAxWave = data2.Panel.Wave.Comp.hAxis.Wave;
+    hAxAllWave = data2.Panel.AllWave.Comp.hAxis.AllWave;
+    % boxB
     hB = Boxes.BoxB.AllWave;
     for iB = 1:length(hB)
         pos = Boxes.BoxB.AllWave(iB).Position;
@@ -188,19 +186,21 @@ if exist(affn, 'file')
         hAllWaveComp.hPlotObj.BoxBText(iB) = text(hAxAllWave, pos(1)+pos(3)/2, pos(2)+pos(4)/2, num2str(iB),...
             'Color', BoxCLR, 'FontSize', 24, 'FontWeight', 'bold');
     end
-
-    % BH
+    
+    % boxBH
     hBH = Boxes.BoxBH.AllWave;
     for iBH = 1:length(hBH)
         pos = Boxes.BoxBH.AllWave(iBH).Position;
         BoxCLR = Boxes.BoxBH.AllWave(iBH).EdgeColor;
         hWaveComp.hPlotObj.BoxBH(iBH) = rectangle(hAxWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2,...
             'Tag', num2str(iBH));
-        hAllWaveComp.hPlotObj.BoxB(iBH) = rectangle(hAxAllWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2,...
+        hAllWaveComp.hPlotObj.BoxBH(iBH) = rectangle(hAxAllWave, 'Position', pos , 'EdgeColor', BoxCLR, 'LineWidth', 2,...
             'Tag', num2str(iBH));
         hAllWaveComp.hPlotObj.BoxBHText(iBH) = text(hAxAllWave, pos(1)+pos(3)/3, pos(2)+pos(4)/2, char(iBH+'A'-1),...
             'Color', BoxCLR, 'FontSize', 24, 'FontWeight', 'bold');
     end
+    data2.Panel.Wave.Comp = hWaveComp;
+    data2.Panel.AllWave.Comp = hAllWaveComp;
 
     % WaveWin
     data2.Panel.AllWave.Comp.hPlotObj.WaveWin.Position = Boxes.Positions.WaveWin;
@@ -243,5 +243,22 @@ if exist(affn, 'file')
     delPU = analysisData.delPU;
     data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.String = delPU.ListBoxB.String; 
     data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.Value = delPU.ListBoxB.Value; 
+    
+    % ViewBH
+    for iBH = 1:length(wBH)
+        BoxCLR = BoxColorBH(iBH, :);
+        wBH(iBH).hLine = line(data2.Panel.ViewBH.Comp.hAxis.ViewBH,...
+            'XData', wBH(iBH).wib.tt, 'YData', wBH(iBH).wib.yy, ...
+            'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 1);
+        data2.Panel.TableBH.Comp.Radiobutton.Box(iBH).Visible = RB.BoxBH(iBH).Visible;
+    end
+    
+    data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = [num2str(paramBH.Time, 3), 's'];
+
+    data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.String = delPU.ListBoxBH.String; 
+    data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.Value = delPU.ListBoxBH.Value; 
+    
+    guidata(hFig2, data2)
+    
 end
 

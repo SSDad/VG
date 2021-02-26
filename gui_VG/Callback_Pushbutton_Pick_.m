@@ -147,7 +147,6 @@ elseif strcmp(src.Tag, 'BH')
         hWavePickWin.Position = [x1, y1-1, x2-x1, y2-y1+2];
         hWavePickWin.Color = 'g';
         hWavePickWin.Visible = 'on';
-
         
         % LAV
 %         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'off';
@@ -181,7 +180,7 @@ elseif strcmp(src.Tag, 'BH')
         set(data2.Panel.ViewBH.Comp.hPlotObj.wiwBH, 'XData', [], 'YData', []);
 
         % tableBH
-        data2.Panel.TableBH.Comp.Radiobutton.Box(nBoxBH).Value = 1;
+%         data2.Panel.TableBH.Comp.Radiobutton.Box(nBoxBH).Value = 1;
         data2.Panel.TableBH.Comp.Radiobutton.Box(nBoxBH).Visible = 'on';
 
         % refresh LAV Box

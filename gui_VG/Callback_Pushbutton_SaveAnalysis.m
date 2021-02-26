@@ -53,10 +53,12 @@ analysisData.AxisLim = AxisLim;
 
 %% box table
 RB.BoxB = data2.Panel.TableB.Comp.Radiobutton.Box;
+RB.BoxBH = data2.Panel.TableBH.Comp.Radiobutton.Box;
 analysisData.RB = RB;
 
 %% delete popup
 delPU.ListBoxB = data2.Panel.DeleteB.Comp.PopUpMenu.BoxList; 
+delPU.ListBoxBH = data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList;
 analysisData.delPU = delPU;
 
 %% save data
