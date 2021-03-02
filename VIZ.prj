@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3356467666" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="497402346" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>VIZ</param.appname>
     <param.icon />
     <param.icons />
@@ -167,6 +167,7 @@
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_ParamButton.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_PatientSearch.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_Pick_.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_SaveAnalysis.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_ThreshSetting.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_Zoom_.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Radiobutton_TableB_Box_.m</file>
