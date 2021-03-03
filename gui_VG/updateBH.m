@@ -2,7 +2,7 @@ function updateBH
 
 global hFig2
 % global tt yy baseLine dt
-global wBH
+global wBH wBHAvg
 global LAVBoxBH
 global Thresh
 global ampAvgB
@@ -67,9 +67,13 @@ yBHAll(yBHAll > yy2B) = nan;
 if size(yBHAll, 1) > 1
     set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', tt, 'YData', mean(yBHAll)); 
     data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Visible = 'on';  
+    wBHAvg.tt = tt;
+    wBHAvg.yy = mean(yBHAll);
 else
     set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', [], 'YData', []);
     data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Visible = 'off';  
+    wBHAvg.tt = [];
+    wBHAvg.yy = [];
 end
 
 junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nsBH, 1));

@@ -6,7 +6,7 @@ global TimeRange
 global tMax
 global tt yy baseLine
 global avgB yBAll periodBAll % all previous wave y and period
-global wBH
+global wBH wBHAvg
 global LAVBox LAVBoxBH
 global paramB paramBH
 global Thresh
@@ -22,6 +22,7 @@ analysisData.avgB = avgB;
 analysisData.yBAll = yBAll;
 analysisData.periodBAll = periodBAll;
 analysisData.wBH = wBH;
+analysisData.wBHAvg = wBHAvg;
 analysisData.paramB = paramB;
 analysisData.paramBH = paramBH;
 analysisData.Thresh = Thresh;

@@ -6,7 +6,7 @@ global TimeRange
 global tMax
 global tt yy baseLine
 global avgB yBAll periodBAll % all previous wave y and period
-global wBH
+global wBH wBHAvg
 global LAVBox LAVBoxBH
 global paramB paramBH
 global avgBnP
@@ -166,6 +166,7 @@ if exist(affn, 'file')
     yBAll = analysisData.yBAll;
     periodBAll = analysisData.periodBAll;
     wBH = analysisData.wBH;
+    wBHAvg = analysisData.wBHAvg;
     paramB = analysisData.paramB;
     paramBH = analysisData.paramBH;
     LAVBox =  analysisData.LAVBox;
@@ -253,6 +254,18 @@ if exist(affn, 'file')
             'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 1);
         data2.Panel.TableBH.Comp.Radiobutton.Box(iBH).Visible = RB.BoxBH(iBH).Visible;
     end
+%     updateBH;
+    % BH Avg
+    set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', wBHAvg.tt, 'YData', wBHAvg.yy); 
+
+%     %avg line
+%     if size(yBHAll, 1) > 1
+%         set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', tt, 'YData', mean(yBHAll)); 
+%         data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Visible = 'on';  
+%     else
+%         set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', [], 'YData', []);
+%         data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Visible = 'off';  
+%     end
     
     data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = [num2str(paramBH.Time, 3), 's'];
 
