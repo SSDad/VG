@@ -10,6 +10,7 @@ global Thresh
 global ViewBYLim ViewBHLim
 global ampAvgB
 global paramBH
+global pps
 
 TimeRange = 30;
 avgBnP = 100;

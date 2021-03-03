@@ -11,6 +11,7 @@ global LAVBox LAVBoxBH
 global paramB paramBH
 global avgBnP
 global BoxColor BoxColorBH
+global pps
 
 % data = guidata(hFig);
 % fd_VG = data.fd_VG;

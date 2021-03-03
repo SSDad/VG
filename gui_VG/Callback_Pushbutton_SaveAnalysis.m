@@ -15,6 +15,7 @@ global pps
 data2 = guidata(hFig2);
 datafn = data2.FileNames.data.fn;
 analysisfn = ['Analysis_', datafn(6:end)];
+pdffn = ['Screen_', datafn(6:end-4), '.pdf'];
 
 %% data
 analysisData.avgB = avgB;
@@ -69,6 +70,13 @@ save(fullfile(data2.FileNames.data.path, analysisfn), 'analysisData')
 % data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.String = BLS; 
 % data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.Value = nBox+1; 
 
+ffn = fullfile(data2.FileNames.data.path, pdffn);
+set(hFig2, 'Units', 'Inches');
+pos = get(hFig2, 'Position');
+set(hFig2, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)])
+print(hFig2, ffn, '-dpdf', '-r0')
+
+set(hFig2, 'Units', 'normalized');
 
 msg{1} = '       Analysis has been saved successfully...';
 msg{2} = ' ';
