@@ -11,6 +11,8 @@ global tmrSaveData
 
 global dyn
 
+global startTime
+
 str = src.String;
 data = guidata(hFig);
 
@@ -18,6 +20,8 @@ hBHC = data.Panel.BHC.Comp.Edit.Counter;
 hBH = data.Panel.BH.Comp.Togglebutton.BH;
 
 if strcmp(str, 'Go')
+    startTime = datestr(now, 'YYYYmmDD_HHMMSS');
+    
     data.Panel.Wave.Comp.hPlotObj.WaveRect.Visible = 'on';
     data.Panel.BH.hPanel.Visible = 'on';
     data.Panel.BH.Comp.Togglebutton.BH.Visible = 'off';

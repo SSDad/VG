@@ -3,6 +3,7 @@ function saveData
 global hFig
 global tt yy pps
 global baseLine
+global startTime
 
 data = guidata(hFig);
 fd_VG = data.fd_VG;
@@ -13,6 +14,6 @@ if ~exist(fd_MRN, 'dir')
 end
 
 Fraction = data.Panel.PtInfo.Comp.Edit.Fraction.String;
-datafn = fullfile(fd_MRN, ['Wave_', MRN, '_F', Fraction, '_', datestr(now,'YYYYmmDD'), '.mat']);
+datafn = fullfile(fd_MRN, ['Wave_', MRN, '_F', Fraction, '_', startTime, '.mat']);
 
 save(datafn, 'pps', 'tt', 'yy', 'baseLine');
