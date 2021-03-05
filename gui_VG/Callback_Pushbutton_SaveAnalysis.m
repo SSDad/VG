@@ -18,6 +18,10 @@ junk = datafn(1:end-8);
 analysisfn = [junk, 'Analysis.mat'];
 pdffn = [junk, 'Screen.pdf'];
 
+% if exist('analysisData', 'var')
+%     delete analysisData;
+% end
+
 %% data
 analysisData.avgB = avgB;
 analysisData.yBAll = yBAll;

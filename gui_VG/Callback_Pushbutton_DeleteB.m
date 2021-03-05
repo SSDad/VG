@@ -16,30 +16,33 @@ hAllWaveComp = data2.Panel.AllWave.Comp;
 % update ViewB
 delete(avgB(iBox).hg.Children(:));
 
-hWaveComp = data2.Panel.Wave.Comp;
-hAllWaveComp = data2.Panel.AllWave.Comp;
+% hWaveComp = data2.Panel.Wave.Comp;
+% hAllWaveComp = data2.Panel.AllWave.Comp;
 
-junk1 = hWaveComp.hPlotObj.BoxB(iBox);
-junk2 = hAllWaveComp.hPlotObj.BoxB(iBox);
-junk3 = hAllWaveComp.hPlotObj.BoxBText(iBox);
+% junk1 = hWaveComp.hPlotObj.BoxB(iBox);
+% junk2 = hAllWaveComp.hPlotObj.BoxB(iBox);
+% junk3 = hAllWaveComp.hPlotObj.BoxBText(iBox);
 nBox = length(avgB);
 junkColor = BoxColor(iBox, :);
 for n = iBox:nBox-1
     avgB(n) = avgB(n+1); % update avgB
     
     % update box
-    data2.Panel.Wave.Comp.hPlotObj.BoxB(n) = hWaveComp.hPlotObj.BoxB(n+1);
-    data2.Panel.AllWave.Comp.hPlotObj.BoxB(n) = hAllWaveComp.hPlotObj.BoxB(n+1);
-    data2.Panel.AllWave.Comp.hPlotObj.BoxText(n) = hAllWaveComp.hPlotObj.BoxText(n+1);
+    data2.Panel.Wave.Comp.hPlotObj.BoxB(n) = data2.Panel.Wave.Comp.hPlotObj.BoxB(n+1);
+    data2.Panel.AllWave.Comp.hPlotObj.BoxB(n) = data2.Panel.AllWave.Comp.hPlotObj.BoxB(n+1);
+    data2.Panel.AllWave.Comp.hPlotObj.BoxText(n) = data2.Panel.AllWave.Comp.hPlotObj.BoxText(n+1);
     data2.Panel.AllWave.Comp.hPlotObj.BoxText(n).String = num2str(n);
 
     BoxColor(n, :) =  BoxColor(n+1, :);
 end
 BoxColor(nBox, :) = junkColor;
 
-delete(junk1);
-delete(junk2);
-delete(junk3);
+delete(data2.Panel.Wave.Comp.hPlotObj.BoxB(iBox));
+delete(data2.Panel.AllWave.Comp.hPlotObj.BoxB(iBox));
+delete(data2.Panel.AllWave.Comp.hPlotObj.BoxBText(iBox));
+data2.Panel.Wave.Comp.hPlotObj.BoxB(iBox) = [];
+data2.Panel.AllWave.Comp.hPlotObj.BoxB(iBox) = [];
+data2.Panel.AllWave.Comp.hPlotObj.BoxBText(iBox) = [];
 
 % update TableB color
 for n = iBox:size(BoxColor, 1)

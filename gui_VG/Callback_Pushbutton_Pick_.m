@@ -180,7 +180,7 @@ elseif strcmp(src.Tag, 'BH')
         set(data2.Panel.ViewBH.Comp.hPlotObj.wiwBH, 'XData', [], 'YData', []);
 
         % tableBH
-%         data2.Panel.TableBH.Comp.Radiobutton.Box(nBoxBH).Value = 1;
+        data2.Panel.TableBH.Comp.Radiobutton.Box(nBoxBH).Value = 1;
         data2.Panel.TableBH.Comp.Radiobutton.Box(nBoxBH).Visible = 'on';
 
         % refresh LAV Box

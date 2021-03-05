@@ -59,9 +59,12 @@ if ffn~=0
     else
         hAxWave.XLim(2) = TimeRange;
     end
-    i1 = 1;
-    i2 = 
-    
+    [~, i1] = min(abs(hAxWave.XLim(1)-tt));
+    [~, i2] = min(abs(hAxWave.XLim(2)-tt));
+    yMin = min(yy(i1:i2));
+    yMax = max(yy(i1:i2));
+    junk = (yMax-yMin)/10;
+    hAxWave.YLim = [yMin-junk yMax+junk];
     
     % all wave
     hAllWave = data2.Panel.AllWave.Comp.hPlotObj.AllWave;
@@ -80,9 +83,13 @@ if ffn~=0
     hWaveComp = data2.Panel.Wave.Comp;
     hAllWaveComp = data2.Panel.AllWave.Comp;
     if isfield(hAllWaveComp.hPlotObj, 'BoxB')
-        delete(hAllWaveComp.hPlotObj.BoxB(:));  
-        delete(hWaveComp.hPlotObj.BoxB(:));
-        delete(hAllWaveComp.hPlotObj.BoxBText(:));
+        delete(data2.Panel.AllWave.Comp.hPlotObj.BoxB(:));  
+        delete(data2.Panel.Wave.Comp.hPlotObj.BoxB(:));
+        delete(data2.Panel.AllWave.Comp.hPlotObj.BoxBText(:));
+
+        data2.Panel.AllWave.Comp.hPlotObj.BoxB(:) = [];  
+        data2.Panel.Wave.Comp.hPlotObj.BoxB(:) = [];
+        data2.Panel.AllWave.Comp.hPlotObj.BoxBText(:) = [];
 
         for n = 1:length(avgB) 
             delete(avgB(n).hg.Children(:)); % avgB waves
@@ -123,8 +130,8 @@ if ffn~=0
     
     % clear BH
     if isfield(hAllWaveComp.hPlotObj, 'BoxBH')
+        deletedata2.Panel.Wave.Comp.hPlotObj.BoxBH(:));
         delete(hAllWaveComp.hPlotObj.BoxBH(:));
-        delete(hWaveComp.hPlotObj.BoxBH(:));
         delete(hAllWaveComp.hPlotObj.BoxBHText(:));
 
         for n = 1:length(wBH) 
@@ -151,6 +158,7 @@ if ffn~=0
         data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.Value = 1; 
     end
     
+    guidata(hFig2, data2);
 end
 
 %% load analysis
@@ -170,25 +178,11 @@ if exist(affn, 'file')
     LAVBox =  analysisData.LAVBox;
     LAVBoxBH =  analysisData.LAVBoxBH;
 
-    % AxisLim
-    AxisLim = analysisData.AxisLim;
-    % AllWave
-    data2.Panel.AllWave.Comp.hAxis.Wave.XLim = AxisLim.AllWave.XLim;
-    data2.Panel.AllWave.Comp.hAxis.Wave.YLim = AxisLim.AllWave.YLim ;
-    % Wave
-    data2.Panel.Wave.Comp.hAxis.Wave.XLim = AxisLim.Wave.XLim;
-    data2.Panel.Wave.Comp.hAxis.Wave.YLim = AxisLim.Wave.YLim ;
-    % ViewB
-    data2.Panel.ViewB.Comp.hAxis.ViewB.XLim = AxisLim.ViewB.XLim;
-    data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = AxisLim.ViewB.YLim;
-    %ViewBH
-    data2.Panel.ViewBH.Comp.hAxis.ViewBH.XLim = AxisLim.ViewBH.XLim;
-    data2.Panel.ViewBH.Comp.hAxis.ViewBH.YLim = AxisLim.ViewBH.YLim;
-    
     % boxes
     Boxes = analysisData.Boxes;
     hAxWave = data2.Panel.Wave.Comp.hAxis.Wave;
     hAxAllWave = data2.Panel.AllWave.Comp.hAxis.AllWave;
+    
     % boxB
     hB = Boxes.BoxB.AllWave;
     for iB = 1:length(hB)
@@ -273,6 +267,21 @@ if exist(affn, 'file')
     data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.String = delPU.ListBoxBH.String; 
     data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.Value = delPU.ListBoxBH.Value; 
     
+    % AxisLim
+    AxisLim = analysisData.AxisLim;
+    % AllWave
+    data2.Panel.AllWave.Comp.hAxis.Wave.XLim = AxisLim.AllWave.XLim;
+    data2.Panel.AllWave.Comp.hAxis.Wave.YLim = AxisLim.AllWave.YLim ;
+    % Wave
+    data2.Panel.Wave.Comp.hAxis.Wave.XLim = AxisLim.Wave.XLim;
+    data2.Panel.Wave.Comp.hAxis.Wave.YLim = AxisLim.Wave.YLim ;
+    % ViewB
+    data2.Panel.ViewB.Comp.hAxis.ViewB.XLim = AxisLim.ViewB.XLim;
+    data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = AxisLim.ViewB.YLim;
+    %ViewBH
+    data2.Panel.ViewBH.Comp.hAxis.ViewBH.XLim = AxisLim.ViewBH.XLim;
+    data2.Panel.ViewBH.Comp.hAxis.ViewBH.YLim = AxisLim.ViewBH.YLim;
+
     guidata(hFig2, data2)
     
 end
