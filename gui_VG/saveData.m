@@ -14,6 +14,6 @@ if ~exist(fd_MRN, 'dir')
 end
 
 Fraction = data.Panel.PtInfo.Comp.Edit.Fraction.String;
-datafn = fullfile(fd_MRN, ['Wave_', MRN, '_F', Fraction, '_', startTime, '.mat']);
+datafn = fullfile(fd_MRN, [MRN, '_F', Fraction, '_', startTime, '_Wave.mat']);
 
 save(datafn, 'pps', 'tt', 'yy', 'baseLine');

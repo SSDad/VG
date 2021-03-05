@@ -156,11 +156,16 @@ if ffn~=0
 end
 
 %% load analysis
-analysisfn = ['Analysis_', ffn(6:end)];
+analysisfn = [ffn(1:end-8), 'Analysis.mat'];
 affn = fullfile(dataPath, analysisfn);
 if exist(affn, 'file')
     load(affn);
 
+    ind = strfind(ffn, '_');
+    data2.Panel.PatientInfo.Comp.Text.MRN.String = ffn(1:ind(1)-1);
+    data2.Panel.PatientInfo.Comp.Text.Fx.String = ['Fx - ', ffn(ind(1)+2:ind(2)-1)];
+    data2.Panel.PatientInfo.Comp.Text.Time.String = ffn(ind(2)+1:ind(4)-1);
+    
     % data
     avgB = analysisData.avgB;
     yBAll = analysisData.yBAll;

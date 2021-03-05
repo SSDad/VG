@@ -14,8 +14,9 @@ global pps
 
 data2 = guidata(hFig2);
 datafn = data2.FileNames.data.fn;
-analysisfn = ['Analysis_', datafn(6:end)];
-pdffn = ['Screen_', datafn(6:end-4), '.pdf'];
+junk = datafn(1:end-8);
+analysisfn = [junk, 'Analysis.mat'];
+pdffn = [junk, 'Screen.pdf'];
 
 %% data
 analysisData.avgB = avgB;

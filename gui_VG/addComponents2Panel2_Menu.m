@@ -1,7 +1,7 @@
 function Comp = addComponents2Panel2_Menu(hPanel)
 
 h_Gap = 0.05;
-h_ratio = [1 1 1 1 1];
+h_ratio = [1 1 1];
 nSubPanel = length(h_ratio);
 h_1 = (1-h_Gap*(nSubPanel+1))/sum(h_ratio);
 
@@ -11,7 +11,7 @@ h_Load = h_ratio(1)*h_1;
 % h_BH = h_ratio(4)*h_1;
 %  h_Gap = (1-h_Collect-h_WaveBar)/3;
 
-w_Button = 0.8;
+w_Button = 0.9;
 w_Gap = (1-w_Button)/2;
 
 FS = 11;

@@ -55,7 +55,10 @@ hFig2 = figure('MenuBar',            'none', ...
 % addToolbar(hFig);
                 
 data2.Panel = addPanel2(hFig2);
+
 data2.Panel.Menu.Comp = addComponents2Panel2_Menu(data2.Panel.Menu.hPanel);
+data2.Panel.PatientInfo.Comp = addComponents2Panel2_PatientInfo(data2.Panel.PatientInfo.hPanel);
+
 data2.Panel.AllWave.Comp = addComponents2Panel2_AllWave(data2.Panel.AllWave.hPanel);
 data2.Panel.Wave.Comp = addComponents2Panel2_Wave(data2.Panel.Wave.hPanel);
 data2.Panel.Zoom.Comp = addComponents2Panel2_Zoom(data2.Panel.Zoom.hPanel);
