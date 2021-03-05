@@ -32,7 +32,7 @@ analysisData.LAVBox = LAVBox;
 analysisData.LAVBoxBH = LAVBoxBH;
 
 %% boxes
-Boxes.Positions.WaveWin = data2.Panel.AllWave.Comp.hPlotObj.WaveWin.Position;
+Boxes.Positions.WinOnAllWave = data2.Panel.AllWave.Comp.hPlotObj.WinOnAllWave.Position;
 Boxes.Positions.LAVBox = data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Position;
 Boxes.Positions.LAVBoxBH = data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Position;
 
@@ -46,6 +46,8 @@ Boxes.BoxBHText =  data2.Panel.AllWave.Comp.hPlotObj.BoxBHText;
 analysisData.Boxes = Boxes;
 
 %% Lim
+AxisLim.AllWave.XLim = data2.Panel.AllWave.Comp.hAxis.AllWave.XLim;
+AxisLim.AllWave.YLim = data2.Panel.AllWave.Comp.hAxis.AllWave.YLim;
 AxisLim.Wave.XLim = data2.Panel.Wave.Comp.hAxis.Wave.XLim;
 AxisLim.Wave.YLim = data2.Panel.Wave.Comp.hAxis.Wave.YLim;
 AxisLim.ViewB.XLim = data2.Panel.ViewB.Comp.hAxis.ViewB.XLim;

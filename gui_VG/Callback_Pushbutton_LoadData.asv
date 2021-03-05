@@ -59,12 +59,9 @@ if ffn~=0
     else
         hAxWave.XLim(2) = TimeRange;
     end
-    [~, i1] = min(abs(hAxWave.XLim(1)-tt));
-    [~, i2] = min(abs(hAxWave.XLim(2)-tt));
-    yMin = min(yy(i1:i2));
-    yMax = max(yy(i1:i2));
-    junk = (yMax-yMin)/10;
-    hAxWave.YLim = [yMin-junk yMax+junk];
+    i1 = 1;
+    i2 = 
+    
     
     % all wave
     hAllWave = data2.Panel.AllWave.Comp.hPlotObj.AllWave;
