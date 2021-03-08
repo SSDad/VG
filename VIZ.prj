@@ -125,6 +125,7 @@
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_Menu.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_ParamB.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_ParamBH.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_PatientInfo.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_Pick.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_TableB.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_TableBH.m</file>
@@ -178,7 +179,7 @@
       <file>${PROJECT_ROOT}\gui_VG\Callback_Togglebutton_WaveBar.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_WavePickWin.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_WaveRect.m</file>
-      <file>${PROJECT_ROOT}\gui_VG\Callback_WaveWin.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\Callback_WinOnAllWave.m</file>
       <file>${PROJECT_ROOT}\gui_VG\clearB.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fig2CloseReq.m</file>
       <file>${PROJECT_ROOT}\gui_VG\figCloseReq.m</file>
@@ -192,6 +193,9 @@
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrBHStop.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrEmu.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrSaveData.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\inputdlg\fun_inputdlg.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\inputdlg\getnicedialoglocation.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\inputdlg\setdefaultbutton.m</file>
       <file>${PROJECT_ROOT}\gui_VG\reorderPlotObj.m</file>
       <file>${PROJECT_ROOT}\gui_VG\saveData.m</file>
       <file>${PROJECT_ROOT}\gui_VG\syncYLim.m</file>
