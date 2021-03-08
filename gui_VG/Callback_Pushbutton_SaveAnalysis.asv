@@ -12,13 +12,11 @@ global paramB paramBH
 global Thresh
 global pps
 
-addpath(fullfile(pwd, 'inputdlg'));
-
 data2 = guidata(hFig2);
 datafn = data2.FileNames.data.fn;
 junk = datafn(1:end-8);
-analysisfn = [junk, 'Analysis'];
-pdffn = [junk, 'Screen'];
+analysisfn = [junk, 'Analysis.mat'];
+pdffn = [junk, 'Screen.pdf'];
 
 % if exist('analysisData', 'var')
 %     delete analysisData;
@@ -82,27 +80,25 @@ end
 analysisData.delPU = delPU;
 
 %% save data
-% prompt = {'\fontsize{16} Enter suffix:'};
 prompt = {'Enter suffix:'};
-dlgtitle = 'Analysis Suffix';
-dims = [1 50];
-definput = {''};
-opts.Interpreter = 'tex';
-suffix = fun_inputdlg(prompt, dlgtitle, dims, definput, opts);
+dlgtitle = 'Save Data Suffix';
+dims = [1 35];
+% definput = {'20','hsv'};
+suff = inputdlg(prompt,dlgtitle,dims,definput);
 
-if ~isempty(suffix)
-    save(fullfile(data2.FileNames.data.path, [analysisfn, '_', suffix{1}, '.mat']), 'analysisData')
+save(fullfile(data2.FileNames.data.path, analysisfn), 'analysisData')
 
-    ffn = fullfile(data2.FileNames.data.path, [pdffn, '_', suffix{1}, '.pdf']);
-    set(hFig2, 'Units', 'Inches');
-    pos = get(hFig2, 'Position');
-    set(hFig2, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)])
-    print(hFig2, ffn, '-dpdf', '-r0')
 
-    set(hFig2, 'Units', 'normalized');
+ffn = fullfile(data2.FileNames.data.path, pdffn);
+set(hFig2, 'Units', 'Inches');
+pos = get(hFig2, 'Position');
+set(hFig2, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)])
+print(hFig2, ffn, '-dpdf', '-r0')
 
-    msg{1} = '       Analysis has been saved successfully...';
-    msg{2} = ' ';
-    msgColor = 'g';
-    [hMB_saveData] = fun_messageBox('Save Data', msg, msgColor);
-end
+set(hFig2, 'Units', 'normalized');
+
+msg{1} = '       Analysis has been saved successfully...';
+msg{2} = ' ';
+msgColor = 'g';
+[hMB_saveData] = fun_messageBox('Save Data', msg, msgColor);
+
