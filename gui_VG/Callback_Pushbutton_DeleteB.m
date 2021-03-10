@@ -30,8 +30,8 @@ for n = iBox:nBox-1
     % update box
     data2.Panel.Wave.Comp.hPlotObj.BoxB(n) = data2.Panel.Wave.Comp.hPlotObj.BoxB(n+1);
     data2.Panel.AllWave.Comp.hPlotObj.BoxB(n) = data2.Panel.AllWave.Comp.hPlotObj.BoxB(n+1);
-    data2.Panel.AllWave.Comp.hPlotObj.BoxText(n) = data2.Panel.AllWave.Comp.hPlotObj.BoxText(n+1);
-    data2.Panel.AllWave.Comp.hPlotObj.BoxText(n).String = num2str(n);
+    data2.Panel.AllWave.Comp.hPlotObj.BoxBText(n) = data2.Panel.AllWave.Comp.hPlotObj.BoxBText(n+1);
+    data2.Panel.AllWave.Comp.hPlotObj.BoxBText(n).String = num2str(n);
 
     BoxColor(n, :) =  BoxColor(n+1, :);
 end

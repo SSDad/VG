@@ -13,7 +13,7 @@ x(2) = wB+w_Gap;
 %     x(n) = w_Gap*n+sum(w(1:n-1));
 % end
 
-str{1} = 'B';
+str{1} = 'Breath';
 str{2} = 'BH';
 
 CLR = 'gr';

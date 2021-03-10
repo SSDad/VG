@@ -45,6 +45,7 @@ if bDevice
     data.Panel.Collect.hPanel.Visible = 'on';
     data.Panel.WaveBar.hPanel.Visible = 'on';
     data.Panel.ParamButton.hPanel.Visible = 'on';
+    data.Panel.TextButton.hPanel.Visible = 'on';
     data.Panel.Analysis.hPanel.Visible = 'on';
 end
 
