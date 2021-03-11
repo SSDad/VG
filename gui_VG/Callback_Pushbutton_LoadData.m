@@ -48,25 +48,7 @@ if fn_Wave~=0
     data2.Panel.PatientInfo.Comp.Text.Fx.String = ['Fx - ', fn_Wave(ind(1)+2:ind(2)-1)];
     data2.Panel.PatientInfo.Comp.Text.Time.String = fn_Wave(ind(2)+1:ind(4)-1);
     
-    % wave
-    hAxWave = data2.Panel.Wave.Comp.hAxis.Wave;
-    hWave = data2.Panel.Wave.Comp.hPlotObj.Wave;
-    set(hWave, 'XData', tt, 'YData', yy);
-    
-    hAxWave.XLim(1) = 0;
-    if tMax < TimeRange
-        hAxWave.XLim(2) = tt(end);
-    else
-        hAxWave.XLim(2) = TimeRange;
-    end
-    [~, i1] = min(abs(hAxWave.XLim(1)-tt));
-    [~, i2] = min(abs(hAxWave.XLim(2)-tt));
-    yMin = min(yy(i1:i2));
-    yMax = max(yy(i1:i2));
-    junk = (yMax-yMin)/10;
-    hAxWave.YLim = [yMin-junk yMax+junk];
-    
-    % all wave
+    % AllWave
     hAllWave = data2.Panel.AllWave.Comp.hPlotObj.AllWave;
     set(hAllWave, 'XData', tt, 'YData', yy);
     hAxAllWave = data2.Panel.AllWave.Comp.hAxis.AllWave;
@@ -75,13 +57,17 @@ if fn_Wave~=0
     y2 = max(yy);
     hAxAllWave.YLim = [y1 y2];
 
-    hWinOnAllWave = data2.Panel.AllWave.Comp.hPlotObj.WinOnAllWave;
-    yR = y2-y1;
-    hWinOnAllWave.Position = [hAxWave.XLim(1) y1-yR/10 range(hAxWave.XLim) yR+yR/10*2];
+     yR = y2-y1;
+     tR = range(tt);
+     data2.Panel.AllWave.Comp.hPlotObj.CutOnAllWave.Position = [tR/20 y1-yR/10 tR-tR/10 yR+yR/10*2];
+     data2.Panel.AllWave.Comp.hPlotObj.CutOnAllWave.Visible = 'on';
+
+     data2.Panel.AllWave.Comp.hPlotObj.WinOnAllWave.Position = [0 0 0 0];
+     
+    % wave
+    set(data2.Panel.Wave.Comp.hPlotObj.Wave, 'XData', [], 'YData', []);
     
     % clear B
-%     hWaveComp = data2.Panel.Wave.Comp;
-%     hAllWaveComp = data2.Panel.AllWave.Comp;
     if isfield(data2.Panel.AllWave.Comp.hPlotObj, 'BoxB')
         delete(data2.Panel.Wave.Comp.hPlotObj.BoxB(:));
         delete(data2.Panel.AllWave.Comp.hPlotObj.BoxB(:));  
@@ -186,6 +172,12 @@ if fn_Analysis
     LAVBox =  analysisData.LAVBox;
     LAVBoxBH =  analysisData.LAVBoxBH;
 
+    % wave
+    set(data2.Panel.Wave.Comp.hPlotObj.Wave, 'XData', tt, 'YData', yy);
+    
+    % AllWave cut box
+    data2.Panel.AllWave.Comp.hPlotObj.CutOnAllWave.Visible = 'off';
+
     % boxes
     Boxes = analysisData.Boxes;
     hAxWave = data2.Panel.Wave.Comp.hAxis.Wave;
@@ -273,8 +265,8 @@ if fn_Analysis
     % AxisLim
     AxisLim = analysisData.AxisLim;
     % AllWave
-    data2.Panel.AllWave.Comp.hAxis.Wave.XLim = AxisLim.AllWave.XLim;
-    data2.Panel.AllWave.Comp.hAxis.Wave.YLim = AxisLim.AllWave.YLim ;
+    data2.Panel.AllWave.Comp.hAxis.AllWave.XLim = AxisLim.AllWave.XLim;
+    data2.Panel.AllWave.Comp.hAxis.AllWave.YLim = AxisLim.AllWave.YLim ;
     % Wave
     data2.Panel.Wave.Comp.hAxis.Wave.XLim = AxisLim.Wave.XLim;
     data2.Panel.Wave.Comp.hAxis.Wave.YLim = AxisLim.Wave.YLim ;

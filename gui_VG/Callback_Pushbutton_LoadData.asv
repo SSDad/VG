@@ -75,9 +75,10 @@ if fn_Wave~=0
     y2 = max(yy);
     hAxAllWave.YLim = [y1 y2];
 
-    hWinOnAllWave = data2.Panel.AllWave.Comp.hPlotObj.WinOnAllWave;
-    yR = y2-y1;
-    hWinOnAllWave.Position = [hAxWave.XLim(1) y1-yR/10 range(hAxWave.XLim) yR+yR/10*2];
+     yR = y2-y1;
+     
+    data2.Panel.AllWave.Comp.hPlotObj.WinOnAllWave.Position = ...
+        [hAxWave.XLim(1) y1-yR/10 range(hAxWave.XLim) yR+yR/10*2];
     
     % clear B
 %     hWaveComp = data2.Panel.Wave.Comp;
