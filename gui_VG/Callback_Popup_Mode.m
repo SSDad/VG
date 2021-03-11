@@ -39,6 +39,7 @@ data.Panel.Collect.hPanel.Visible = 'off';
 data.Panel.WaveBar.hPanel.Visible = 'off';
 data.Panel.ParamButton.hPanel.Visible = 'off';
 data.Panel.Analysis.hPanel.Visible = 'off';
+data.Panel.TextButton.hPanel.Visible = 'off';
 
 % wave
 set(data.Panel.Wave.Comp.hPlotObj.Wave, 'XData', [], 'YData', []);
