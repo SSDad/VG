@@ -30,5 +30,5 @@ Comp.hPlotObj.WinOnAllWave = images.roi.Rectangle(Comp.hAxis.AllWave, 'Position'
         'LineWidth', 2, 'FaceAlpha', 0.4, 'Tag', 'WaveRect', 'Visible', 'on');
 addlistener(Comp.hPlotObj.WinOnAllWave, 'MovingROI', @Callback_WinOnAllWave);
 
-Comp.hPlotObj.CutOnAllWave = images.roi.Rectangle(Comp.hAxis.AllWave, 'Position', pos, 'Color', 'g',...
-        'LineWidth', 2, 'FaceAlpha', 0, 'Tag', 'AllWaveCut', 'Visible', 'on');
+Comp.hPlotObj.CutOnAllWave = images.roi.Rectangle(Comp.hAxis.AllWave, 'Position', pos, 'Color', 'c',...
+        'LineWidth', 2, 'FaceAlpha', 0.4, 'Tag', 'WaveRect', 'Visible', 'on');
