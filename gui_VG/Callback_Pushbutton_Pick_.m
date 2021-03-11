@@ -19,7 +19,7 @@ hAxWave = hWaveComp.hAxis.Wave;
 hAxAllWave = hAllWaveComp.hAxis.AllWave;
 hWavePickWin = data2.Panel.Wave.Comp.hPlotObj.WavePickWin;
 
-if strcmp(src.Tag, 'B')
+if strcmp(src.Tag, 'Breath')
 %     hAvg = data2.Panel.ViewB.Comp.hPlotObj.Avg;
 %     hg_wgBAll =    data2.Panel.ViewB.Comp.hPlotObj.hg_wgBAll;
 
@@ -27,7 +27,7 @@ if strcmp(src.Tag, 'B')
     
     hg_wiwB =    data2.Panel.ViewB.Comp.hPlotObj.hg_wiwB;
 
-    if strcmp(src.String, 'B')
+    if strcmp(src.String, 'Breath')
         src.String = 'Bingo';
         
         % init. active box pos
@@ -53,7 +53,7 @@ if strcmp(src.Tag, 'B')
         updateAvgB;
 
     else
-        src.String = 'B';
+        src.String = 'Breath';
 
         % add box
         hWavePickWin.Visible = 'off';
