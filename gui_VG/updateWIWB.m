@@ -23,27 +23,3 @@ peakInd = wiwB.locs1+ind(1)-1;
 set(hPeaks, 'XData', tt(peakInd), 'YData', yy(peakInd));
 troughInd = wiwB.locs2+ind(1)-1;
 set(hTroughs, 'XData', tt(troughInd), 'YData', yy(troughInd));
-    
-
-% 
-% if ~isempty(hg_wiwB.Children)
-%     delete(hg_wiwB.Children(:));
-% end
-% 
-% x = 1:avgBnP;
-% for iW = 1:size(wiwB.yy, 1)
-%     y = wiwB.yy(iW, :);
-%     line(hg_wiwB, 'XData', x, 'YData', y, 'Color', 'g');
-% end
-% 
-% yA = [yBAll; wiwB.yy];
-% set(hAvg, 'XData', x, 'YData', mean(yA));
-% 
-% junk = range(yA(:));
-% data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = [min(yA(:)) - junk*.1 max(yA(:)) + junk*.1];
-% 
-% pA = [periodBAll diff(wiwB.locs2)];
-% 
-% % reorder
-% reorderPlotObj(data2.Panel.ViewB.Comp.hAxis.ViewB);
-% 

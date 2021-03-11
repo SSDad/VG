@@ -33,7 +33,7 @@ end
 sw = sgolayfilt(w, 3, framelen);
 % sw = w;
 
-[pks1, locs1] = findpeaks(sw, 'MinPeakDistance', MPD/dt, 'MInPeakheight', mean(sw));
+[pks1, locs1] = findpeaks(sw, 'MinPeakDistance', MPD/dt, 'MInPeakheight', mean(sw)); % peak
 % [pks1, locs1] = findpeaks(sw, 'MinPeakDistance', 1/dt);
 % [pks1, locs1] = findpeaks(sw);
 
@@ -42,14 +42,15 @@ indOL = isoutlier(dL);
 meanL = mean(dL(~indOL));
 
 fsw = max(sw) - sw ;
-[pks2, locs2] = findpeaks(fsw, 'MinPeakDistance', meanL*0.6, 'MInPeakheight', mean(fsw));
+[pks2, locs2] = findpeaks(fsw, 'MinPeakDistance', meanL*0.6, 'MInPeakheight', mean(fsw)); % trough
 % [pks2, locs2] = findpeaks(fsw);
-if locs2(1) < locs1(1)
-    locs2(1) = [];
-end
-if locs2(end) > locs1(end)
-    locs2(end) = [];
-end
+
+% if locs2(1) < locs1(1)
+%     locs2(1) = [];
+% end
+% if locs2(end) > locs1(end)
+%     locs2(end) = [];
+% end
 
 % locs2 = locs2(2:end-1);
 wiw.locs1 = locs1;
@@ -65,10 +66,10 @@ if bPlot
     plot(t, w, t, sw, t(locs1), sw(locs1), 'or', t(locs2), sw(locs2), 'ob', 'LineWidth', 2, 'MarkerSize', 12)
 end
 
-for n = 1:length(locs2)-1
-    ww = v(locs2(n):locs2(n+1));
+for n = 1:length(locs1)-1
+    ww = v(locs1(n):locs1(n+1));
     yy = imresize(ww, [1 avgBnP]);
-    wiw.tt{n} = t(locs2(n):locs2(n+1));
+    wiw.tt{n} = t(locs1(n):locs1(n+1));
     wiw.ww{n} = ww;
     wiw.yy(n, :) = yy; 
 end
