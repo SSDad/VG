@@ -7,7 +7,7 @@ global tMax
 data2 = guidata(hFig2);
 
 hAx = data2.Panel.Wave.Comp.hAxis.Wave;
-hWaveWin = data2.Panel.AllWave.Comp.hPlotObj.WaveWin;
+hWaveWin = data2.Panel.AllWave.Comp.hPlotObj.WinOnAllWave;
 dt = range(hAx.XLim)/10;
 if strcmp(src.Tag, '<<')
     hAx.XLim = hAx.XLim - dt;
