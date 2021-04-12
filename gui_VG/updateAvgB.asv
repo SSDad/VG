@@ -44,13 +44,13 @@ else
 end
 
 %% update avg
- if ~isempty(yA)
+if ~isempty(yA)
     x = 1:avgBnP;
 % set(hAvg, 'XData', x, 'YData', mean(yA));
-set(hAvg, 'XData', x, 'YData', yA_mean.norm);
+set(hAvg, 'XData', x, 'YData', yA_mean_norm);
 junk = range(yA(:));
 ViewBYLim = [min(yA(:)) - junk*.1 max(yA(:)) + junk*.1];
-ViewBYLim = (ViewBYLim - yA_mean.min)/range(yA_mean.data);
+ViewBYLim = (ViewBYLim - yA_mean.min)/range(yA_mean);
 data2.Panel.ViewB.Comp.hAxis.ViewB.YLim = ViewBYLim;
 
 % bring avg line to top
@@ -59,12 +59,12 @@ reorderPlotObj(data2.Panel.ViewB.Comp.hAxis.ViewB);
 %% update param
 % yAmean = mean(yA);
 % ampAvgB = max(yAmean)-min(yAmean);
-ampAvgB = range(yA_mean.data);
+ampAvgB = range(yA_mean);
 data2.Panel.ParamB.Comp.Text.Param(1).Name(2).String = num2str(ampAvgB, 2 );
-junk = abs(yA-yA_mean.data)/ampAvgB;
+junk = abs(yA-yA_mean);
 GAV = sum(junk(:))/numel(junk);
 data2.Panel.ParamB.Comp.Text.Param(2).Name(2).String = num2str(GAV, 2 );
-GAVP = GAV*100;
+GAVP = GAV/(ampAvgB)*100;
 data2.Panel.ParamB.Comp.Text.Param(2).Name(3).String = [num2str(GAVP, 2), '%'];
 if GAVP <= Thresh(1, 1)
     CLR = 'g';

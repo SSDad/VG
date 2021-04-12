@@ -9,7 +9,7 @@ global ampAvgB
 
 data2 = guidata(hFig2);
 
-[LAV] = fun_getLAV((yBAll-yA_mean.min)/ampAvgB, LAVBox.y2, LAVBox.y1);
+[LAV] = fun_getLAV(yBAll/ampAvgB, LAVBox.y2, LAVBox.y1);
 % [LAV] = LAVBox.y2 - LAVBox.y1;
 boxH = LAVBox.y2-LAVBox.y1;
 data2.Panel.ParamB.Comp.Text.Param(3).Name(2).String = num2str(boxH, 2);       

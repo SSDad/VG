@@ -9,8 +9,8 @@ global avgBnP
 data2 = guidata(hFig2);
 hPeaks = data2.Panel.Wave.Comp.hPlotObj.Peaks;
 hTroughs = data2.Panel.Wave.Comp.hPlotObj.Troughs;
-hAvg = data2.Panel.ViewB.Comp.hPlotObj.Avg;
-hg_wiwB =    data2.Panel.ViewB.Comp.hPlotObj.hg_wiwB;
+% hAvg = data2.Panel.ViewB.Comp.hPlotObj.Avg;
+% hg_wiwB =    data2.Panel.ViewB.Comp.hPlotObj.hg_wiwB;
 
 pos = data2.Panel.Wave.Comp.hPlotObj.WavePickWin.Position;
 

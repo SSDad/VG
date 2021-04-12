@@ -4,7 +4,7 @@ nR = 6;
 h_gap = 0.01;
 hB = (1-h_gap*(1+nR))/nR;
 
-paramName{1} = 'Amp';
+paramName{1} = 'Amp(raw)';
 paramName{2} = 'GAV';
 paramName{3} = 'Box';
 paramName{4} = 'LAV';
