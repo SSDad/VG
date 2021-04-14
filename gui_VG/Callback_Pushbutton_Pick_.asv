@@ -49,7 +49,12 @@ if strcmp(src.Tag, 'Breath')
         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'off';
         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'off';
         data2.Panel.ParamB.Comp.Text.ParamValueP(3).Visible = 'off';
-                
+
+        for n = 1:3
+            data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).Visible = 'off';
+        end
+
+        
         updateWIWB;
         updateAvgB;
 
@@ -91,11 +96,11 @@ if strcmp(src.Tag, 'Breath')
         wiwB = [];
         
         % update avg hg
-        avgB(nBoxB).hg = hggroup(data2.Panel.ViewB.Comp.hAxis.ViewB);  
         for iBoxB = 1:nBoxB - 1
-            y = wiwB.yy(iW, :);
-            y = (y - yA_mean.min)/range(yA_mean.data);
-            line(avgB(nBoxB).hg, 'XData', x, 'YData', y, 'Color', BoxCLR);
+            children = avgB(iBoxB).hg.Children;
+            for iC = 1:length(children)
+                avgB(iBoxB).hg.Children(iC).YData = (avgB(iBoxB).wib.yy(iC, :) - yA_mean.min)/range(yA_mean.data);
+            end
         end
 
         % bring avg line to top
@@ -110,13 +115,26 @@ if strcmp(src.Tag, 'Breath')
         
          % LAV
          hLAVBox = data2.Panel.ViewB.Comp.hPlotObj.LAVBox;
-        y1 = data2.Panel.ViewB.Comp.hAxis.ViewB.YLim(1);
-        y2 = y1 + diff(data2.Panel.ViewB.Comp.hAxis.ViewB.YLim)/2;
+        yL = diff(data2.Panel.ViewB.Comp.hAxis.ViewB.YLim)/2;
+        y1 = data2.Panel.ViewB.Comp.hAxis.ViewB.YLim(1) + yL/4;
+        y2 = data2.Panel.ViewB.Comp.hAxis.ViewB.YLim(2) - yL/4;
         hLAVBox.Position = [0 y1 avgBnP+2 y2-y1];
         LAVBox.y1 = y1;
         LAVBox.y2 = y2;
 
         updateLAVBoxParam;
+        
+        % LAVBox text
+        yp(1) = LAVBox.y1;
+        yp(2) = LAVBox.y2;
+        yp(3) = (yp(1) + yp(2))/2;
+        yt = yp;
+        yt(3) = yp(2) - yp(1);
+        for n = 1:3
+            data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).Position = [data2.Panel.ViewB.Comp.hAxis.ViewB.XLim(2) yp(n)];
+            data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).String = num2str(yt(n), 2);
+            data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).Visible = 'on';
+        end
         
         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'on';
 %         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'on';
@@ -184,7 +202,8 @@ elseif strcmp(src.Tag, 'BH')
 
         % add wiw to view plot
         wBH(nBoxBH).wib = wiwBH;
-        wBH(nBoxBH).hLine = line(data2.Panel.ViewBH.Comp.hAxis.ViewBH, 'XData', wiwBH.tt, 'YData', wiwBH.yy, ...
+        wBH(nBoxBH).hLine = line(data2.Panel.ViewBH.Comp.hAxis.ViewBH, 'XData', wiwBH.tt,...
+            'YData', (wiwBH.yy - yA_mean.min)/amp, ...
             'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 1);
         
         set(data2.Panel.ViewBH.Comp.hPlotObj.wiwBH, 'XData', [], 'YData', []);

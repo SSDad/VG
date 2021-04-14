@@ -7,6 +7,7 @@ global LAVBoxBH
 global Thresh
 global ampAvgB
 global paramBH
+global yA_mean
 
 data2 = guidata(hFig2);
 
@@ -41,11 +42,12 @@ paramBH.Time = x2-x1;
 data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = [num2str(x2 - x1, 3), 's'];
 
 boxH = LAVBoxBH.y2-LAVBoxBH.y1;
+% boxH = (boxH-yA_mean.min)/range(yA_mean.data);
 data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = [num2str(boxH, 3)];
 paramBH.boxH = boxH;
 
 if ~isempty(ampAvgB)
-    data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(boxH/ampAvgB*100, 3), '%'];
+    data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(boxH*100, 3), '%'];
 end
 
 tt2 = min([t2 x2]);
@@ -65,7 +67,7 @@ yBHAll(yBHAll > yy2B) = nan;
 
 %avg line
 if size(yBHAll, 1) > 1
-    set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', tt, 'YData', mean(yBHAll)); 
+    set(data2.Panel.ViewBH.Comp.hPlotObj.Avg, 'XData', tt, 'YData', (mean(yBHAll) - yA_mean.min)/range(yA_mean.data)); 
     data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Visible = 'on';  
     wBHAvg.tt = tt;
     wBHAvg.yy = mean(yBHAll);
@@ -77,12 +79,14 @@ else
 end
 
 junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nsBH, 1));
+junk = (junk-yA_mean.min)/range(yA_mean.data);
+junk = abs(junk);
 AV = mean(junk(:), 'omitnan');
 data2.Panel.ParamBH.Comp.Text.ParamValue(3).String = num2str(AV, 2);
 paramBH.AV = AV;
 
 if ~isempty(ampAvgB)
-    AVP = AV/ampAvgB*100;
+    AVP = AV*100;
     data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = [num2str(AVP, 3), '%'];
 
     if AVP < Thresh(4, 1)

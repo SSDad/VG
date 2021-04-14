@@ -202,7 +202,8 @@ elseif strcmp(src.Tag, 'BH')
 
         % add wiw to view plot
         wBH(nBoxBH).wib = wiwBH;
-        wBH(nBoxBH).hLine = line(data2.Panel.ViewBH.Comp.hAxis.ViewBH, 'XData', wiwBH.tt, 'YData', wiwBH.yy, ...
+        wBH(nBoxBH).hLine = line(data2.Panel.ViewBH.Comp.hAxis.ViewBH, 'XData', wiwBH.tt,...
+            'YData', (wiwBH.yy - yA_mean.min)/range(yA_mean.data), ...
             'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 1);
         
         set(data2.Panel.ViewBH.Comp.hPlotObj.wiwBH, 'XData', [], 'YData', []);
@@ -213,8 +214,13 @@ elseif strcmp(src.Tag, 'BH')
 
         % refresh LAV Box
         if nBoxBH > 1
+            
+            yLim(1) = ViewBHLim.y1;
+            yLim(2) = ViewBHLim.y2;
+            yLim = (yLim - yA_mean.min)/range(yA_mean.data);
+            
             data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Position = ...
-                [ViewBHLim.x1 ViewBHLim.y1 ViewBHLim.x2-ViewBHLim.x1 ViewBHLim.y2-ViewBHLim.y1];
+                [ViewBHLim.x1 yLim(1)  ViewBHLim.x2-ViewBHLim.x1 yLim(2)-yLim(1)];
             
             LAVBoxBH = ViewBHLim;
             updateBH;
