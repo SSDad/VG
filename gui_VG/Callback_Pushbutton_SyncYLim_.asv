@@ -1,32 +1,26 @@
-function Callback_Pushbutton_Pick_(src, evnt)
+function Callback_Pushbutton_SyncYLim_(src, evnt)
 
 global hFig2
 
-global wiwB
-global BoxColor BoxColorBH
-global avgB avgBnP
-global yBAll periodBAll
-global yA_mean
-global LAVBox
-global pickMode
-global wiwBH wBH ViewBHLim
-global LAVBoxBH
+% global wiwB
+% global BoxColor BoxColorBH
+% global avgB avgBnP
+% global yBAll periodBAll
+% global yA_mean
+% global LAVBox
+% global pickMode
+% global wiwBH wBH ViewBHLim
+% global LAVBoxBH
 
 data2 = guidata(hFig2);
 
-hWaveComp = data2.Panel.Wave.Comp;
-hAllWaveComp = data2.Panel.AllWave.Comp;
-hAxWave = hWaveComp.hAxis.Wave;
-hAxAllWave = hAllWaveComp.hAxis.AllWave;
-hWavePickWin = data2.Panel.Wave.Comp.hPlotObj.WavePickWin;
+% hWaveComp = data2.Panel.Wave.Comp;
+% hAllWaveComp = data2.Panel.AllWave.Comp;
+% hAxWave = hWaveComp.hAxis.Wave;
+% hAxAllWave = hAllWaveComp.hAxis.AllWave;
+% hWavePickWin = data2.Panel.Wave.Comp.hPlotObj.WavePickWin;
 
-if strcmp(src.Tag, 'Breath')
-%     hAvg = data2.Panel.ViewB.Comp.hPlotObj.Avg;
-%     hg_wgBAll =    data2.Panel.ViewB.Comp.hPlotObj.hg_wgBAll;
-
-    pickMode = 'B';
-    
-    hg_wiwB =    data2.Panel.ViewB.Comp.hPlotObj.hg_wiwB;
+if strcmp(src.String, 'Sync')
 
     if strcmp(src.String, 'Breath')
         src.String = 'Bingo';
@@ -203,7 +197,7 @@ elseif strcmp(src.Tag, 'BH')
         % add wiw to view plot
         wBH(nBoxBH).wib = wiwBH;
         wBH(nBoxBH).hLine = line(data2.Panel.ViewBH.Comp.hAxis.ViewBH, 'XData', wiwBH.tt,...
-            'YData', (wiwBH.yy - yA_mean.min)/amp, ...
+            'YData', (wiwBH.yy - yA_mean.min)/range(yA_mean.data), ...
             'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 1);
         
         set(data2.Panel.ViewBH.Comp.hPlotObj.wiwBH, 'XData', [], 'YData', []);
@@ -214,8 +208,13 @@ elseif strcmp(src.Tag, 'BH')
 
         % refresh LAV Box
         if nBoxBH > 1
+            
+            yLim(1) = ViewBHLim.y1;
+            yLim(2) = ViewBHLim.y2;
+            yLim = (yLim - yA_mean.min)/range(yA_mean.data);
+            
             data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Position = ...
-                [ViewBHLim.x1 ViewBHLim.y1 ViewBHLim.x2-ViewBHLim.x1 ViewBHLim.y2-ViewBHLim.y1];
+                [ViewBHLim.x1 yLim(1)  ViewBHLim.x2-ViewBHLim.x1 yLim(2)-yLim(1)];
             
             LAVBoxBH = ViewBHLim;
             updateBH;

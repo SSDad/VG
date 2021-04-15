@@ -85,6 +85,8 @@ AV = mean(junk(:), 'omitnan');
 data2.Panel.ParamBH.Comp.Text.ParamValue(3).String = num2str(AV, 2);
 paramBH.AV = AV;
 
+% updateBHLimit;
+
 if ~isempty(ampAvgB)
     AVP = AV*100;
     data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = [num2str(AVP, 3), '%'];

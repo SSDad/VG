@@ -75,22 +75,8 @@ data2.Panel.ParamBH.Comp = addComponents2Panel2_ParamBH(data2.Panel.ParamBH.hPan
 data2.Panel.TableBH.Comp = addComponents2Panel2_TableBH(data2.Panel.TableBH.hPanel);
 data2.Panel.DeleteBH.Comp = addComponents2Panel2_DeleteBH(data2.Panel.DeleteBH.hPanel);
 
-% data.Panel.Collect.Comp = addComponents2Panel_Collect(data.Panel.Collect.hPanel);
-% data.Panel.WaveBar.Comp = addComponents2Panel_WaveBar(data.Panel.WaveBar.hPanel);
-% data.Panel.BH.Comp = addComponents2Panel_BH(data.Panel.BH.hPanel);
-% data.Panel.BHC.Comp = addComponents2Panel_BHC(data.Panel.BHC.hPanel);
-% data.Panel.ParamButton.Comp = addComponents2Panel_ParamButton(data.Panel.ParamButton.hPanel);
-% data.Panel.Analysis.Comp = addComponents2Panel_Analysis(data.Panel.Analysis.hPanel);
-% data.Panel.Calib.Comp = addComponents2Panel_Calib(data.Panel.Calib.hPanel);
-% data.Panel.Param.Comp = addComponents2Panel_Param(data.Panel.Param.hPanel);
-% 
-% data.Panel.Bar.Comp = addComponents2Panel_Bar(data.Panel.Bar.hPanel);
-% 
-% data.FC = [255 255 102]/255;
-% data.ActiveAxis.MovePoints = 0;
-% 
-% data.WaveParam.T = 30;
-% 
+data2.Panel.SyncYLim.Comp = addComponents2Panel2_SyncYLim(data2.Panel.SyncYLim.hPanel);
+
 guidata(hFig2, data2);
 
 addFig_ThreshSetting;

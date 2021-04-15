@@ -26,4 +26,4 @@ set(hwiwBH, 'XData', wiwBH.tt, 'YData', y);
 
 updateBHLimit;
 
-syncYLim;
+% syncYLim;

@@ -90,7 +90,7 @@ else
 end
 data2.Panel.ParamB.Comp.Text.ParamValueP(2).ForegroundColor = CLR;
 
-syncYLim;
+% syncYLim;
 
 % paramBH
 if ~isempty(paramBH.AV)

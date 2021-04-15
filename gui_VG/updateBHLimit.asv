@@ -27,13 +27,13 @@ for iB = 1:length(wBH)
     y2 = max(y2, max(wBH(iB).wib.yy));
 end
 
-y1 = (y1-yA_mean.min)/range(yA_mean.data);
-y2 = (y2-yA_mean.min)/range(yA_mean.data);
+y1_norm = (y1-yA_mean.min)/range(yA_mean.data);
+y2_norm = (y2-yA_mean.min)/range(yA_mean.data);
 
 xr = x2 - x1;
-yr = y2 - y1;
+yr = y2_norm - y1_norm;
 data2.Panel.ViewBH.Comp.hAxis.ViewBH.XLim = [x1 - xr*0.1 x2 + xr*0.1];
-data2.Panel.ViewBH.Comp.hAxis.ViewBH.YLim = [y1 - yr*0.1 y2 + yr*0.1];
+data2.Panel.ViewBH.Comp.hAxis.ViewBH.YLim = [y1_norm - yr*0.1 y2_norm + yr*0.1];
 
 ViewBHLim.x1 = x1;
 ViewBHLim.x2 = x2;

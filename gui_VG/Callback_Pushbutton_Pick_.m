@@ -217,13 +217,14 @@ elseif strcmp(src.Tag, 'BH')
             
             yLim(1) = ViewBHLim.y1;
             yLim(2) = ViewBHLim.y2;
-            yLim = (yLim - yA_mean.min)/range(yA_mean.data);
+%             yLim = (yLim - yA_mean.min)/range(yA_mean.data);
             
             data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Position = ...
                 [ViewBHLim.x1 yLim(1)  ViewBHLim.x2-ViewBHLim.x1 yLim(2)-yLim(1)];
             
             LAVBoxBH = ViewBHLim;
             updateBH;
+            updateBHLimit;
         end
         
         % deleteBH
