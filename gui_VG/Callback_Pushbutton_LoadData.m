@@ -40,14 +40,23 @@ if fn_Wave~=0
         [tt, yy, baseLine] = fun_loadRPMTxtData(fullfile(dataPath, fn_Wave));
         tt = tt';
         yy = yy';
+    elseif strcmp(ext, '.cmbl')
+        [tt, yy, baseLine] = fun_loadLoggerProData(fullfile(dataPath, fn_Wave));
+        tt = tt';
+        yy = yy';
     end
     tMax = tt(end);
 
     ind = strfind(fn_Wave, '_');
-    data2.Panel.PatientInfo.Comp.Text.MRN.String = fn_Wave(1:ind(1)-1);
-    data2.Panel.PatientInfo.Comp.Text.Fx.String = ['Fx - ', fn_Wave(ind(1)+2:ind(2)-1)];
-    data2.Panel.PatientInfo.Comp.Text.Time.String = fn_Wave(ind(2)+1:ind(4)-1);
-    
+    if length(ind) == 4
+        data2.Panel.PatientInfo.Comp.Text.MRN.String = fn_Wave(1:ind(1)-1);
+        data2.Panel.PatientInfo.Comp.Text.Fx.String = ['Fx - ', fn_Wave(ind(1)+2:ind(2)-1)];
+        data2.Panel.PatientInfo.Comp.Text.Time.String = fn_Wave(ind(2)+1:ind(4)-1);
+    else
+        data2.Panel.PatientInfo.Comp.Text.MRN.String = '';
+        data2.Panel.PatientInfo.Comp.Text.Fx.String = '';
+        data2.Panel.PatientInfo.Comp.Text.Time.String = '';
+    end
     % AllWave
     hAllWave = data2.Panel.AllWave.Comp.hPlotObj.AllWave;
     set(hAllWave, 'XData', tt, 'YData', yy);

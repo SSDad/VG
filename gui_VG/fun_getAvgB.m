@@ -30,6 +30,9 @@ framelen = round(MPD/dt);
 if mod(framelen, 2) == 0
     framelen = framelen + 1;
 end
+if framelen < 11
+    framelen = 11;
+end
 sw = sgolayfilt(w, 3, framelen);
 % sw = w;
 
