@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="497402346" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="2511055232" file="H:\VG\VIZ.prj" location="H:\VG" name="VIZ" preferred-package-location="H:\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>VIZ</param.appname>
     <param.icon />
     <param.icons />
@@ -114,12 +114,14 @@
       <file>${PROJECT_ROOT}\gui_VG\@dynamometer\private\libGoIO_DLL_32.dll</file>
       <file>${PROJECT_ROOT}\gui_VG\@dynamometer\private\libGoIO_DLL_64.dll</file>
       <file>${PROJECT_ROOT}\gui_VG\@dynamometer\private\src</file>
+      <file>${PROJECT_ROOT}\gui_VG\fun_loadLoggerProData.m</file>
     </fileset.resources>
     <fileset.package />
     <fileset.depfun>
       <file>${PROJECT_ROOT}\gui_VG\@dynamometer\dynamometer.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addAnalysisFig.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_AllWave.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_AllWaveCut.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_DeleteB.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_DeleteBH.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_Menu.m</file>
@@ -127,6 +129,7 @@
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_ParamBH.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_PatientInfo.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_Pick.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_SyncYLim.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_TableB.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_TableBH.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_ViewB.m</file>
@@ -143,6 +146,9 @@
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_Param.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_ParamButton.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_PtInfo.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_TextBox.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_TextButton.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_TextWin.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_Wave.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel_WaveBar.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2PanelTS_Thresh.m</file>
@@ -159,6 +165,7 @@
       <file>${PROJECT_ROOT}\gui_VG\Callback_LAVBoxBH.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Popup_Mode.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_About.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_AllWaveCut_.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_Analysis.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_BHE.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_Calib.m</file>
@@ -169,6 +176,9 @@
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_PatientSearch.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_Pick_.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_SaveAnalysis.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_SyncYLim_.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_TextButton.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_TextSend.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_ThreshSetting.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Pushbutton_Zoom_.m</file>
       <file>${PROJECT_ROOT}\gui_VG\Callback_Radiobutton_TableB_Box_.m</file>
@@ -193,9 +203,6 @@
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrBHStop.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrEmu.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrSaveData.m</file>
-      <file>${PROJECT_ROOT}\gui_VG\inputdlg\fun_inputdlg.m</file>
-      <file>${PROJECT_ROOT}\gui_VG\inputdlg\getnicedialoglocation.m</file>
-      <file>${PROJECT_ROOT}\gui_VG\inputdlg\setdefaultbutton.m</file>
       <file>${PROJECT_ROOT}\gui_VG\reorderPlotObj.m</file>
       <file>${PROJECT_ROOT}\gui_VG\saveData.m</file>
       <file>${PROJECT_ROOT}\gui_VG\syncYLim.m</file>
@@ -208,21 +215,45 @@
       <file>${PROJECT_ROOT}\gui_VG\updateWIWBH.m</file>
     </fileset.depfun>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\VIZ\for_testing" name="splash.png" optional="false">C:\Users\zhen_\Documents\WU\VG\VIZ\for_testing\splash.png</file>
-      <file location="${PROJECT_ROOT}\VIZ\for_testing" name="VIZ.exe" optional="false">C:\Users\zhen_\Documents\WU\VG\VIZ\for_testing\VIZ.exe</file>
-      <file location="${PROJECT_ROOT}\VIZ\for_testing" name="readme.txt" optional="true">C:\Users\zhen_\Documents\WU\VG\VIZ\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\VIZ\for_testing" name="splash.png" optional="false">H:\VG\VIZ\for_testing\splash.png</file>
+      <file location="${PROJECT_ROOT}\VIZ\for_testing" name="readme.txt" optional="true">H:\VG\VIZ\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\VIZ\for_testing" name="VIZ.exe" optional="false">H:\VG\VIZ\for_testing\VIZ.exe</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>D:\Program Files\MATLAB\R2020b</root>
+      <root>C:\Program Files\MATLAB\R2020b</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
+        <toolbox name="embeddedcoder" />
+        <toolbox name="gpucoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="matlabhdlcoder" />
         <toolbox name="neuralnetwork" />
       </toolboxes>
       <toolbox>
         <matlabcoder>
           <enabled>true</enabled>
         </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
+      </toolbox>
+      <toolbox>
+        <gpucoder>
+          <enabled>true</enabled>
+        </gpucoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
       </toolbox>
       <toolbox>
         <neuralnetwork>
