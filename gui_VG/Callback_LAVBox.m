@@ -18,4 +18,6 @@ for n = 1:3
     data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).String = num2str(yt(n), 2);
 end
 
+% data2.Panel.ViewB.Comp.hPlotObj.TextRect.Position = [data2.Panel.ViewB.Comp.hAxis.ViewB.XLim(2) yp(3) 0.2 0.2];
+
 updateLAVBoxParam;
