@@ -33,8 +33,8 @@ end
 if framelen < 11
     framelen = 11;
 end
-sw = sgolayfilt(w, 3, framelen);
-% sw = w;
+% sw = sgolayfilt(w, 3, framelen);
+sw = w;
 
 [pks1, locs1] = findpeaks(sw, 'MinPeakDistance', MPD/dt, 'MInPeakheight', mean(sw)); % peak
 % [pks1, locs1] = findpeaks(sw, 'MinPeakDistance', 1/dt);
@@ -64,9 +64,9 @@ if bPlot
     subplot(3,1,1)
     plot(t, sw, t(locs1), sw(locs1), 'or');
     subplot(3,1,2)
-    plot(t, fsw, t(locs2), fsw(locs2), 'or');
+    plot(t, fsw, t(locs2), fsw(locs2), 'ob');
     subplot(3,1,3)
-    plot(t, w, t, sw, t(locs1), sw(locs1), 'or', t(locs2), sw(locs2), 'ob', 'LineWidth', 2, 'MarkerSize', 12)
+    plot(t, w, t, sw, t(locs1), sw(locs1), 'or', t(locs2), sw(locs2), 'ob', 'LineWidth', 2, 'MarkerSize', 6)
 end
 
 for n = 1:length(locs1)-1

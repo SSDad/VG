@@ -40,10 +40,13 @@ if fn_Wave~=0
         [tt, yy, baseLine] = fun_loadRPMTxtData(fullfile(dataPath, fn_Wave));
         tt = tt';
         yy = yy';
-    elseif strcmp(ext, '.cmbl')
-        [tt, yy, baseLine] = fun_loadLoggerProData(fullfile(dataPath, fn_Wave));
-        tt = tt';
-        yy = yy';
+    elseif strcmp(ext, '.csv')
+        junk = readmatrix(fullfile(dataPath, fn_Wave));
+        baseLine = min(junk(:, 2));
+        tt = junk(:, 1)';
+        yy = junk(:, 2)' - baseLine;
+%     elseif strcmp(ext, '.cmbl')
+%         [tt, yy, baseLine] = fun_loadLoggerProData(fullfile(dataPath, fn_Wave));
     end
     tMax = tt(end);
 
