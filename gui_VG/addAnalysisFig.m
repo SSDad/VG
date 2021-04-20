@@ -12,6 +12,8 @@ global ampAvgB
 global paramBH
 global pps
 
+pps = 10;
+
 TimeRange = 30;
 avgBnP = 100;
 yBAll = [];

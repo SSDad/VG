@@ -44,19 +44,17 @@ if fn_Wave~=0
         junk = readmatrix(fullfile(dataPath, fn_Wave));
         baseLine = min(junk(:, 2));
         tt = junk(:, 1)';
-        yy = junk(:, 2)' - baseLine;
+        yy = junk(:, 2) - baseLine;
 %     elseif strcmp(ext, '.cmbl')
 %         [tt, yy, baseLine] = fun_loadLoggerProData(fullfile(dataPath, fn_Wave));
     end
     
-    if mode(diff(tt)) ~= 1/pps
-        tsin = timeseries(yy(:), tt(:));
+    
+        tsin = timeseries(yy, tt);
         timevec = tsin.Timeinfo.Start:1/pps:tsin.Timeinfo.End;
         tsout = resample(tsin, timevec);
         tt = tsout.Time';
         yy = tsout.Data';
-    end
-    
     tMax = tt(end);
 
     ind = strfind(fn_Wave, '_');
