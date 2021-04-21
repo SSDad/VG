@@ -114,6 +114,8 @@
       <file>${PROJECT_ROOT}\gui_VG\@dynamometer\private\libGoIO_DLL_32.dll</file>
       <file>${PROJECT_ROOT}\gui_VG\@dynamometer\private\libGoIO_DLL_64.dll</file>
       <file>${PROJECT_ROOT}\gui_VG\@dynamometer\private\src</file>
+      <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_ParamBNorm.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_ParamBRaw.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_loadLoggerProData.m</file>
     </fileset.resources>
     <fileset.package />
@@ -125,7 +127,6 @@
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_DeleteB.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_DeleteBH.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_Menu.m</file>
-      <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_ParamB.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_ParamBH.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_PatientInfo.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_Pick.m</file>
