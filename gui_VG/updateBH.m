@@ -11,6 +11,18 @@ global yA_mean
 
 data2 = guidata(hFig2);
 
+% LAVBoxBH text
+yp(1) = LAVBoxBH.y1;
+yp(2) = LAVBoxBH.y2;
+yp(3) = (yp(1) + yp(2))/2;
+yt = yp;
+yt(3) = yp(2) - yp(1);
+for n = 1:3
+    data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).Position = [LAVBoxBH.x2 yp(n)];
+    data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).String = num2str(yt(n), 2);
+    data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).Visible = 'on';
+end
+
 nBH = length(wBH);
 m = 0;
 sBH = [];

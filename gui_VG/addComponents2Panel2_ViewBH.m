@@ -33,3 +33,8 @@ Comp.hPlotObj.Avg = line(Comp.hAxis.ViewBH, 'XData', [], 'YData', [],...
 Comp.hPlotObj.LAVBoxBH = images.roi.Rectangle(Comp.hAxis.ViewBH, 'Position', [0 0 0 0], 'Color', 'm',...
         'LineWidth', 1, 'FaceAlpha', 0.2, 'Tag', 'LAVBox', 'Visible', 'off', 'Deletable', false);
 addlistener(Comp.hPlotObj.LAVBoxBH, 'MovingROI', @Callback_LAVBoxBH);
+
+CLR = 'wwc';
+for n = 1:3
+    Comp.hPlotObj.BoxText(n) = text(Comp.hAxis.ViewBH, 0, 0, '',   'Color', CLR(n), 'FontSize', 12);
+end
