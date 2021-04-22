@@ -1,6 +1,6 @@
 function Comp = addComponents2Panel2_ParamB(hPanel)
 
-paramName{1} = 'Amp';
+paramName{1} = 'Amplitude';
 
 nR = length(paramName);
 h_gap = 0.01;

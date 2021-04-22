@@ -64,8 +64,8 @@ data2.Panel.ParamBRaw.Comp.Text.Param(1).Name(2).String = num2str(ampAvgB, 2 );
 junk = abs(yA-yA_mean.data)/ampAvgB;
 GAV = sum(junk(:))/numel(junk);
 data2.Panel.ParamBNorm.Comp.Text.Param(1).Name(2).String = num2str(GAV, 2 );
+data2.Panel.ParamBNorm.Comp.Text.Param(1).Name(3).String = num2str(std(junk(:)), 2);
 GAVP = GAV*100;
-data2.Panel.ParamBNorm.Comp.Text.Param(1).Name(3).String = [num2str(GAVP, 2), '%'];
 if GAVP <= Thresh(1, 1)
     CLR = 'g';
 elseif GAVP >= Thresh(1, 2)
@@ -76,11 +76,13 @@ end
 data2.Panel.ParamBNorm.Comp.Text.Param(1).Name(3).ForegroundColor = CLR;
 
 dt = 1/pps;
-PV = sum(abs(pA-mean(pA)))/numel(pA)*dt;
+junk = abs(pA-mean(pA))*dt;
+PV = sum(junk)/numel(pA);
 data2.Panel.ParamBNorm.Comp.Text.Param(4).Name(2).String = [num2str(mean(pA)*dt, 2 ), 's'];
 data2.Panel.ParamBNorm.Comp.Text.Param(5).Name(2).String = [num2str(PV, 2 ), 's'];
+data2.Panel.ParamBNorm.Comp.Text.Param(5).Name(3).String =  [num2str(std(junk), 2), 's'];
+
 PVP = PV/mean(pA)/dt*100;
-data2.Panel.ParamBNorm.Comp.Text.Param(5).Name(3).String =  [num2str(PVP, 2), '%'];
 if PVP <= Thresh(2, 1)
     CLR = 'g';
 elseif PVP >= Thresh(2, 2)

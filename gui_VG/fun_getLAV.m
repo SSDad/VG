@@ -1,4 +1,4 @@
-function [LAV] = fun_getLAV(yA, y2, y1)
+function [LAV stdLAV] = fun_getLAV(yA, y2, y1)
     
 yBLV = [];
 yAmean = mean(yA);
@@ -7,4 +7,5 @@ for iW = 1:size(yA, 1)
     dd= abs(W-yAmean);
     yBLV = [yBLV dd(W<y2 & W>y1)];
 end
-[LAV] = sum(yBLV)/numel(yBLV);
+LAV = sum(yBLV)/numel(yBLV);
+stdLAV = std(yBLV);
