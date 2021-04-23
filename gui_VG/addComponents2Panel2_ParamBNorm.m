@@ -1,13 +1,11 @@
 function Comp = addComponents2Panel2_ParamBNorm(hPanel)
 
-paramName{1} = 'GAV';
-paramName{2} = 'Box';
-paramName{3} = 'LAV';
-paramName{4} = 'Period';
-paramName{5} = 'PV';
+paramName{1,1} = '';  paramName{1,2} = 'Mean'; paramName{1, 3} = 'STD';
+paramName{2,1} = 'GAV';  paramName{2,2} = '';  paramName{2,3} = '';
+paramName{3, 1} = 'LAV'; paramName{3, 2} = '';  paramName{3, 3} = '';
 
-nR = length(paramName);
-h_gap = 0.01;
+nR = size(paramName, 1);
+h_gap = 0.1;
 hB = (1-h_gap*(1+nR))/nR;
 
 w_gap = 0.0;
@@ -26,7 +24,7 @@ for iR = 1:nR
     for m = 1:3
         Comp.Text.Param(iR).Name(m) = uicontrol('parent', hPanel, ...
                             'Style', 'text',...
-                            'String', paramName{iR},...
+                            'String', paramName{iR, m},...
                             'Unit', 'Normalized',...
                             'Position', [xx(m) yy(iR) wB(m) hB], ...
                             'FontSize', FS, ...
@@ -37,7 +35,9 @@ for iR = 1:nR
                             'Enable', 'on');
     end
 end
-Comp.Text.Param(2).Name(1).ForegroundColor = 'm';
-Comp.Text.Param(2).Name(3).ForegroundColor = 'c';
+Comp.Text.Param(1).Name(2).ForegroundColor = 'w';
+Comp.Text.Param(1).Name(3).ForegroundColor = 'w';
+Comp.Text.Param(3).Name(1).ForegroundColor = 'm';
+% Comp.Text.Param(2).Name(3).ForegroundColor = 'c';
 
-Comp.Text.Param(4).Name(3).String = '';
+% Comp.Text.Param(4).Name(3).String = '';

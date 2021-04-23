@@ -71,6 +71,7 @@ data2.Panel.ViewB.Comp = addComponents2Panel2_ViewB(data2.Panel.ViewB.hPanel);
 data2.Panel.TableB.Comp = addComponents2Panel2_TableB(data2.Panel.TableB.hPanel);
 data2.Panel.ParamBRaw.Comp = addComponents2Panel2_ParamBRaw(data2.Panel.ParamBRaw.hPanel);
 data2.Panel.ParamBNorm.Comp = addComponents2Panel2_ParamBNorm(data2.Panel.ParamBNorm.hPanel);
+data2.Panel.ParamBPeriod.Comp = addComponents2Panel2_ParamBPeriod(data2.Panel.ParamBPeriod.hPanel);
 data2.Panel.DeleteB.Comp = addComponents2Panel2_DeleteB(data2.Panel.DeleteB.hPanel);
 
 data2.Panel.ViewBH.Comp = addComponents2Panel2_ViewBH(data2.Panel.ViewBH.hPanel);

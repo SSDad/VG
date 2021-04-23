@@ -12,8 +12,8 @@ data2 = guidata(hFig2);
 [LAV stdLAV] = fun_getLAV((yBAll-yA_mean.min)/ampAvgB, LAVBox.y2, LAVBox.y1);
 % [LAV] = LAVBox.y2 - LAVBox.y1;
 boxH = LAVBox.y2-LAVBox.y1;
-data2.Panel.ParamBNorm.Comp.Text.Param(2).Name(2).String = num2str(boxH, 2);       
-data2.Panel.ParamBNorm.Comp.Text.Param(2).Name(3).String = '';       
+% data2.Panel.ParamBNorm.Comp.Text.Param(2).Name(2).String = num2str(boxH, 2);       
+% data2.Panel.ParamBNorm.Comp.Text.Param(2).Name(3).String = '';       
 data2.Panel.ParamBNorm.Comp.Text.Param(3).Name(2).String = num2str(LAV, 2 );       
 data2.Panel.ParamBNorm.Comp.Text.Param(3).Name(3).String = [num2str(stdLAV, 2)];
 

@@ -1,13 +1,14 @@
-function Comp = addComponents2Panel2_ParamB(hPanel)
+function Comp = addComponents2Panel2_ParamBNorm(hPanel)
 
-paramName{1} = 'Amplitude';
+paramName{1} = 'GAV';
+paramName{2} = 'LAV';
 
 nR = length(paramName);
 h_gap = 0.1;
 hB = (1-h_gap*(1+nR))/nR;
 
 w_gap = 0.0;
-wB = [0.4 0.6];
+wB = [0.3 0.3 0.4];
 for n = 1:length(wB)
     xx(n) = w_gap*n + sum(wB(1:n-1));
 end
@@ -19,7 +20,7 @@ end
 FS = 10;
 CLR = 'wcg';
 for iR = 1:nR
-    for m = 1:length(wB)
+    for m = 1:3
         Comp.Text.Param(iR).Name(m) = uicontrol('parent', hPanel, ...
                             'Style', 'text',...
                             'String', paramName{iR},...
@@ -33,3 +34,7 @@ for iR = 1:nR
                             'Enable', 'on');
     end
 end
+Comp.Text.Param(2).Name(1).ForegroundColor = 'm';
+% Comp.Text.Param(2).Name(3).ForegroundColor = 'c';
+
+% Comp.Text.Param(4).Name(3).String = '';
