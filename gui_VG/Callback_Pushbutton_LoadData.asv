@@ -27,8 +27,7 @@ else
 end
 
 %% load wave
-% cd(fd_VG);
-[fn_Wave, dataPath] = uigetfile({'*.mat'; '*.csv'}, 'Select a file', fd_VG);
+[fn_Wave, dataPath] = uigetfile({fullfile(fd_VG, {'*.mat'; '*.csv'}));
 
 if fn_Wave~=0
     data2.FileNames.data.fn = fn_Wave;
