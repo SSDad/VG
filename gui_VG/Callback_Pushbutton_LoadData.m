@@ -27,8 +27,7 @@ else
 end
 
 %% load wave
-% cd(fd_VG);
-[fn_Wave, dataPath] = uigetfile({'*.mat'; '*.csv'}, 'Select a file', fd_VG);
+[fn_Wave, dataPath] = uigetfile({'*.mat'; '*.csv'}, 'Select a data file', fd_VG);
 
 if fn_Wave~=0
     data2.FileNames.data.fn = fn_Wave;
@@ -176,6 +175,13 @@ if fn_Wave~=0
         data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.Value = 1; 
     end
     
+    % enable buttons
+    data2.Panel.Menu.Comp.Pushbutton.Thresh.Enable = 'on';
+    data2.Panel.Menu.Comp.Pushbutton.Save.Enable = 'on';
+    
+    data2.Panel.AllWaveCut.Comp.Pushbutton.Cut.Enable = 'on';
+    data2.Panel.AllWaveCut.Comp.Pushbutton.Reset.Enable = 'on';
+
     guidata(hFig2, data2);
 end
 

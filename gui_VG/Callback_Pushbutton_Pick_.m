@@ -42,9 +42,16 @@ if strcmp(src.Tag, 'Breath')
         hWavePickWin.Color = 'g';
         hWavePickWin.Visible = 'on';
 
-        % BH button
+        % Disable buttons
         data2.Panel.Pick.Comp.Pushbutton.Pick(2).Enable = 'off';
         
+        data2.Panel.Menu.Comp.Pushbutton.Load.Enable = 'off';
+        data2.Panel.Menu.Comp.Pushbutton.Thresh.Enable = 'off';
+        data2.Panel.Menu.Comp.Pushbutton.Save.Enable = 'off';
+    
+        data2.Panel.AllWaveCut.Comp.Pushbutton.Cut.Enable = 'off';
+        data2.Panel.AllWaveCut.Comp.Pushbutton.Reset.Enable = 'off';
+
         % LAV
         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'off';
         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'off';
@@ -109,8 +116,16 @@ if strcmp(src.Tag, 'Breath')
         set(data2.Panel.Wave.Comp.hPlotObj.Peaks, 'XData', [], 'YData', []);
         set(data2.Panel.Wave.Comp.hPlotObj.Troughs, 'XData', [], 'YData', []);
  
-        % BH button
+        % Enable buttons
         data2.Panel.Pick.Comp.Pushbutton.Pick(2).Enable = 'on';
+
+        data2.Panel.Menu.Comp.Pushbutton.Load.Enable = 'on';
+        data2.Panel.Menu.Comp.Pushbutton.Thresh.Enable = 'on';
+        data2.Panel.Menu.Comp.Pushbutton.Save.Enable = 'on';
+
+        data2.Panel.AllWaveCut.Comp.Pushbutton.Cut.Enable = 'on';
+        data2.Panel.AllWaveCut.Comp.Pushbutton.Reset.Enable = 'on';
+
         
          % LAV
          hLAVBox = data2.Panel.ViewB.Comp.hPlotObj.LAVBox;
@@ -169,9 +184,18 @@ elseif strcmp(src.Tag, 'BH')
 
     if strcmp(src.String, 'BH')
         src.String = 'Bingo';
-        % B button
+
+        % Disble button
         data2.Panel.Pick.Comp.Pushbutton.Pick(1).Enable = 'off';
- 
+
+    data2.Panel.Menu.Comp.Pushbutton.Load.Enable = 'off';
+    data2.Panel.Menu.Comp.Pushbutton.Thresh.Enable = 'off';
+    data2.Panel.Menu.Comp.Pushbutton.Save.Enable = 'off';
+
+    data2.Panel.AllWaveCut.Comp.Pushbutton.Cut.Enable = 'off';
+    data2.Panel.AllWaveCut.Comp.Pushbutton.Reset.Enable = 'off';
+
+
         % init. active box pos
         bt = range(hAxWave.XLim)/10;
         x1 = hAxWave.XLim(1)+bt;
@@ -191,9 +215,17 @@ elseif strcmp(src.Tag, 'BH')
 
     else
         src.String = 'BH';
-        % B button
+
+        % enable button
         data2.Panel.Pick.Comp.Pushbutton.Pick(1).Enable = 'on';
- 
+        
+         data2.Panel.Menu.Comp.Pushbutton.Load.Enable = 'on';
+        data2.Panel.Menu.Comp.Pushbutton.Thresh.Enable = 'on';
+        data2.Panel.Menu.Comp.Pushbutton.Save.Enable = 'on';
+
+        data2.Panel.AllWaveCut.Comp.Pushbutton.Cut.Enable = 'on';
+        data2.Panel.AllWaveCut.Comp.Pushbutton.Reset.Enable = 'on';
+
         % add box
         hWavePickWin.Visible = 'off';
         pos = hWavePickWin.Position;
