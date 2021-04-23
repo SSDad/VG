@@ -34,7 +34,7 @@ Comp.hPlotObj.LAVBoxBH = images.roi.Rectangle(Comp.hAxis.ViewBH, 'Position', [0 
         'LineWidth', 1, 'FaceAlpha', 0.2, 'Tag', 'LAVBox', 'Visible', 'off', 'Deletable', false);
 addlistener(Comp.hPlotObj.LAVBoxBH, 'MovingROI', @Callback_LAVBoxBH);
 
-CLR = 'wwc';
-for n = 1:3
+CLR = 'wwcc';
+for n = 1:4
     Comp.hPlotObj.BoxText(n) = text(Comp.hAxis.ViewBH, 0, 0, '',   'Color', CLR(n), 'FontSize', 12);
 end

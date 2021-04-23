@@ -14,7 +14,7 @@ yp(6) = yp(5) - 0.1;
 
 xp(1:3) = data2.Panel.ViewB.Comp.hAxis.ViewB.XLim(2);
 xp(4) = data2.Panel.ViewB.Comp.hAxis.ViewB.XLim(1) + 50;
-xp(5) = xp(1) - 30;
+xp(5) = xp(4) - 48;
 xp(6) = xp(5);
 
 txt{1} = num2str(yp(1), 2);

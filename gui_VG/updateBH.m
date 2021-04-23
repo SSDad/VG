@@ -15,13 +15,22 @@ data2 = guidata(hFig2);
 yp(1) = LAVBoxBH.y1;
 yp(2) = LAVBoxBH.y2;
 yp(3) = (yp(1) + yp(2))/2;
-yt = yp;
-yt(3) = yp(2) - yp(1);
-for n = 1:3
-    data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).Position = [LAVBoxBH.x2 yp(n)];
-    data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).String = num2str(yt(n), 2);
+yp(4) = yp(1)-0.1;
+
+xp(1:3) = LAVBoxBH.x2;
+xp(4) = (LAVBoxBH.x1 + LAVBoxBH.x2)/2;
+
+ytxt{1} =  num2str(yp(1), 2);
+ytxt{2} =  num2str(yp(2), 2);
+ytxt{3} = num2str(yp(2) - yp(1), 2);
+junk = LAVBoxBH.x2 - LAVBoxBH.x1;
+ytxt{4} = [num2str(junk, 3), 's'];
+for n = 1:4
+    data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).Position = [xp(n) yp(n)];
+    data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).String = ytxt{n};
     data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).Visible = 'on';
 end
+
 
 nBH = length(wBH);
 m = 0;
@@ -51,7 +60,7 @@ else
     x1 = LAVBoxBH.x1;
     x2 = LAVBoxBH.x2;
     paramBH.Time = x2-x1;
-    data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = [num2str(x2 - x1, 3), 's'];
+%     data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = [num2str(x2 - x1, 3), 's'];
 
     boxH = LAVBoxBH.y2-LAVBoxBH.y1;
     % boxH = (boxH-yA_mean.min)/range(yA_mean.data);
@@ -100,8 +109,8 @@ junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nsBH, 1));
 junk = (junk-yA_mean.min)/range(yA_mean.data);
 junk = abs(junk);
 AV = mean(junk(:), 'omitnan');
-data2.Panel.ParamBH.Comp.Text.ParamValue(3).String = num2str(AV, 2);
-data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = num2str(std(junk(:), 'omitnan'), 3);
+data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = num2str(AV, 2);
+data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = num2str(std(junk(:), 'omitnan'), 3);
 
 paramBH.AV = AV;
 
@@ -116,7 +125,7 @@ if ~isempty(ampAvgB)
     else
         CLR = 'y';
     end
-    data2.Panel.ParamBH.Comp.Text.ParamValueP(3).ForegroundColor = CLR;
+    data2.Panel.ParamBH.Comp.Text.ParamValueP(2).ForegroundColor = CLR;
 end
 % bring avg line to top
 reorderPlotObj(data2.Panel.ViewBH.Comp.hAxis.ViewBH);
