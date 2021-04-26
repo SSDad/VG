@@ -36,7 +36,7 @@ for iR = 1:nR
 end
 Comp.Text.Param(1).Name(2).ForegroundColor = 'w';
 Comp.Text.Param(1).Name(3).ForegroundColor = 'w';
-Comp.Text.Param(2).Name(1).ForegroundColor = 'm';
+Comp.Text.Param(2).Name(1).ForegroundColor = 'w';
 % Comp.Text.Param(2).Name(3).ForegroundColor = 'c';
 
 % Comp.Text.Param(4).Name(3).String = '';

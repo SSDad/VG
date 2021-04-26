@@ -49,8 +49,8 @@ hAbbrPanel = uipanel('parent', hFig_ThreshSetting,...
                                 'ShadowColor',            'none');
 
 str{1} = 'GAV: Global Amplitude Variation';
-str{2} = 'PV: Period Variation';
-str{3} = 'LAV: Local Amplitude Variation';
+str{2} = 'LAV: Local Amplitude Variation';
+str{3} = 'PV: Period Variation';
 str{4} = 'BH-AV: Breath Holding Amplitude Variation';
 
 nR = length(str);           
