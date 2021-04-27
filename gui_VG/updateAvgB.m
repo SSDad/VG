@@ -96,19 +96,22 @@ data2.Panel.ParamBNorm.Comp.Text.ParamValueP(1).ForegroundColor = CLR;
 
 % paramBH
 if ~isempty(paramBH.AV)
-    data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(paramBH.boxH/ampAvgB*100, 3), '%'];
+%     data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = [num2str(paramBH.boxH/ampAvgB*100, 3), '%'];
 
-    AVP = paramBH.AV/ampAvgB*100;
-    data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = [num2str(AVP, 3), '%'];
+    data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = num2str(paramBH.AV, 3);
+    data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = num2str(paramBH.AVStd, 3);
 
-    if AVP < Thresh(4, 1)
-        CLR = 'g';
-    elseif AVP > Thresh(4, 2)
-        CLR = 'r';
-    else
-        CLR = 'y';
-    end
-    data2.Panel.ParamBH.Comp.Text.ParamValueP(3).ForegroundColor = CLR;
+%     AVP = paramBH.AV/ampAvgB*100;
+%     data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = [num2str(AVP, 3), '%'];
+
+%     if AVP < Thresh(4, 1)
+%         CLR = 'g';
+%     elseif AVP > Thresh(4, 2)
+%         CLR = 'r';
+%     else
+%         CLR = 'y';
+%     end
+%     data2.Panel.ParamBH.Comp.Text.ParamValueP(3).ForegroundColor = CLR;
 end
 
 end

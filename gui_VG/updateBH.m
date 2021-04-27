@@ -109,10 +109,12 @@ junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nsBH, 1));
 junk = (junk-yA_mean.min)/range(yA_mean.data);
 junk = abs(junk);
 AV = mean(junk(:), 'omitnan');
-data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = num2str(AV, 2);
-data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = num2str(std(junk(:), 'omitnan'), 3);
+AVStd = std(junk(:), 'omitnan');
+data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = num2str(AV, 3);
+data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = num2str(AVStd, 3);
 
 paramBH.AV = AV;
+paramBH.AVStd = AVStd;
 
 % updateBHLimit;
 

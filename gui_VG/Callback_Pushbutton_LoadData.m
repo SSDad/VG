@@ -116,23 +116,17 @@ if fn_Wave~=0
         end
         
         %param
-        data2.Panel.ParamB.Comp.Text.Param(1).Name(2).String = 'Amp';
-        data2.Panel.ParamB.Comp.Text.Param(2).Name(2).String = 'GAV';
-        data2.Panel.ParamB.Comp.Text.Param(2).Name(3).String = 'GAV';
-        data2.Panel.ParamB.Comp.Text.Param(2).Name(3).ForegroundColor = 'g';
+        data2.Panel.ParamBRaw.Comp.Text.Param(1).Name(2).String = 'Amplitude';
 
-        data2.Panel.ParamB.Comp.Text.Param(3).Name(2).String = 'Box';
-        data2.Panel.ParamB.Comp.Text.Param(3).Name(3).String = 'Box';
+        data2.Panel.ParamBNorm.Comp.Text.Param(2).Name(2).String = '';
+        data2.Panel.ParamBNorm.Comp.Text.Param(2).Name(3).String = '';
+        data2.Panel.ParamBNorm.Comp.Text.Param(2).Name(3).ForegroundColor = 'g';
+        data2.Panel.ParamBNorm.Comp.Text.Param(3).Name(2).String = '';
+        data2.Panel.ParamBNorm.Comp.Text.Param(3).Name(3).String = '';
 
-        data2.Panel.ParamB.Comp.Text.Param(4).Name(2).String = 'LAV';
-        data2.Panel.ParamB.Comp.Text.Param(4).Name(3).String = 'LAV';
-        data2.Panel.ParamB.Comp.Text.Param(4).Name(3).ForegroundColor = 'g';
-
-        data2.Panel.ParamB.Comp.Text.Param(5).Name(2).String = 'Period';
-
-        data2.Panel.ParamB.Comp.Text.Param(6).Name(2).String = 'PV';
-        data2.Panel.ParamB.Comp.Text.Param(6).Name(3).String = 'PV';
-        data2.Panel.ParamB.Comp.Text.Param(6).Name(3).ForegroundColor = 'g';
+        data2.Panel.ParamBPeriod.Comp.Text.Param(2).Name(2).String = '';
+        data2.Panel.ParamBPeriod.Comp.Text.Param(2).Name(3).String = '';
+        data2.Panel.ParamBPeriod.Comp.Text.Param(2).Name(3).ForegroundColor = 'g';
         
         % delete list
         data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.String = 'Box List'; 
@@ -163,12 +157,9 @@ if fn_Wave~=0
             data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).String = '';
         end
         % param
-        data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = 'Time';
-        data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = 'Box';
-        data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = 'Box';
-        data2.Panel.ParamBH.Comp.Text.ParamValue(3).String = 'AV';
-        data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = 'AV';
-        data2.Panel.ParamBH.Comp.Text.ParamValueP(3).ForegroundColor = 'g';
+        data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = '';
+        data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = '';
+        data2.Panel.ParamBH.Comp.Text.ParamValueP(2).ForegroundColor = 'g';
 
         % delete list
         data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.String = 'Box List'; 
