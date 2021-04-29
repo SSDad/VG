@@ -29,7 +29,7 @@ else
 end
 
 %% load wave
-[fn_Wave, dataPath] = uigetfile({'*Wave.mat'; '*.csv'}, 'Select a data file', fd_VG);
+[fn_Wave, dataPath] = uigetfile({'*.mat'; '*.csv'}, 'Select a data file', fd_VG);
 
 if fn_Wave~=0
     data2.FileNames.data.fn = fn_Wave;
@@ -258,7 +258,7 @@ if fn_Analysis
         data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Position = Boxes.Positions.LAVBoxBH;
         data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Visible = 'on';
     end
-    
+
     % ViewB
     x = 1:avgBnP;
     for iB = 1:length(avgB)
@@ -266,16 +266,16 @@ if fn_Analysis
         BoxCLR = BoxColor(iB, :);
         for iW = 1:size(avgB(iB).wib.yy, 1)
             
-            yJunk = avgB(iB).wib.yy(iW, :);
-            yJunk = (yJunk - yA_mean.min)/range(yA_mean.data);
-            line(avgB(iB).hg, 'XData', x, 'YData', yJunk, 'Color', BoxCLR);
+            y = (y - yA_mean.min)/range(yA_mean.data);
+
+            
+            line(avgB(iB).hg, 'XData', x, 'YData', avgB(iB).wib.yy(iW, :), 'Color', BoxCLR);
         end
     end
 %     set(data2.Panel.ViewB.Comp.hPlotObj.Avg, 'XData', x, 'YData', mean(yBAll));
     updateAvgB;
     updateLAVBoxParam;
-    updateLAVBoxText;
-    
+
     RB = analysisData.RB;
     for iB = 1:length(RB.BoxB)
         data2.Panel.TableB.Comp.Radiobutton.Box(iB).Visible = RB.BoxB(iB).Visible;
@@ -289,12 +289,8 @@ if fn_Analysis
     if isfield(Boxes, 'BoxBH')
         for iBH = 1:length(wBH)
             BoxCLR = BoxColorBH(iBH, :);
-
-            yJunk = wBH(iBH).wib.yy;
-            yJunk = (yJunk - yA_mean.min)/range(yA_mean.data);
-
             wBH(iBH).hLine = line(data2.Panel.ViewBH.Comp.hAxis.ViewBH,...
-                'XData', wBH(iBH).wib.tt, 'YData', yJunk, ...
+                'XData', wBH(iBH).wib.tt, 'YData', wBH(iBH).wib.yy, ...
                 'Color', BoxCLR, 'LineStyle', '-', 'LineWidth', 1);
             data2.Panel.TableBH.Comp.Radiobutton.Box(iBH).Visible = RB.BoxBH(iBH).Visible;
             data2.Panel.TableBH.Comp.Radiobutton.Box(iBH).Value = RB.BoxBH(iBH).Value;
@@ -307,9 +303,6 @@ if fn_Analysis
         data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.String = delPU.ListBoxBH.String; 
         data2.Panel.DeleteBH.Comp.PopUpMenu.BoxList.Value = delPU.ListBoxBH.Value; 
     end
-    
-    % LAVBoxBH text
-    updateLAVBoxBHText;
     
     % AxisLim
     AxisLim = analysisData.AxisLim;

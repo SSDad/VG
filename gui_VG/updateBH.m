@@ -11,25 +11,27 @@ global yA_mean
 
 data2 = guidata(hFig2);
 
-% LAVBoxBH text
-yp(1) = LAVBoxBH.y1;
-yp(2) = LAVBoxBH.y2;
-yp(3) = (yp(1) + yp(2))/2;
-yp(4) = yp(1)-0.1;
+%% LAVBoxBH text
+ updateLAVBoxBHText;
 
-xp(1:3) = LAVBoxBH.x2;
-xp(4) = (LAVBoxBH.x1 + LAVBoxBH.x2)/2;
-
-ytxt{1} =  num2str(yp(1), 2);
-ytxt{2} =  num2str(yp(2), 2);
-ytxt{3} = num2str(yp(2) - yp(1), 2);
-junk = LAVBoxBH.x2 - LAVBoxBH.x1;
-ytxt{4} = [num2str(junk, 3), 's'];
-for n = 1:4
-    data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).Position = [xp(n) yp(n)];
-    data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).String = ytxt{n};
-    data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).Visible = 'on';
-end
+% yp(1) = LAVBoxBH.y1;
+% yp(2) = LAVBoxBH.y2;
+% yp(3) = (yp(1) + yp(2))/2;
+% yp(4) = yp(1)-0.1;
+% 
+% xp(1:3) = LAVBoxBH.x2;
+% xp(4) = (LAVBoxBH.x1 + LAVBoxBH.x2)/2;
+% 
+% ytxt{1} =  num2str(yp(1), 2);
+% ytxt{2} =  num2str(yp(2), 2);
+% ytxt{3} = num2str(yp(2) - yp(1), 2);
+% junk = LAVBoxBH.x2 - LAVBoxBH.x1;
+% ytxt{4} = [num2str(junk, 3), 's'];
+% for n = 1:4
+%     data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).Position = [xp(n) yp(n)];
+%     data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).String = ytxt{n};
+%     data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).Visible = 'on';
+% end
 
 
 nBH = length(wBH);
@@ -45,16 +47,17 @@ for iBox = 1:nBH
 end
 
 if isempty(sBH) % all off
-    data2.Panel.ParamBH.Comp.Text.ParamValue(1).String = '';
     data2.Panel.ParamBH.Comp.Text.ParamValue(2).String = '';
     data2.Panel.ParamBH.Comp.Text.ParamValueP(2).String = '';
-    data2.Panel.ParamBH.Comp.Text.ParamValue(3).String = '';
-    data2.Panel.ParamBH.Comp.Text.ParamValueP(3).String = '';
     
     data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Visible = 'off';  
     paramBH.AV = [];
     paramBH.boxH = [];
-    
+
+    for n = 1:4
+       data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).String = '';
+    end
+
 else
     
     x1 = LAVBoxBH.x1;
@@ -102,11 +105,16 @@ else
     data2.Panel.ViewBH.Comp.hPlotObj.LAVBoxBH.Visible = 'off';  
     wBHAvg.tt = [];
     wBHAvg.yy = [];
+    
+   for n = 1:4
+       data2.Panel.ViewBH.Comp.hPlotObj.BoxText(n).String = '';
+    end
+ 
 end
 
 % AV
 junk = abs(yBHAll - repmat(mean(yBHAll, 'omitnan'), nsBH, 1));
-junk = (junk-yA_mean.min)/range(yA_mean.data);
+% junk = junk/range(yA_mean.data);
 junk = abs(junk);
 AV = mean(junk(:), 'omitnan');
 AVStd = std(junk(:), 'omitnan');

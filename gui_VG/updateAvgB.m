@@ -32,9 +32,7 @@ if ~isempty(wiwB)
     x = 1:avgBnP;
     for iW = 1:size(wiwB.yy, 1)
         y = wiwB.yy(iW, :);
-        
         y = (y - yA_mean.min)/range(yA_mean.data);
-        
         line(hg_wiwB, 'XData', x, 'YData', y, 'Color', 'g');
     end
 

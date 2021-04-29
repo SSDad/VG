@@ -2,6 +2,7 @@ function updateLAVBoxText
 
 global LAVBox periodBAll pps % all previous wave y and period
 global hFig2
+
 data2 = guidata(hFig2);
 
 % LAVBox text
