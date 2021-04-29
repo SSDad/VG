@@ -181,7 +181,10 @@ end
 %% load analysis
 if fn_Wave~=0
 
-fn_AA = [fn_Wave(1:end-8), 'Analysis*'];
+    [~, junk, ~]=fileparts(fn_Wave);
+    fn_AA = [junk, '_Analysis*'];
+   
+% fn_AA = [fn_Wave(1:end-8), 'Analysis*'];
 fns = dir(fullfile(dataPath, fn_AA));
 
 if ~isempty(fns)

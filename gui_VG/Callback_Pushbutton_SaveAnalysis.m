@@ -16,9 +16,10 @@ addpath(fullfile(pwd, 'inputdlg'));
 
 data2 = guidata(hFig2);
 datafn = data2.FileNames.data.fn;
-junk = datafn(1:end-8);
-analysisfn = [junk, 'Analysis'];
-pdffn = [junk, 'Screen'];
+% junk = datafn(1:end-8);
+[~, junk, ~]=fileparts(datafn);
+analysisfn = [junk, '_Analysis'];
+pdffn = [junk, '_Screen'];
 
 % if exist('analysisData', 'var')
 %     delete analysisData;
