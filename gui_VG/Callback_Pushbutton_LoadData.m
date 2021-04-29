@@ -181,12 +181,12 @@ end
 %% load analysis
 if fn_Wave~=0
 
-
 fn_AA = [fn_Wave(1:end-8), 'Analysis*'];
 fns = dir(fullfile(dataPath, fn_AA));
 
 if ~isempty(fns)
-[fn_Analysis, ~] = uigetfile(fullfile(dataPath, fn_AA));
+% [fn_Analysis, ~] = uigetfile(fullfile(dataPath, fn_AA));
+[fn_Analysis, ~] = uigetfile({'*Analysis*.mat'}, 'Select a saved Analysis file', dataPath);
 
 % affn = fullfile(dataPath, fn_AA);
 if fn_Analysis

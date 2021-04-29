@@ -117,6 +117,7 @@
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_ParamBNorm.m</file>
       <file>${PROJECT_ROOT}\gui_VG\addComponents2Panel2_ParamBRaw.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_loadLoggerProData.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\updateLAVBoxBHText.m</file>
       <file>${PROJECT_ROOT}\gui_VG\updateLAVBoxText.m</file>
     </fileset.resources>
     <fileset.package />
