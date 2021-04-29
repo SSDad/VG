@@ -35,4 +35,4 @@ for n = 1:nSub
                             'Callback', @Callback_Pushbutton_Pick_);
 end
 
-% Comp.Pushbutton.Pick(n).Enable = 'off';
+Comp.Pushbutton.Pick(2).Enable = 'off';

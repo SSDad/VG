@@ -139,29 +139,11 @@ if strcmp(src.Tag, 'Breath')
         updateLAVBoxParam;
         updateLAVBoxText;
         
-%         % LAVBox text
-%         yp(1) = LAVBox.y1;
-%         yp(2) = LAVBox.y2;
-%         yp(3) = (yp(1) + yp(2))/2;
-%         yp(4) = yp(2);
-%         
-%         xp(1:3) = data2.Panel.ViewB.Comp.hAxis.ViewB.XLim(2);
-%         xp(4) = xp(1)/2;
-%         
-%         txt(1:2) = yp(1:2);
-%         txt(3) = yp(2) - yp(1);
-%         txt(4) = diff(data2.Panel.ViewB.Comp.hAxis.ViewB.XLim);
-%         
-%         for n = 1:4
-%             data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).Position = [xp(n) yp(n)];
-%             data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).String = num2str(txt(n), 3);
-%             data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).Visible = 'on';
-%         end
-        
         data2.Panel.ViewB.Comp.hPlotObj.LAVBox.Visible = 'on';
-%         data2.Panel.ParamB.Comp.Text.ParamValue(3).Visible = 'on';
-%         data2.Panel.ParamB.Comp.Text.ParamValueP(3).Visible = 'on';
 
+%         % enable 'BH' pick
+%         data2.Panel.Pick.Comp.Pushbutton.Pick(2).Enable = 'on';
+        
         % deleteB
         BLS{1} = 'Box List';
         for n = 1:nBoxB
