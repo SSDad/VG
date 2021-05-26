@@ -26,7 +26,7 @@ BoxColor = [1 0 0
                  0 1 1
                 1 0 1
                 1 1 0];
-BoxColor = [BoxColor; rand(6, 3)];            
+BoxColor = [BoxColor; rand(20, 3)];            
 BoxColorBH = BoxColor;
 
 Thresh = [7 8
