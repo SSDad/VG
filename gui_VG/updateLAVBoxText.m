@@ -30,7 +30,7 @@ txt{4} =  ['Period-', num2str(PD, 2), 's'];
 txt{5} =  ['Period Variation Mean-', num2str(PV, 2), 's'];
 txt{6} =  ['Period Variation STD-', num2str(std(junk), 2), 's'];
 
-for n = 1:6
+for n = 1:3
     data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).Position = [xp(n) yp(n)];
     data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).String = txt{n};
     data2.Panel.ViewB.Comp.hPlotObj.BoxText(n).Visible = 'on';

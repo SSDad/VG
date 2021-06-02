@@ -1,7 +1,7 @@
 function Comp = addComponents2Panel2_ParamBPeriod(hPanel)
 
 paramName{1,1} = '';  paramName{1,2} = 'Mean'; paramName{1, 3} = 'STD';
-paramName{2,1} = 'PV';  paramName{2,2} = '';  paramName{2,3} = '';
+paramName{2,1} = '';  paramName{2,2} = '';  paramName{2,3} = '';
 
 nR = size(paramName, 1);
 h_gap = 0.1;

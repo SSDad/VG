@@ -74,13 +74,13 @@ end
 data2.Panel.ParamBNorm.Comp.Text.Param(1).Name(3).ForegroundColor = CLR;
 
 dt = 1/pps;
-junk = abs(pA-mean(pA))*dt;
-PV = sum(junk)/numel(pA);
+% junk = abs(pA-mean(pA))*dt;
+% PV = sum(junk)/numel(pA);
 % data2.Panel.ParamBPeriod.Comp.Text.Param(4).Name(2).String = [num2str(mean(pA)*dt, 2 ), 's'];
-data2.Panel.ParamBPeriod.Comp.Text.Param(2).Name(2).String = [num2str(PV, 2 ), 's'];
-data2.Panel.ParamBPeriod.Comp.Text.Param(2).Name(3).String =  [num2str(std(junk), 2), 's'];
+data2.Panel.ParamBPeriod.Comp.Text.Param(2).Name(2).String = [num2str(mean(pA*dt), 2 ), 's'];
+data2.Panel.ParamBPeriod.Comp.Text.Param(2).Name(3).String =  [num2str(std(pA*dt), 2), 's'];
 
-PVP = PV/mean(pA)/dt*100;
+PVP = std(pA)/mean(pA)*100;
 if PVP <= Thresh(2, 1)
     CLR = 'g';
 elseif PVP >= Thresh(2, 2)
