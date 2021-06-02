@@ -45,7 +45,7 @@ data2.Panel.AllWave.Comp.hPlotObj.BoxB(iBox) = [];
 data2.Panel.AllWave.Comp.hPlotObj.BoxBText(iBox) = [];
 
 % update TableB color
-for n = iBox:size(BoxColor, 1)
+for n = iBox:nBox-1%size(BoxColor, 1)
     data2.Panel.TableB.Comp.Radiobutton.Box(n).BackgroundColor = BoxColor(n, :);
 end
 

@@ -368,7 +368,7 @@ if ishghandle(InputFig)
     c = [];
     if strcmp(InputFig.WindowStyle, 'modal')
         % Disable all windows from visual interaction and activation
-        c = matlab.ui.internal.dialog.DialogUtils.disableAllWindowsSafely();
+%         c = matlab.ui.internal.dialog.DialogUtils.disableAllWindowsSafely();
     end
     
     uiwait(InputFig);

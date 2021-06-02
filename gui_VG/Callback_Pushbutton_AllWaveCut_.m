@@ -41,6 +41,7 @@ if strcmp(src.Tag, 'Cut')
     data2.Panel.AllWave.Comp.hPlotObj.WinOnAllWave.Position = [tWin1 yMin-junk tWin2-tWin1 yMax-yMin+junk*2];
     data2.Panel.AllWave.Comp.hPlotObj.WinOnAllWave.Visible = 'on';
 
+    data2.Panel.Pick.Comp.Pushbutton.Pick(1).Enable = 'on'; % 'Breath' on
 
 else
     data2.Panel.AllWave.Comp.hAxis.AllWave.XLim = [tt(1) tt(end)];
@@ -49,5 +50,7 @@ else
     data2.Panel.AllWave.Comp.hPlotObj.WinOnAllWave.Visible = 'off';
 
     set(hWave, 'XData', [], 'YData', []);
+
+    data2.Panel.Pick.Comp.Pushbutton.Pick(1).Enable = 'off'; % 'Breath' off
 
 end
