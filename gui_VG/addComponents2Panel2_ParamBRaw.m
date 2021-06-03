@@ -1,4 +1,4 @@
-function Comp = addComponents2Panel2_ParamB(hPanel)
+function Comp = addComponents2Panel2_ParamBRaw(hPanel)
 
 paramName{1} = 'Amplitude';
 

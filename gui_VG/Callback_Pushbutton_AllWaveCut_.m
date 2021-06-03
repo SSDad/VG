@@ -42,6 +42,7 @@ if strcmp(src.Tag, 'Cut')
     data2.Panel.AllWave.Comp.hPlotObj.WinOnAllWave.Visible = 'on';
 
     data2.Panel.Pick.Comp.Pushbutton.Pick(1).Enable = 'on'; % 'Breath' on
+    data2.Panel.Pick.Comp.Pushbutton.Pick(2).Enable = 'on'; % 'Breath Hold' on
 
 else
     data2.Panel.AllWave.Comp.hAxis.AllWave.XLim = [tt(1) tt(end)];
@@ -52,5 +53,6 @@ else
     set(hWave, 'XData', [], 'YData', []);
 
     data2.Panel.Pick.Comp.Pushbutton.Pick(1).Enable = 'off'; % 'Breath' off
+    data2.Panel.Pick.Comp.Pushbutton.Pick(2).Enable = 'off'; % 'Breath Hold' off
 
 end
