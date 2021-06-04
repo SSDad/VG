@@ -13,7 +13,7 @@ if iBox >0
 nBox = length(avgB);
     
     if nBox == 1 && ~isempty(wBH)  % if any BH, cannot delete all B
-        msg{1} =  'Cannot delele all Breath data while Breath Hoding data exist...';
+        msg{1} =  'Cannot delele all Breath data while Breath Holding data still exist...';
         msg{2} = '';
         fun_messageBox('', msg, 'y');
     else
