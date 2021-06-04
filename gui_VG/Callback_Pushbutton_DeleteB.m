@@ -16,12 +16,10 @@ hAllWaveComp = data2.Panel.AllWave.Comp;
 % update ViewB
 delete(avgB(iBox).hg.Children(:));
 
-% hWaveComp = data2.Panel.Wave.Comp;
-% hAllWaveComp = data2.Panel.AllWave.Comp;
-
 junk1 = hWaveComp.hPlotObj.BoxB(iBox);
 junk2 = hAllWaveComp.hPlotObj.BoxB(iBox);
 junk3 = hAllWaveComp.hPlotObj.BoxBText(iBox);
+
 nBox = length(avgB);
 junkColor = BoxColor(iBox, :);
 for n = iBox:nBox-1

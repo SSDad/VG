@@ -1,6 +1,7 @@
 function Callback_Pushbutton_DeleteBH(src, evnt)
 
 global hFig2
+% global avgB yBAll periodBAll
 global BoxColorBH
 global wBH
 
@@ -40,9 +41,9 @@ delete(junk2);
 delete(junk3);
 
 wBH(nBox) = []; 
-data2.Panel.Wave.Comp.hPlotObj.BoxBH(nBox) = [];
-data2.Panel.AllWave.Comp.hPlotObj.BoxBH(nBox) = [];
-data2.Panel.AllWave.Comp.hPlotObj.BoxBHText(nBox) = [];
+data2.Panel.Wave.Comp.hPlotObj.BoxBH(iBox) = [];
+data2.Panel.AllWave.Comp.hPlotObj.BoxBH(iBox) = [];
+data2.Panel.AllWave.Comp.hPlotObj.BoxBHText(iBox) = [];
 
 % update TableBH color
 for n = iBox:nBox%size(BoxColorBH, 1)
