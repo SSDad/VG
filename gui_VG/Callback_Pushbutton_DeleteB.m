@@ -3,12 +3,20 @@ function Callback_Pushbutton_DeleteB(src, evnt)
 global hFig2
 global avgB yBAll periodBAll
 global BoxColor
+global wBH
 
 data2 = guidata(hFig2);
 
 iBox = data2.Panel.DeleteB.Comp.PopUpMenu.BoxList.Value-1;
 
 if iBox >0
+nBox = length(avgB);
+    
+    if nBox == 1 && ~isempty(wBH)  % if any BH, cannot delete all B
+        msg{1} =  'Cannot delele all Breath data while Breath Hoding data exist...';
+        msg{2} = '';
+        fun_messageBox('', msg, 'y');
+    else
     
 hWaveComp = data2.Panel.Wave.Comp;
 hAllWaveComp = data2.Panel.AllWave.Comp;
@@ -20,7 +28,6 @@ junk1 = hWaveComp.hPlotObj.BoxB(iBox);
 junk2 = hAllWaveComp.hPlotObj.BoxB(iBox);
 junk3 = hAllWaveComp.hPlotObj.BoxBText(iBox);
 
-nBox = length(avgB);
 junkColor = BoxColor(iBox, :);
 for n = iBox:nBox-1
     avgB(n) = avgB(n+1); % update avgB
@@ -93,5 +100,7 @@ else
     updateAvgB;
     updateLAVBoxParam;
 end
+
+    end  %  if nBox == 1 && isempty(wBH) 
 
 end
