@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="947980599" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="695503919" file="C:\Users\zhen_\Documents\WU\VG\VIZ.prj" location="C:\Users\zhen_\Documents\WU\VG" name="VIZ" preferred-package-location="C:\Users\zhen_\Documents\WU\VG\VIZ\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>VIZ</param.appname>
     <param.icon />
     <param.icons />
@@ -207,6 +207,9 @@
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrBHStop.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrEmu.m</file>
       <file>${PROJECT_ROOT}\gui_VG\fun_tmrSaveData.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\inputdlg\fun_inputdlg.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\inputdlg\getnicedialoglocation.m</file>
+      <file>${PROJECT_ROOT}\gui_VG\inputdlg\setdefaultbutton.m</file>
       <file>${PROJECT_ROOT}\gui_VG\reorderPlotObj.m</file>
       <file>${PROJECT_ROOT}\gui_VG\saveData.m</file>
       <file>${PROJECT_ROOT}\gui_VG\syncYLim.m</file>

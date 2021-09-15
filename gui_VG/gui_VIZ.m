@@ -1,6 +1,7 @@
 function gui_VIZ
 
 %% global 
+global hFig
 global bEmu
 global hFig hFig2
 global TimeRange extT
@@ -45,7 +46,23 @@ hFig = figure('MenuBar',            'none', ...
                     'Tag', 'main');
 
 % addToolbar(hFig);
-                
+
+% save data
+% fd_VG = fullfile(tempdir, 'VG');
+hd = '\\bjcfs02.carenet.org\rocdata\ROCData';
+if exist(hd, 'dir')
+    fd_VG = fullfile(hd, 'VIZ');
+else
+    fd_VG = 'C:\VIZ';
+end
+% fd_VG = 'C:\VIZ';
+if ~exist(fd_VG, 'dir')
+    mkdir(fd_VG);
+end
+data.fd_VG = fd_VG;
+data.MRN = [];
+guidata(hFig, data);
+
 data.Panel = addPanel(hFig);
 
 data.Panel.PtInfo.Comp = addComponents2Panel_PtInfo(data.Panel.PtInfo.hPanel);
@@ -72,21 +89,6 @@ hBHC = data.Panel.BHC.Comp.Edit.Counter;
 
 data.FC = [255 255 102]/255;
 data.ActiveAxis.MovePoints = 0;
-
-% save data
-% fd_VG = fullfile(tempdir, 'VG');
-hd = '\\bjcfs02.carenet.org\rocdata\ROCData';
-if exist(hd, 'dir')
-    fd_VG = fullfile(hd, 'VIZ');
-else
-    fd_VG = 'C:\VIZ';
-end
-% fd_VG = 'C:\VIZ';
-if ~exist(fd_VG, 'dir')
-    mkdir(fd_VG);
-end
-data.fd_VG = fd_VG;
-data.MRN = [];
 
 % main timer
 tmr = timer;

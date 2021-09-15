@@ -26,7 +26,8 @@ if strcmp(str, 'Go')
     data.Panel.BH.hPanel.Visible = 'on';
     data.Panel.BH.Comp.Togglebutton.BH.Visible = 'off';
     data.Panel.Calib.Comp.Pushbutton.Calib.Enable = 'off'; % disable calib 
-    data.Panel.Mode.Comp.PopUpMenu.Mode.Enable = 'off'; % disable calib 
+    data.Panel.Calib.Comp.Pushbutton.Recover.Enable = 'off';  
+    data.Panel.Mode.Comp.PopUpMenu.Mode.Enable = 'off'; % disable mode 
     data.Panel.Analysis.hPanel.Visible = 'off'; % disable analysis
     data.Panel.Param.Comp.subPanel.pps.Edit.pps.Enable = 'off'; % disable calib 
 
@@ -62,6 +63,7 @@ else
     end
     
     data.Panel.Calib.Comp.Pushbutton.Calib.Enable = 'on'; % disable calib
+    data.Panel.Calib.Comp.Pushbutton.Recover.Enable = 'on'; % disable calib
     data.Panel.Mode.Comp.PopUpMenu.Mode.Enable = 'on'; % disable mode
     data.Panel.Param.Comp.subPanel.pps.Edit.pps.Enable = 'on'; % disable calib 
 

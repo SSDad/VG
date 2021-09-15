@@ -1,10 +1,17 @@
 function figCloseReq(src, callbackdata)
 
+% global hFig
+% 
 global hFig2 hFig_ThreshSetting
 
 global dyn
 
 global tmr tmrBH tmrSaveData
+
+% data = guidata(hFig);
+% fd_VG = data.fd_VG;
+% datafn = fullfile(fd_VG, 'BaseLine.mat');
+% delete(datafn);
 
 % delete object
 if exist('dyn')

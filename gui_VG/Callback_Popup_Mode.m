@@ -32,6 +32,7 @@ else
     bEmu = 1;
     tmr.TimerFcn = @fun_tmrEmu;
     data.Panel.PtInfo.Comp.Edit.MRN.String = 'Demo';
+%     data.Panel.Calib.Comp.Pushbutton.Recover.Visible = 'off';
 end
 
 data.Panel.PtInfo.hPanel.Visible = 'off';
