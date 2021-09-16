@@ -2,24 +2,43 @@ function Callback_Pushbutton_RecoverCalib(src, evnt)
 
 global hFig
 global bEmu
+global dyn
 global baseLine
 
 data = guidata(hFig);
-
-if bEmu
-    baseLine = 100+rand(1);
-    msg{1} = '            Barometer calibration is virtually loaded...';
-else
-    fd_VG = data.fd_VG;
-    datafn = fullfile(fd_VG, 'BaseLine.mat');
-    load(datafn);
-end
 
 bDevice = 1;
 msg{1} = '            Barometer calibration is loaded...';
 msg{2} = '';
 msgColor = 'g';
+if bEmu
+    baseLine = 100+rand(1);
+    msg{1} = '            Barometer calibration is virtually loaded...';
+    msg{2} = '';
+else
+    if exist('dyn')
+        if ~isempty(dyn)
+            if isvalid(dyn)
+                dyn.delete;
+            end
+        end
+    end
 
+    try
+        dyn = dynamometer;
+    catch
+        bDevice = 0;
+        msg{1} = '            Sensor is not connected...';
+        msg{2} = '';
+        msgColor = 'y';
+    end
+    if bDevice
+        
+        fd_VG = data.fd_VG;
+        datafn = fullfile(fd_VG, 'BaseLine.mat');
+        load(datafn);
+    end
+end
 [hMB] = fun_messageBox('Calibration', msg, msgColor);
 
 if bDevice
