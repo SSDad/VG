@@ -33,8 +33,8 @@ Comp.Pushbutton.Recover = uicontrol('parent', hPanel, ...
                                 'Enable', 'on', ...
                                 'Callback', @Callback_Pushbutton_RecoverCalib);
 
-fd_VG = data.fd_VG;
-datafn = fullfile(fd_VG, 'BaseLine.mat');
+% fd_VG = data.fd_VG;
+datafn = fullfile(data.fd_baseLine, 'BaseLine.mat');
 FileInfo = dir(datafn);
 
 if exist(datafn, 'file')

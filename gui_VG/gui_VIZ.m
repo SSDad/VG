@@ -60,6 +60,7 @@ if ~exist(fd_VG, 'dir')
     mkdir(fd_VG);
 end
 data.fd_VG = fd_VG;
+data.fd_baseLine =  'C:\VIZ';
 data.MRN = [];
 guidata(hFig, data);
 
